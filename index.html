@@ -11,10 +11,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0d0f;--panel:#11161a;--panel-2:#161d22;--line:#1f2a30;
-    --ink:#e8f0f2;--mute:#7d8f96;--dim:#54646b;
-    --acid:#2ec4b6;--amber:#ffb703;--red:#ff5964;--blue:#3a86ff;--grid:#141b1f;
-    --att:#4aa8ff;--vz:#ee3a43;--tmo:#f0509e;--spx:#c9d4d8;
+    --bg:#070b17;--panel:#0c1324;--panel-2:#111a30;--line:#1b2743;
+    --ink:#eef2fb;--mute:#8a96b3;--dim:#58648a;
+    --acid:#3d7cff;--amber:#ff2d44;--red:#ff2d44;--blue:#3d7cff;--grid:#0d1529;
+    --att:#12b0ea;--vz:#ee3a43;--tmo:#f0509e;--spx:#c9d4d8;
     color-scheme:dark;
   }
   :root[data-theme="light"]{color-scheme:light}
@@ -30,7 +30,8 @@
   .num{font-variant-numeric:tabular-nums}
 
   /* ===== app bar ===== */
-  header{border-bottom:1px solid var(--line);background:rgba(10,13,15,.92);backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
+  header::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#ff2d44 0 33.4%,#fefefe 33.4% 66.6%,#3d7cff 66.6% 100%)}
+  header{border-bottom:1px solid var(--line);background:rgba(7,11,23,.92);backdrop-filter:blur(10px);position:sticky;top:0;z-index:40}
   .bar{display:flex;align-items:center;gap:20px;height:60px;position:relative}
   .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;letter-spacing:.02em;font-size:15px;flex-shrink:0}
   .dot{width:9px;height:9px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);animation:pulse 2.4s infinite}
@@ -57,7 +58,7 @@
   }
   @media(max-width:620px){.tabs{left:-16px;right:-16px;padding:8px 16px 14px}}
   @media(max-width:480px){.brand small{display:none}}
-  .subnav{border-bottom:1px solid var(--line);background:rgba(10,13,15,.8);backdrop-filter:blur(6px);position:sticky;top:60px;z-index:30;overflow-x:auto;scrollbar-width:none}
+  .subnav{border-bottom:1px solid var(--line);background:rgba(7,11,23,.8);backdrop-filter:blur(6px);position:sticky;top:60px;z-index:30;overflow-x:auto;scrollbar-width:none}
   .subnav::-webkit-scrollbar{display:none}
   .subnav .inner{display:flex;gap:20px;height:44px;align-items:center}
   .subnav a{color:var(--dim);text-decoration:none;font-size:12px;font-family:'IBM Plex Mono';white-space:nowrap;transition:.15s}
@@ -134,6 +135,7 @@
   .tbl th{font-family:'IBM Plex Mono';font-weight:500;font-size:10.5px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;background:var(--panel-2);border-top:0}
   .tbl td:first-child,.tbl th:first-child{text-align:left;position:sticky;left:0;background:inherit}
   .tbl tr{background:var(--panel)}
+  .tbl th:first-child{background:var(--panel-2)}
   .tbl td:first-child{font-weight:600}
   .tbl tr.grp td{background:var(--panel-2);font-family:'IBM Plex Mono';font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
   .tbl td.l{text-align:left;white-space:normal;color:var(--mute);min-width:220px}
@@ -249,7 +251,7 @@
   /* maps */
   .mapw{border:1px solid var(--line);background:var(--panel)}
   .mapg{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:1px;background:var(--line)}
-  .mapc{position:relative;background:#0a0d0f;min-height:clamp(360px,58vh,600px);overflow:hidden}
+  .mapc{position:relative;background:#070b17;min-height:clamp(360px,58vh,600px);overflow:hidden}
   .mapc canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
   .maps{background:var(--panel);padding:18px;display:flex;flex-direction:column;gap:16px;min-width:0}
   .maphud{position:absolute;left:12px;top:12px;padding:6px 10px 7px;background:var(--panel);border:1px solid var(--line);font-family:'IBM Plex Mono';font-size:10.5px;color:var(--mute);max-width:calc(100% - 24px);pointer-events:none}
@@ -910,7 +912,7 @@
 
   // ---- the three carriers ----
   const CAR={
-    att:{k:'att',n:'AT&T',tk:'NYSE: T',col:'#4aa8ff',hq:'Dallas, Texas',ceo:'John Stankey',cfo:'Pascal Desroches; Jennifer Biry from Jan 1, 2027',
+    att:{k:'att',n:'AT&T',tk:'NYSE: T',col:'#12b0ea',hq:'Dallas, Texas',ceo:'John Stankey',cfo:'Pascal Desroches; Jennifer Biry from Jan 1, 2027',
       q1:{rev:31500,ebitda:11800,fcf:2500}, q2:{rev:31558,ebitda:12300,fcf:4700,capex:5700}, mg:'39.1% of revenue',
       fy25:{rev:125600,ebitda:46400,fcf:16600,capex:20800},
       g26:{fcf:18000,fcfL:'$18B+',ebitdaL:'+3–4% growth',capL:'$23–24B capital investment',epsL:'$2.25–2.35'},
@@ -952,7 +954,7 @@
   const MK={
     spx:{n:'SpaceX',tk:'SPCX',col:'#c9d4d8',px:162.57,mcap:2210,ev:2150,pe:null,fpe:103.23,eve:363.95,yld:0,ipo:135,lo:104.83,hi:225.64,ttm:23.04},
     amt:{n:'American Tower',tk:'AMT',col:'#ffb703',px:182.24,mcap:84.92,ev:128.13,pe:25.07,fpe:27.16,eve:18.19,yld:3.93,w52:-1.81,towers:'≈41,800 (US & Canada)'},
-    cci:{n:'Crown Castle',tk:'CCI',col:'#2ec4b6',px:79.64,mcap:33.88,ev:56.25,pe:32.50,fpe:29.93,eve:20.91,yld:5.34,w52:-17.40,towers:'≈39,800'},
+    cci:{n:'Crown Castle',tk:'CCI',col:'#21c7a8',px:79.64,mcap:33.88,ev:56.25,pe:32.50,fpe:29.93,eve:20.91,yld:5.34,w52:-17.40,towers:'≈39,800'},
     sba:{n:'SBA Communications',tk:'SBAC',col:'#8ce99a',px:182.49,mcap:19.36,ev:34.24,pe:19.65,fpe:23.04,eve:18.68,yld:2.74,w52:-2.73,towers:'≈17,400'}
   };
   const CABLE={chtr:{n:'Charter (Spectrum Mobile)',lines:12.54,adds:406},cmcsa:{n:'Comcast (Xfinity Mobile)',lines:10.187,adds:448}};
@@ -990,10 +992,10 @@
 
   // ---- THEME: dark (default) / light. Every hard-coded dark colour has a light twin; applied to CSS, inline styles and canvas. ----
   const TH_PAIRS=[
-    ['0a0d0f','f3f5f6'],['0c1013','f7f9fa'],['11161a','fdfdfd'],['12181d','f8fafb'],['141b1f','e4eaed'],['161d22','eef2f4'],
-    ['1f2a30','d6dee2'],['e8f0f2','0f1a1f'],['dfe8ea','1d2a30'],['7d8f96','4b5b62'],['54646b','7a8a91'],
-    ['ffffff','16222a'],['2ec4b6','0e8c81'],['ffb703','b36b00'],['ff5964','d4323f'],['3a86ff','1a62d6'],['8ce99a','1f9a4a'],
-    ['b08ad8','7d52ad'],['ff9f1c','b86200'],['4aa8ff','1a6fc4'],['ee3a43','c41f28'],['f0509e','c8166f'],['c9d4d8','3c4a51'],['26333a','c9d3d8'],['0f1417','f1f4f6'],['c08552','8a5a2e']
+    ['070b17','f3f5f6'],['0c1013','f7f9fa'],['0c1324','fdfdfd'],['12181d','f8fafb'],['0d1529','e4eaed'],['111a30','eef2f4'],
+    ['1b2743','d6dee2'],['eef2fb','0f1a1f'],['dfe8ea','1d2a30'],['8a96b3','4b5b62'],['58648a','7a8a91'],
+    ['ffffff','16222a'],['3d7cff','1a56db'],['21c7a8','0e8c74'],['ffb703','b36b00'],['ff2d44','d0102a'],['3a86ff','1a62d6'],['8ce99a','1f9a4a'],
+    ['b08ad8','7d52ad'],['ff9f1c','b86200'],['12b0ea','0b7fae'],['ee3a43','c41f28'],['f0509e','c8166f'],['c9d4d8','3c4a51'],['26365c','c9d3d8'],['0b1222','f1f4f6'],['c08552','8a5a2e']
   ];
   const thH2R=h=>[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
   const TH_F=new Map(), TH_B=new Map();
@@ -1113,7 +1115,7 @@
         .map(([a,b])=>'<span>'+a+'</span><b>'+b+'</b>').join('')+'</div><div class="ln">'+({att:'Fiber to 38.6M locations; closed the $23B EchoStar spectrum purchase on Jul 28.',vz:'Closed Frontier in January: about 30M fiber passings. CEO Dan Schulman since Oct 2025.',tmo:'Stopped reporting phone net adds in 2026; reports postpaid accounts (34.7M) instead.'}[k])+'</div></div>'; }).join('');
     setSrc('bCardsSrc',['att2','attPR','vz2','tm1','tm2','saT','saV','saM']);
     // net adds race
-    const P=[{lb:'T-Mobile',sub:'Recon Analytics estimate',v:750,col:CAR.tmo.col,est:1,vl:'≈750K'},{lb:'AT&T',v:432,col:CAR.att.col,vl:'432K'},{lb:'Comcast',sub:'mobile lines',v:448,col:'#7d8f96',vl:'448K'},{lb:'Charter',sub:'mobile lines',v:406,col:'#7d8f96',vl:'406K'},{lb:'Verizon',v:184,col:CAR.vz.col,vl:'184K'}];
+    const P=[{lb:'T-Mobile',sub:'Recon Analytics estimate',v:750,col:CAR.tmo.col,est:1,vl:'≈750K'},{lb:'AT&T',v:432,col:CAR.att.col,vl:'432K'},{lb:'Comcast',sub:'mobile lines',v:448,col:'#8a96b3',vl:'448K'},{lb:'Charter',sub:'mobile lines',v:406,col:'#8a96b3',vl:'406K'},{lb:'Verizon',v:184,col:CAR.vz.col,vl:'184K'}];
     hbars($('raceP'),P,{max:800});
     const B=[{lb:'AT&T',sub:'fiber 367K + FWA 279K',v:646,col:CAR.att.col,vl:'646K'},{lb:'T-Mobile',sub:'"upper 400Ks"',v:475,col:CAR.tmo.col,est:1,vl:'≈475K'},{lb:'Verizon',sub:'FWA 193K + fiber 155K',v:348,col:CAR.vz.col,vl:'348K'}];
     hbars($('raceB'),B,{max:800});
@@ -1121,9 +1123,9 @@
     // Oct 9
     const lost=CK.map(k=>{ const m=CAR[k].mk; return m.mcap*(1/(1+m.d9/100)-1); }), lostAll=lost.reduce((a,b)=>a+b,0);
     if($('shockSub')) $('shockSub').textContent='one day, ≈$'+fmt1(lostAll)+'B of market value';
-    hbars($('shockD'),CK.map((k,i)=>({lb:CAR[k].n,sub:'−$'+fmt1(lost[i])+'B of value',v:-CAR[k].mk.d9,col:'#ff5964',vl:pct(CAR[k].mk.d9,2)})),{max:15});
+    hbars($('shockD'),CK.map((k,i)=>({lb:CAR[k].n,sub:'−$'+fmt1(lost[i])+'B of value',v:-CAR[k].mk.d9,col:'#ff2d44',vl:pct(CAR[k].mk.d9,2)})),{max:15});
     $('shockLost').innerHTML='Together about <b style="color:var(--ink)">$'+fmt1(lostAll)+'B</b> of market value disappeared in one session: value before = value after ÷ (1 + the day’s move).';
-    const R=[...CK.map(k=>({lb:CAR[k].n,v:CAR[k].mk.w52,col:CAR[k].mk.w52<0?'#ff5964':'#2ec4b6'})),{lb:'American Tower',v:MK.amt.w52,col:'#ff5964'},{lb:'Crown Castle',v:MK.cci.w52,col:'#ff5964'},{lb:'SBA',v:MK.sba.w52,col:'#ff5964'},{lb:'SpaceX',sub:'since $135 IPO, Jun 2026',v:(MK.spx.px/MK.spx.ipo-1)*100,col:'#2ec4b6'}];
+    const R=[...CK.map(k=>({lb:CAR[k].n,v:CAR[k].mk.w52,col:CAR[k].mk.w52<0?'#ff2d44':'#3d7cff'})),{lb:'American Tower',v:MK.amt.w52,col:'#ff2d44'},{lb:'Crown Castle',v:MK.cci.w52,col:'#ff2d44'},{lb:'SBA',v:MK.sba.w52,col:'#ff2d44'},{lb:'SpaceX',sub:'since $135 IPO, Jun 2026',v:(MK.spx.px/MK.spx.ipo-1)*100,col:'#3d7cff'}];
     hbars($('shock52'),R.map(r=>({...r,vl:pct(r.v,2)})),{max:40});
     setSrc('shockSrc',['grainLR','grainBB','oct9','saT','saV','saM','saMh','saS']);
     // leadership
@@ -1193,10 +1195,10 @@
       const x=$('tmL'+L.k); if(x){ x.textContent=fmt0(Math.floor(L.accL)); $('tmJ'+L.k).textContent=fmt0(Math.floor(L.accJ)); const n=Math.floor(L.accJ)-Math.floor(L.accL); $('tmN'+L.k).textContent=(n>0?'+':'')+fmt0(n); }
       const c=L.ctx; if(!c) return; const W=L.W, H=L.H; c.setTransform(L.dpr,0,0,L.dpr,0,0); c.clearRect(0,0,W,H);
       const bx=W*0.38, bw=W*0.24, by=18, bh=H-36;
-      c.fillStyle='#161d22'; c.fillRect(bx,by,bw,bh); c.strokeStyle=L.c.col; c.globalAlpha=0.6; c.strokeRect(bx+0.5,by+0.5,bw-1,bh-1); c.globalAlpha=1;
-      c.fillStyle='#7d8f96'; c.font='10px "IBM Plex Mono",monospace'; c.textAlign='center'; c.fillText('BASE',bx+bw/2,H/2-4); c.fillStyle='#e8f0f2'; c.font='600 12px "Space Grotesk",sans-serif'; c.fillText(fmt1(L.base)+'M',bx+bw/2,H/2+12);
-      c.textAlign='left'; c.fillStyle='#54646b'; c.font='10px "IBM Plex Mono",monospace'; c.fillText('JOIN →',6,12); c.textAlign='right'; c.fillText('→ LEAVE',W-6,12);
-      L.dots.forEach(d=>{ const y=by+8+d.y*(bh-16); let x0, x1; if(d.o){ x0=bx+bw; x1=W-4; c.fillStyle='#ff5964'; } else { x0=4; x1=bx; c.fillStyle='#2ec4b6'; }
+      c.fillStyle='#111a30'; c.fillRect(bx,by,bw,bh); c.strokeStyle=L.c.col; c.globalAlpha=0.6; c.strokeRect(bx+0.5,by+0.5,bw-1,bh-1); c.globalAlpha=1;
+      c.fillStyle='#8a96b3'; c.font='10px "IBM Plex Mono",monospace'; c.textAlign='center'; c.fillText('BASE',bx+bw/2,H/2-4); c.fillStyle='#eef2fb'; c.font='600 12px "Space Grotesk",sans-serif'; c.fillText(fmt1(L.base)+'M',bx+bw/2,H/2+12);
+      c.textAlign='left'; c.fillStyle='#58648a'; c.font='10px "IBM Plex Mono",monospace'; c.fillText('JOIN →',6,12); c.textAlign='right'; c.fillText('→ LEAVE',W-6,12);
+      L.dots.forEach(d=>{ const y=by+8+d.y*(bh-16); let x0, x1; if(d.o){ x0=bx+bw; x1=W-4; c.fillStyle='#ff2d44'; } else { x0=4; x1=bx; c.fillStyle='#3d7cff'; }
         const xx=x0+(x1-x0)*d.p; c.globalAlpha=d.o?1-d.p*0.6:0.4+d.p*0.6; c.beginPath(); c.arc(xx,y,2.6,0,6.283); c.fill(); });
       c.globalAlpha=1; });
     const te=$('tmEl'); if(te&&TM[0]){ const T0=Math.floor(TM[0].simT), d=Math.floor(T0/86400), h=Math.floor(T0%86400/3600), m=Math.floor(T0%3600/60), sec=T0%60; te.textContent='elapsed '+(d?d+'d ':'')+(d||h?h+'h ':'')+m+'m '+String(sec).padStart(2,'0')+'s'+(tmSpeed>1?' (simulated)':''); }
@@ -1230,16 +1232,16 @@
   }
   function wfSvg(c){
     const W=300,H=230,top=14,bot=36,ch=H-top-bot, mx=c.q2.rev, y=v=>top+ch-(v/mx)*ch, gap=c.q2.ebitda-c.q2.capex-c.q2.fcf;
-    const steps=[['Revenue',0,c.q2.rev,c.col],['EBITDA',0,c.q2.ebitda,c.col],['Capex',c.q2.ebitda-c.q2.capex,c.q2.ebitda,'#ff5964'],['Interest, tax, other',c.q2.fcf,c.q2.fcf+gap,'#54646b'],['FCF',0,c.q2.fcf,'#2ec4b6']];
+    const steps=[['Revenue',0,c.q2.rev,c.col],['EBITDA',0,c.q2.ebitda,c.col],['Capex',c.q2.ebitda-c.q2.capex,c.q2.ebitda,'#ff2d44'],['Interest, tax, other',c.q2.fcf,c.q2.fcf+gap,'#58648a'],['FCF',0,c.q2.fcf,'#3d7cff']];
     const bw=44, sp=(W-20)/steps.length;
     let s='<svg viewBox="0 0 '+W+' '+H+'" style="margin-top:8px">';
     steps.forEach(([l,a,b,col],i)=>{ const x=10+i*sp+(sp-bw)/2, y0=y(b), h=Math.max(1,y(a)-y(b));
       s+='<rect x="'+x.toFixed(1)+'" y="'+y0.toFixed(1)+'" width="'+bw+'" height="'+h.toFixed(1)+'" fill="'+col+'" opacity="'+(i===0?0.55:0.9)+'"/>';
-      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(y0-4).toFixed(1)+'" text-anchor="middle" class="svgt" style="fill:#e8f0f2;font-size:10.5px">'+(i===2||i===3?'−':'')+'$'+fmt1((b-a)/1000)+'B</text>';
+      s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(y0-4).toFixed(1)+'" text-anchor="middle" class="svgt" style="fill:#eef2fb;font-size:10.5px">'+(i===2||i===3?'−':'')+'$'+fmt1((b-a)/1000)+'B</text>';
       const words=l.split(' '); s+='<text x="'+(x+bw/2).toFixed(1)+'" y="'+(H-bot+14)+'" text-anchor="middle" class="svgt" style="font-size:9.5px">'+(words.length>2?words.slice(0,2).join(' ')+'</text><text x="'+(x+bw/2).toFixed(1)+'" y="'+(H-bot+26)+'" text-anchor="middle" class="svgt" style="font-size:9.5px">'+words.slice(2).join(' '):l)+'</text>';
-      if(i<steps.length-1){ const nx=10+(i+1)*sp+(sp-bw)/2, ly=i===0?y(c.q2.ebitda):i===1?y(c.q2.ebitda):i===2?y(c.q2.ebitda-c.q2.capex):y(c.q2.fcf); s+='<line x1="'+(x+bw)+'" x2="'+nx+'" y1="'+ly.toFixed(1)+'" y2="'+ly.toFixed(1)+'" stroke="#54646b" stroke-dasharray="2 2"/>'; }
+      if(i<steps.length-1){ const nx=10+(i+1)*sp+(sp-bw)/2, ly=i===0?y(c.q2.ebitda):i===1?y(c.q2.ebitda):i===2?y(c.q2.ebitda-c.q2.capex):y(c.q2.fcf); s+='<line x1="'+(x+bw)+'" x2="'+nx+'" y1="'+ly.toFixed(1)+'" y2="'+ly.toFixed(1)+'" stroke="#58648a" stroke-dasharray="2 2"/>'; }
     });
-    s+='<line x1="6" x2="'+(W-6)+'" y1="'+(top+ch)+'" y2="'+(top+ch)+'" stroke="#1f2a30"/></svg>';
+    s+='<line x1="6" x2="'+(W-6)+'" y1="'+(top+ch)+'" y2="'+(top+ch)+'" stroke="#1b2743"/></svg>';
     return s+'<div class="cap">'+(c.q2.fcf/c.q2.rev*100).toFixed(1)+'¢ of each revenue dollar became free cash flow.</div>';
   }
 
@@ -1249,7 +1251,7 @@
     const rows=[...CK.map(k=>[CAR[k].n,CAR[k].tk.split(': ')[1],CAR[k].mk,CAR[k].col]),['American Tower','AMT',MK.amt,MK.amt.col],['Crown Castle','CCI',MK.cci,MK.cci.col],['SBA Communications','SBAC',MK.sba,MK.sba.col],['SpaceX','SPCX',MK.spx,MK.spx.col]];
     table($('valTbl'),['Company','Price','Market cap','EV','P/E ttm','P/E fwd','EV/EBITDA','Div. yield','52-wk'],[
       {grp:'Carriers'},...rows.slice(0,3).map(r=>vrow(r)),{grp:'Tower companies'},...rows.slice(3,6).map(r=>vrow(r)),{grp:'Satellite'},vrow(rows[6])]);
-    hbars($('valCap'),[{lb:'SpaceX',v:MK.spx.mcap,col:MK.spx.col,vl:'$2,210B'},{lb:'Big Three combined',v:SUM(c=>c.mk.mcap),col:'#ffb703',vl:'$'+fmt0(SUM(c=>c.mk.mcap))+'B'},
+    hbars($('valCap'),[{lb:'SpaceX',v:MK.spx.mcap,col:MK.spx.col,vl:'$2,210B'},{lb:'Big Three combined',v:SUM(c=>c.mk.mcap),col:'#ff2d44',vl:'$'+fmt0(SUM(c=>c.mk.mcap))+'B'},
       ...CK.map(k=>({lb:CAR[k].n,v:CAR[k].mk.mcap,col:CAR[k].col,vl:'$'+fmt1(CAR[k].mk.mcap)+'B'})),{lb:'American Tower',v:MK.amt.mcap,col:MK.amt.col,vl:'$'+fmt1(MK.amt.mcap)+'B'}]);
     hbars($('valFcfy'),CK.map(k=>({lb:CAR[k].n,sub:CAR[k].g26.fcfL+' ÷ $'+fmt1(CAR[k].mk.mcap)+'B',v:fcfY(CAR[k]),col:CAR[k].col,vl:fcfY(CAR[k]).toFixed(1)+'%'})),{max:15});
     setSrc('valSrc',['saT','saV','saM','saA','saC','saB','saS','att2','vzG','tm1']);
@@ -1290,11 +1292,11 @@
     el.setAttribute('viewBox','0 0 '+W+' '+H);
     const X=v=>L+(v-x0)/(x1-x0)*(W-L-R), Y=v=>T+(y1-v)/(y1-y0)*(H-T-B), fs=n=>' style="font-size:'+(n*f).toFixed(1)+'px"', fsc=(n,c)=>' style="font-size:'+(n*f).toFixed(1)+'px;fill:'+c+'"';
     let s='';
-    for(let v=0;v<=24;v+=nw?6:4){ s+='<line x1="'+X(v)+'" x2="'+X(v)+'" y1="'+T+'" y2="'+(H-B)+'" stroke="#1f2a30"/><text x="'+X(v)+'" y="'+(H-B+18*f)+'" text-anchor="middle" class="svgt"'+fs(11)+'>'+v+'×</text>'; }
-    for(let v=-40;v<=10;v+=10){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="'+(v===0?'#54646b':'#1f2a30')+'"/><text x="'+(L-8)+'" y="'+(Y(v)+4*f)+'" text-anchor="end" class="svgt"'+fs(11)+'>'+(v>0?'+':'')+v+'%</text>'; }
+    for(let v=0;v<=24;v+=nw?6:4){ s+='<line x1="'+X(v)+'" x2="'+X(v)+'" y1="'+T+'" y2="'+(H-B)+'" stroke="#1b2743"/><text x="'+X(v)+'" y="'+(H-B+18*f)+'" text-anchor="middle" class="svgt"'+fs(11)+'>'+v+'×</text>'; }
+    for(let v=-40;v<=10;v+=10){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="'+(v===0?'#58648a':'#1b2743')+'"/><text x="'+(L-8)+'" y="'+(Y(v)+4*f)+'" text-anchor="end" class="svgt"'+fs(11)+'>'+(v>0?'+':'')+v+'%</text>'; }
     s+='<text x="'+((L+W-R)/2)+'" y="'+(H-6)+'" text-anchor="middle" class="svgt"'+fs(11)+'>EV / EBITDA →</text><text x="'+(14*f)+'" y="'+(T+(H-T-B)/2)+'" text-anchor="middle" class="svgt"'+fs(11)+' transform="rotate(-90 '+(14*f)+' '+(T+(H-T-B)/2)+')">52-week return</text>';
     s+='<rect x="'+X(17)+'" y="'+T+'" width="'+(X(22)-X(17))+'" height="'+(H-T-B)+'" fill="#ffb703" opacity="0.05"/><text x="'+X(19.5)+'" y="'+(nw?H-B-8:T-6)+'" text-anchor="middle" class="svgt"'+fs(10)+'>towers</text>';
-    s+='<rect x="'+X(6)+'" y="'+T+'" width="'+(X(8.5)-X(6))+'" height="'+(H-T-B)+'" fill="#2ec4b6" opacity="0.05"/><text x="'+X(7.25)+'" y="'+(nw?H-B-8:T-6)+'" text-anchor="middle" class="svgt"'+fs(10)+'>carriers</text>';
+    s+='<rect x="'+X(6)+'" y="'+T+'" width="'+(X(8.5)-X(6))+'" height="'+(H-T-B)+'" fill="#3d7cff" opacity="0.05"/><text x="'+X(7.25)+'" y="'+(nw?H-B-8:T-6)+'" text-anchor="middle" class="svgt"'+fs(10)+'>carriers</text>';
     const P=[...CK.map(k=>[CAR[k].n,CAR[k].mk.eve,CAR[k].mk.w52,CAR[k].mk.mcap,CAR[k].col,'r']),['AMT',MK.amt.eve,MK.amt.w52,MK.amt.mcap,MK.amt.col,'u'],['CCI',MK.cci.eve,MK.cci.w52,MK.cci.mcap,MK.cci.col,nw?'l':'r'],['SBAC',MK.sba.eve,MK.sba.w52,MK.sba.mcap,MK.sba.col,'d']];
     P.forEach(([n,ex,ry,cap,col,pos])=>{ const r=(6+Math.sqrt(cap)*2.2)*(nw?1.15:1), cx=X(ex), cy=Y(ry);
       s+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+r.toFixed(1)+'" fill="'+col+'" fill-opacity="0.22" stroke="'+col+'" stroke-width="1.5"/>';
@@ -1330,11 +1332,11 @@
     el.setAttribute('viewBox','0 0 '+W+' '+H);
     const pts=[[0.1,2.68,nw?'Jun 30':'Jun 30, 2026','2.68×'+(nw?'':' reported')],[0.45,3.2,nw?'After close':'After the Jul 28 close','≈3.2×'+(nw?'':' (company)')],[0.9,2.5,nw?'≈3 years':'"Within roughly three years"','≈2.5×'+(nw?'':' (company)')]];
     const X=f=>L+f*(W-L-R); let s='';
-    [2,2.5,3,3.5].forEach(v=>{ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#1f2a30"/><text x="'+(L-10)+'" y="'+(Y(v)+4*f)+'" text-anchor="end" class="svgt"'+fs(11)+'>'+v.toFixed(1)+'×</text>'; });
-    s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(2.68)+'" y2="'+Y(2.68)+'" stroke="#2ec4b6" stroke-dasharray="3 4" opacity=".6"/>';
-    s+='<path d="M'+X(pts[0][0])+','+Y(pts[0][1])+' L'+X(pts[1][0])+','+Y(pts[1][1])+'" stroke="#4aa8ff" stroke-width="2.5" fill="none"/>';
-    s+='<path d="M'+X(pts[1][0])+','+Y(pts[1][1])+' L'+X(pts[2][0])+','+Y(pts[2][1])+'" stroke="#4aa8ff" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>';
-    pts.forEach(([p,v,l,d],i)=>{ s+='<circle cx="'+X(p)+'" cy="'+Y(v)+'" r="'+(7*Math.min(f,1.4))+'" fill="'+(i?'#11161a':'#4aa8ff')+'" stroke="#4aa8ff" stroke-width="2.5"/>';
+    [2,2.5,3,3.5].forEach(v=>{ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#1b2743"/><text x="'+(L-10)+'" y="'+(Y(v)+4*f)+'" text-anchor="end" class="svgt"'+fs(11)+'>'+v.toFixed(1)+'×</text>'; });
+    s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(2.68)+'" y2="'+Y(2.68)+'" stroke="#3d7cff" stroke-dasharray="3 4" opacity=".6"/>';
+    s+='<path d="M'+X(pts[0][0])+','+Y(pts[0][1])+' L'+X(pts[1][0])+','+Y(pts[1][1])+'" stroke="#12b0ea" stroke-width="2.5" fill="none"/>';
+    s+='<path d="M'+X(pts[1][0])+','+Y(pts[1][1])+' L'+X(pts[2][0])+','+Y(pts[2][1])+'" stroke="#12b0ea" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>';
+    pts.forEach(([p,v,l,d],i)=>{ s+='<circle cx="'+X(p)+'" cy="'+Y(v)+'" r="'+(7*Math.min(f,1.4))+'" fill="'+(i?'#0c1324':'#12b0ea')+'" stroke="#12b0ea" stroke-width="2.5"/>';
       s+='<text x="'+X(p)+'" y="'+(i===2?Y(v)+28*f:Y(v)-16*f*0.9)+'" text-anchor="middle" class="svgb"'+fs(13)+'>'+d+'</text><text x="'+X(p)+'" y="'+(H-B+26*f)+'" text-anchor="middle" class="svgt"'+fs(11)+'>'+l+'</text>'; });
     el.innerHTML=s;
   }
@@ -1368,7 +1370,7 @@
     hbars($('homeF'),[{lb:'AT&T',sub:'AT&T Fiber 12.1M',v:12.868,col:CAR.att.col,vl:'12.87M'},{lb:'Verizon',sub:'after Frontier',v:10.913,col:CAR.vz.col,vl:'10.91M'},{lb:'T-Mobile',sub:'JVs; total not reported',v:0,col:CAR.tmo.col,vl:'n/r'}],{max:14});
     hbars($('homeW'),[{lb:'T-Mobile',sub:'5G broadband, Dec 2025',v:8.45,col:CAR.tmo.col,vl:'8.45M'},{lb:'Verizon',v:6.208,col:CAR.vz.col,vl:'6.21M'},{lb:'AT&T',sub:'Internet Air 1.95M',v:2.611,col:CAR.att.col,vl:'2.61M'}],{max:14});
     setSrc('homeSrc',['attT','vz2','tm4']);
-    hbars($('cabL'),[{lb:'Charter',sub:'+406K in Q2',v:12.54,col:'#7d8f96',vl:'12.54M'},{lb:'Comcast',sub:'+448K in Q2',v:10.187,col:'#7d8f96',vl:'10.19M'},{lb:'Boost (EchoStar)',sub:'−118K in Q2',v:7.38,col:'#54646b',vl:'7.38M'}],{max:14});
+    hbars($('cabL'),[{lb:'Charter',sub:'+406K in Q2',v:12.54,col:'#8a96b3',vl:'12.54M'},{lb:'Comcast',sub:'+448K in Q2',v:10.187,col:'#8a96b3',vl:'10.19M'},{lb:'Boost (EchoStar)',sub:'−118K in Q2',v:7.38,col:'#58648a',vl:'7.38M'}],{max:14});
     setSrc('cabSrc',['chtr','cmcsa','echoQ2','boost','ctia','ctia2']);
   }
   const life=c=>Math.round(100/c)+' months <span style="color:var(--dim)">('+(100/c/12).toFixed(1)+' yrs)</span>';
@@ -1384,7 +1386,7 @@
   }
 
   // ================= 6 · SPECTRUM =================
-  const WHO={att:['AT&T','#4aa8ff'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],spx:['SpaceX','#c9d4d8'],fcc:['FCC','#ffb703'],cci:['Crown Castle','#2ec4b6'],all:['All three','#e8f0f2']};
+  const WHO={att:['AT&T','#12b0ea'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],spx:['SpaceX','#c9d4d8'],fcc:['FCC','#ffb703'],cci:['Crown Castle','#21c7a8'],all:['All three','#eef2fb']};
   let dlF='all';
   function renderSpec(){
     stacked($('spBars'),SPEND.map(r=>({lb:WHO[r.k][0],col:WHO[r.k][1],parts:r.parts,note:r.sold?'sold 800 MHz to Grain for $2.9B':''})),{fmt:v=>v<1?'$'+fmt0(v*1000)+'M':'$'+fmt2(v)+'B'});
@@ -1532,7 +1534,7 @@
   // fit the 975×610 frame into a canvas
   function geoFit(W,H,pad,top){ top=top||pad; const s=Math.min((W-2*pad)/975,(H-top-pad)/610); return {s,ox:(W-975*s)/2,oy:top+(H-top-pad-610*s)/2}; }
   function geoBase(c,F,dpr,light){
-    const K=light?{l:'#fefefe',b:'#c9d3d8',o:'#9aa8af'}:{l:'#161d22',b:'#26333a',o:'#3a4a52'};
+    const K=light?{l:'#fefefe',b:'#c9d3d8',o:'#9aa8af'}:{l:'#111a30',b:'#26365c',o:'#3a4d7a'};
     c.setTransform(dpr*F.s,0,0,dpr*F.s,dpr*F.ox,dpr*F.oy);
     if(GEO.st){ c.fillStyle=K.l; GEO.st.forEach(s=>s.P&&c.fill(s.P)); c.lineWidth=0.6/F.s; c.strokeStyle=K.b; if(GEO.bi) c.stroke(GEO.bi); c.strokeStyle=K.o; c.lineWidth=0.9/F.s; if(GEO.bo) c.stroke(GEO.bo); }
     c.setTransform(dpr,0,0,dpr,0,0);
@@ -1541,7 +1543,7 @@
 
   // ================= FCC towers by owner =================
   const TW={J:null,X:null,Y:null,O:null,S:null,n:0,off:new Set(),cv:null,ctx:null,W:0,H:0,dpr:1,F:null,init:0,loading:0,byState:null,hover:null};
-  const TW_OWN={amt:['American Tower','#ffb703'],cci:['Crown Castle','#2ec4b6'],sba:['SBA Communications','#8ce99a'],vb:['Vertical Bridge','#b08ad8'],att:['AT&T','#4aa8ff'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],oth:['Other tower companies','#c08552'],rest:['Everyone else','#54646b']};
+  const TW_OWN={amt:['American Tower','#ffb703'],cci:['Crown Castle','#21c7a8'],sba:['SBA Communications','#8ce99a'],vb:['Vertical Bridge','#b08ad8'],att:['AT&T','#12b0ea'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],oth:['Other tower companies','#c08552'],rest:['Everyone else','#58648a']};
   function twB64(s){ const b=atob(s), u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i); return u; }
   function twUse(J){
     const xy=twB64(J.xy), o=twB64(J.o), st=twB64(J.s), n=J.n, q=J.q||200;
@@ -1557,7 +1559,7 @@
   }
   function twLists(){
     const J=TW.J; if(!J) return;
-    $('twOwners').innerHTML=J.owners.map(x=>{ const m=TW_OWN[x.k]||[x.n,'#54646b']; return '<div class="orow'+(TW.off.has(x.k)?' off':'')+'" data-k="'+x.k+'"><i style="background:'+m[1]+'"></i><span>'+m[0]+'</span><b>'+fmt0(x.c)+'</b></div>'; }).join('');
+    $('twOwners').innerHTML=J.owners.map(x=>{ const m=TW_OWN[x.k]||[x.n,'#58648a']; return '<div class="orow'+(TW.off.has(x.k)?' off':'')+'" data-k="'+x.k+'"><i style="background:'+m[1]+'"></i><span>'+m[0]+'</span><b>'+fmt0(x.c)+'</b></div>'; }).join('');
     $('twOwners').querySelectorAll('.orow').forEach(r=>r.onclick=()=>{ const k=r.dataset.k; TW.off.has(k)?TW.off.delete(k):TW.off.add(k); twLists(); twDraw(); });
     const names=ST_ABBR(), on=k=>!TW.off.has(k);
     const tot=Object.entries(TW.byState).filter(([a])=>a!=='?').map(([a,o])=>[a,Object.entries(o).reduce((s,[k,v])=>s+(on(k)?v:0),0)]).sort((a,b)=>b[1]-a[1]).slice(0,8);
@@ -1568,13 +1570,13 @@
     TW.dpr=Math.min(2,window.devicePixelRatio||1); TW.W=r.width; TW.H=r.height; cv.width=Math.round(r.width*TW.dpr); cv.height=Math.round(r.height*TW.dpr); TW.F=geoFit(TW.W,TW.H,12,TW.W<620?70:12); twDraw(); }
   function twDraw(){
     const c=TW.ctx; if(!c||!TW.W) return; const light=document.documentElement.dataset.theme==='light', d=TW.dpr, F=TW.F;
-    c.setTransform(1,0,0,1,0,0); c.fillStyle=light?'#e3eaee':'#0a0d0f'; c.fillRect(0,0,TW.cv.width,TW.cv.height);
+    c.setTransform(1,0,0,1,0,0); c.fillStyle=light?'#e3eaee':'#070b17'; c.fillRect(0,0,TW.cv.width,TW.cv.height);
     geoBase(c,F,d,light);
-    if(TW.hover&&TW.hover.P){ c.setTransform(d*F.s,0,0,d*F.s,d*F.ox,d*F.oy); c.fillStyle=light?'#eef2f4':'#1f2a30'; c.fill(TW.hover.P); c.setTransform(d,0,0,d,0,0); }
+    if(TW.hover&&TW.hover.P){ c.setTransform(d*F.s,0,0,d*F.s,d*F.ox,d*F.oy); c.fillStyle=light?'#eef2f4':'#1b2743'; c.fill(TW.hover.P); c.setTransform(d,0,0,d,0,0); }
     if(!TW.J) return;
     const order=['rest','oth','vb','tmo','vz','att','sba','cci','amt'], r=Math.max(1.1,Math.min(2.2,F.s*1.6));
     c.globalAlpha=light?0.75:0.8;
-    order.forEach(k=>{ if(TW.off.has(k)) return; const oi=TW.keys.indexOf(k); if(oi<0) return; c.fillStyle=(TW_OWN[k]||['','#54646b'])[1]; c.beginPath();
+    order.forEach(k=>{ if(TW.off.has(k)) return; const oi=TW.keys.indexOf(k); if(oi<0) return; c.fillStyle=(TW_OWN[k]||['','#58648a'])[1]; c.beginPath();
       for(let i=0;i<TW.n;i++){ if(TW.O[i]!==oi) continue; const x=TW.X[i]; if(x!==x) continue; c.rect(F.ox+x*F.s-r/2,F.oy+TW.Y[i]*F.s-r/2,r,r); } c.fill(); });
     c.globalAlpha=1;
   }
@@ -1661,20 +1663,20 @@
     SK.dpr=Math.min(2,window.devicePixelRatio||1); SK.W=r.width; SK.H=r.height; cv.width=Math.round(r.width*SK.dpr); cv.height=Math.round(r.height*SK.dpr); SK.F=geoFit(SK.W,SK.H,12,SK.W<620?70:12); skDraw(); }
   function skDraw(){
     const c=SK.ctx; if(!c||!SK.W) return; const light=document.documentElement.dataset.theme==='light', d=SK.dpr, F=SK.F;
-    c.setTransform(1,0,0,1,0,0); c.fillStyle=light?'#e3eaee':'#0a0d0f'; c.fillRect(0,0,SK.cv.width,SK.cv.height);
+    c.setTransform(1,0,0,1,0,0); c.fillStyle=light?'#e3eaee':'#070b17'; c.fillRect(0,0,SK.cv.width,SK.cv.height);
     geoBase(c,F,d,light);
     const cc=SK_CITY[SK.city], cp=AUS(cc[1],cc[0]), qx=cp?F.ox+cp[0]*F.s:-99, qy=cp?F.oy+cp[1]*F.s:-99;
     if(SK.K){ const X=SK.X, Y=SK.Y, IN=SK.IN, S=SK.SK, D=SK.DTC, n=SK.n;
       const pass=(test,col,al,r)=>{ c.fillStyle=col; c.globalAlpha=al; c.beginPath();
         for(let i=0;i<n;i++){ const x=X[i]; if(x!==x||!test(i)) continue; const px=F.ox+x*F.s, py=F.oy+Y[i]*F.s; if(px<-4||px>SK.W+4||py<-4||py>SK.H+4) continue; c.rect(px-r/2,py-r/2,r,r); } c.fill(); };
-      pass(i=>!IN[i]&&!S[i],'#54646b',light?.6:.75,1.6);
+      pass(i=>!IN[i]&&!S[i],'#58648a',light?.6:.75,1.6);
       pass(i=>IN[i]&&!S[i]&&!D[i],'#c9d4d8',.9,2);
       pass(i=>IN[i]&&!S[i]&&D[i],'#ffb703',.95,2.4);
-      c.strokeStyle='#2ec4b6'; c.lineWidth=1; c.globalAlpha=.35; c.beginPath();
+      c.strokeStyle='#3d7cff'; c.lineWidth=1; c.globalAlpha=.35; c.beginPath();
       for(let i=0;i<n;i++){ if(!S[i]||X[i]!==X[i]) continue; c.moveTo(qx,qy); c.lineTo(F.ox+X[i]*F.s,F.oy+Y[i]*F.s); } c.stroke();
-      pass(i=>S[i],'#2ec4b6',1,3); c.globalAlpha=1; }
-    if(cp){ c.strokeStyle='#e8f0f2'; c.lineWidth=1.5; c.beginPath(); c.arc(qx,qy,5,0,6.2832); c.stroke();
-      c.fillStyle='#e8f0f2'; c.font="600 11px 'IBM Plex Mono', monospace"; c.textAlign=qx>SK.W-120?'right':'left'; c.fillText(SK.city,qx+(qx>SK.W-120?-9:9),qy-8); }
+      pass(i=>S[i],'#3d7cff',1,3); c.globalAlpha=1; }
+    if(cp){ c.strokeStyle='#eef2fb'; c.lineWidth=1.5; c.beginPath(); c.arc(qx,qy,5,0,6.2832); c.stroke();
+      c.fillStyle='#eef2fb'; c.font="600 11px 'IBM Plex Mono', monospace"; c.textAlign=qx>SK.W-120?'right':'left'; c.fillText(SK.city,qx+(qx>SK.W-120?-9:9),qy-8); }
     c.globalAlpha=1;
   }
   function skStats(){ if(!SK.K) return; $('skOver').textContent=SK.mask?fmt0(SK.ov):'—'; $('skSky').textContent=fmt0(SK.sky); $('skSkyS').textContent='satellites above 25° over '+SK.city+' right now'; }
@@ -1684,7 +1686,7 @@
   function skUse(J,how){
     skPrep(J); SK.loading=0; $('skEmpty').style.display='none'; const when=skFmtD(J.ep||J.asof);
     $('skAll').textContent=fmt0(J.n)+' Starlink satellites in orbit (CelesTrak, epoch '+when+(how==='stale'?', older data':'')+')';
-    $('skMeta').innerHTML='<span style="color:#ffb703">■</span> direct-to-cell satellites over the US · <span style="color:#c9d4d8">■</span> broadband satellites over the US · <span style="color:#2ec4b6">■</span> in the chosen sky · grey: beyond US land.'+(J.x&&J.x.length?'':' (Direct-to-cell tagging unavailable in this data.)');
+    $('skMeta').innerHTML='<span style="color:#ffb703">■</span> direct-to-cell satellites over the US · <span style="color:#c9d4d8">■</span> broadband satellites over the US · <span style="color:#3d7cff">■</span> in the chosen sky · grey: beyond US land.'+(J.x&&J.x.length?'':' (Direct-to-cell tagging unavailable in this data.)');
     skStep(Date.now()); skStats(); skDraw();
   }
   function skLoad(){
