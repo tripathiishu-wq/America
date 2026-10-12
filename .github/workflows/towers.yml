@@ -1,0 +1,248 @@
+# US TELCOS · FCC tower data for the Coverage tab map
+# Downloads the FCC's weekly Antenna Structure Registration (ASR) complete file, keeps constructed structures,
+# sorts them by owner (American Tower, Crown Castle, SBA, Vertical Bridge, AT&T, Verizon, T-Mobile, others),
+# and commits towers-us.json next to index.html. Runs weekly and on demand.
+# Data: Federal Communications Commission, ASR public access files (public domain).
+name: Tower data (FCC ASR)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 11 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  towers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download FCC ASR complete file
+        run: |
+          for URL in https://data.fcc.gov/download/pub/uls/complete/r_tower.zip https://wireless.fcc.gov/uls/data/complete/r_tower.zip; do
+            for i in 1 2 3 4; do
+              echo "attempt $i · $URL"
+              rm -f r_tower.zip
+              curl -fL -R --connect-timeout 60 --max-time 1800 --retry 3 --retry-all-errors --retry-delay 15 \
+                -A "Mozilla/5.0 (X11; Linux x86_64) US-TELCOS-towers/1.0" -o r_tower.zip "$URL" && unzip -tq r_tower.zip && break 2
+              sleep 30
+            done
+          done
+          unzip -tq r_tower.zip
+          ls -la r_tower.zip && unzip -l r_tower.zip
+          echo "ASOF=$(date -u -r r_tower.zip +%Y-%m-%d)" >> "$GITHUB_ENV"
+
+      - name: Build towers-us.json
+        run: |
+          cat > build_towers_us.py <<'PY'
+          import sys, os, io, re, zipfile, json, base64, collections, datetime
+          # FCC Antenna Structure Registration (ASR) -> towers-us.json for the US site's tower map.
+          # Input: the weekly complete file r_tower.zip (pipe-delimited RA/CO/EN .dat files, no header row).
+          # Column positions are detected from the data and checked, so a layout change fails loudly instead of shipping junk.
+          SRC = sys.argv[1] if len(sys.argv) > 1 else 'r_tower.zip'
+          OUT = sys.argv[2] if len(sys.argv) > 2 else 'towers-us.json'
+
+          OWNERS = [  # key, label, pattern (first match wins; order matters)
+              ('amt', 'American Tower', r'\bAMERICAN TOWERS?\b|SPECTRASITE|PINNACLE TOWERS|^ATC\b|\bGLOBAL TOWER\b|^GTP\b|INSITE WIRELESS'),
+              ('cci', 'Crown Castle', r'CROWN CASTLE|CROWN COMMUNICATION|CROWN ATLANTIC|\bCCATT\b|\bCCTMO\b|\bCCTM\b|^CC HOLDINGS|GLOBAL SIGNAL'),
+              ('sba', 'SBA Communications', r'^SBA\b|\bSBA (TOWERS|COMMUNICATIONS|PROPERTIES|STRUCTURES|INFRASTRUCTURE|MONARCH|STEEL|SITE)'),
+              ('vb', 'Vertical Bridge', r'VERTICAL BRIDGE'),
+              ('att', 'AT&T', r'\bAT ?& ?T\b|\bATT MOBILITY|NEW CINGULAR|CINGULAR WIRELESS|BELLSOUTH|SOUTHWESTERN BELL|PACIFIC BELL|ILLINOIS BELL|MICHIGAN BELL|OHIO BELL|WISCONSIN BELL|INDIANA BELL|NEVADA BELL|SOUTHERN NEW ENGLAND TEL'),
+              ('vz', 'Verizon', r'VERIZON|CELLCO|\bGTE\b|ALLTEL|BELL ATLANTIC|\bNYNEX\b'),
+              ('tmo', 'T-Mobile', r'T-? ?MOBILE|SPRINT|NEXTEL|OMNIPOINT|POWERTEL|VOICESTREAM|METROPCS|CLEARWIRE'),
+              ('oth', 'Other tower companies', r'TOWER|TILLMAN|HARMONI|DIAMOND COMMUNICATIONS|PEG BANDWIDTH|PHOENIX TOWER|INFRASTRUCTURE'),
+              ('rest', 'Everyone else', r''),
+          ]
+          ORX = [(k, re.compile(p)) for k, _, p in OWNERS if p]
+          OKEYS = [k for k, _, _ in OWNERS]
+          def owner_of(name):
+              u = re.sub(r'\s+', ' ', (name or '').upper()).strip()
+              for k, rx in ORX:
+                  if rx.search(u): return k
+              return 'rest'
+
+          STATES = ['AL','AK','AZ','AR','CA','CO','CT','DE','DC','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','PR','GU','VI','AS','MP']
+          STSET = set(STATES)
+          STATUS = set('ACDGINOPRTW')
+          STRUCT = {'TOWER','GTOWER','LTOWER','MTOWER','POLE','UPOLE','MAST','PIPE','RIG','SIGN','SILO','STACK','TANK','TREE','BANT','BMAST','BPIPE','BPOLE','BRIDG','BTWR','BTOWER','NNTANN','NNGTANN','NNLTANN','NNMTANN','NTOWER','NGTOWER','NLTOWER','NMTOWER','B','BLDG'}
+
+          def read_member(z, tag):
+              for n in z.namelist():
+                  if os.path.basename(n).upper() == tag + '.DAT':
+                      with z.open(n) as f:
+                          for raw in io.TextIOWrapper(f, encoding='latin-1', newline=''):
+                              line = raw.rstrip('\r\n')
+                              if line: yield line.split('|')
+                      return
+              sys.exit(f'{tag}.dat not found in {SRC}: {z.namelist()}')
+
+          def sample(z, tag, n=20000):
+              out = []
+              for r in read_member(z, tag):
+                  out.append(r)
+                  if len(out) >= n: break
+              return out
+
+          def frac(rows, i, pred):
+              vals = [r[i].strip() for r in rows if len(r) > i]
+              vals = [v for v in vals if v]
+              return (sum(1 for v in vals if pred(v)) / len(vals)) if vals else 0.0
+
+          def best_col(rows, pred, lo=0, need=0.6):
+              width = max(len(r) for r in rows)
+              sc = [(frac(rows, i, pred), i) for i in range(lo, width)]
+              f, i = max(sc)
+              return i if f >= need else None
+
+          z = zipfile.ZipFile(SRC)
+          info = {'members': [(i.filename, i.file_size) for i in z.infolist()]}
+
+          # ---- detect layout ----
+          RS, CS, ES = sample(z, 'RA'), sample(z, 'CO'), sample(z, 'EN')
+          reg7 = lambda v: v.isdigit() and len(v) == 7
+          KEY = 3 if frac(RS, 3, reg7) > 0.9 and frac(CS, 3, reg7) > 0.9 and frac(ES, 3, reg7) > 0.9 else None
+          if KEY is None:
+              KEY = best_col(RS, reg7, 1, 0.9)
+              if KEY is None or frac(CS, KEY, reg7) < 0.9 or frac(ES, KEY, reg7) < 0.9: sys.exit('Could not find the registration-number column')
+          def status_col():
+              if frac(RS, 8, lambda v: v in STATUS) > 0.95 and len({r[8] for r in RS if len(r) > 8}) >= 3: return 8
+              width = max(len(r) for r in RS); c = []
+              for i in range(4, width):
+                  if frac(RS, i, lambda v: v in STATUS) > 0.95: c.append((-len({r[i].strip() for r in RS if len(r) > i}), i))
+              return min(c)[1] if c else None
+          ST_COL = status_col()
+          TY_COL = best_col(RS, lambda v: v.upper() in STRUCT, 10, 0.5)
+          SS_COL = best_col(RS, lambda v: v.upper() in STSET, 10, 0.9)
+          HT_COL = None
+          num = lambda v: re.fullmatch(r'\d+(\.\d+)?', v) is not None
+          if TY_COL and TY_COL >= 4 and all(frac(RS, TY_COL - d, num) > 0.9 for d in (1, 2, 3, 4)):
+              HT_COL = TY_COL - 2  # structure height, ground elevation, overall height above ground, overall height AMSL, structure type
+          LATD = best_col(CS, lambda v: v in ('N', 'S'), 5, 0.95)
+          LOND = best_col(CS, lambda v: v in ('W', 'E'), (LATD or 5) + 1, 0.95)
+          CT_COL = best_col(CS, lambda v: v in ('T', 'A'), 4, 0.95)
+          # entity name: the column where the owner patterns hit most often
+          width = max(len(r) for r in ES)
+          hits = [(sum(1 for r in ES if len(r) > i and owner_of(r[i]) not in ('rest', 'oth')), i) for i in range(4, width)]
+          NM_COL = max(hits)[1]
+          ET_COL = None
+          for i in range(4, NM_COL):
+              vals = collections.Counter(r[i].strip() for r in ES if len(r) > i)
+              if 1 < len(vals) <= 8 and 'O' in vals and vals['O'] >= 0.2 * len(ES): ET_COL = i; break
+          layout = dict(key=KEY, status=ST_COL, struct=TY_COL, state=SS_COL, height=HT_COL, lat_dir=LATD, lon_dir=LOND, coord_type=CT_COL, entity_name=NM_COL, entity_type=ET_COL)
+          info['layout'] = layout
+          print('layout', layout)
+          if None in (ST_COL, LATD, LOND) or max(hits)[0] < 50: sys.exit(f'Layout check failed: {layout}')
+
+          # ---- read ----
+          stats = collections.Counter()
+          ra = {}
+          for r in read_member(z, 'RA'):
+              if len(r) <= ST_COL: stats['ra_short'] += 1; continue
+              ra[r[KEY].strip()] = (r[ST_COL].strip(), (r[SS_COL].strip().upper() if SS_COL is not None and len(r) > SS_COL else ''),
+                                    (r[TY_COL].strip().upper() if TY_COL is not None and len(r) > TY_COL else ''),
+                                    (r[HT_COL].strip() if HT_COL is not None and len(r) > HT_COL else ''))
+          stats['ra_rows'] = len(ra)
+          co = {}
+          def dms(d, m, s, h):
+              v = float(d or 0) + float(m or 0) / 60 + float(s or 0) / 3600
+              return -v if h in ('S', 'W') else v
+          for r in read_member(z, 'CO'):
+              k = r[KEY].strip()
+              if len(r) <= LOND: continue
+              if CT_COL is not None and k in co and r[CT_COL].strip() != 'T': continue
+              try:
+                  lat = dms(r[LATD - 3], r[LATD - 2], r[LATD - 1], r[LATD].strip())
+                  lon = dms(r[LOND - 3], r[LOND - 2], r[LOND - 1], r[LOND].strip())
+              except ValueError:
+                  stats['co_bad'] += 1; continue
+              if k not in co or (CT_COL is not None and r[CT_COL].strip() == 'T' and co[k][2] != 'T'):
+                  co[k] = (lat, lon, r[CT_COL].strip() if CT_COL is not None else '')
+          en = {}
+          names = collections.Counter()
+          for r in read_member(z, 'EN'):
+              if len(r) <= NM_COL: continue
+              k = r[KEY].strip(); typ = r[ET_COL].strip() if ET_COL is not None else 'O'
+              if k in en and en[k][1] == 'O' and typ != 'O': continue
+              en[k] = (r[NM_COL].strip(), typ)
+
+          rows = []
+          per = collections.Counter(); per_state = collections.defaultdict(collections.Counter); top = collections.defaultdict(collections.Counter)
+          heights = collections.defaultdict(list); struct = collections.Counter(); status = collections.Counter()
+          for k, (st, ss, ty, ht) in ra.items():
+              status[st] += 1
+              if st != 'C': continue
+              c = co.get(k)
+              if not c: stats['no_coord'] += 1; continue
+              lat, lon, _ = c
+              if not (-15 <= lat <= 72 and (-180 <= lon <= -60 or 130 <= lon <= 180)): stats['out_of_range'] += 1; continue
+              nm = en.get(k, ('', ''))[0]
+              o = owner_of(nm)
+              per[o] += 1; per_state[ss if ss in STSET else '?'][o] += 1; top[o][nm.upper()] += 1; struct[ty] += 1
+              try: heights[o].append(float(ht))
+              except ValueError: pass
+              rows.append((OKEYS.index(o), round(lon * 200), round(lat * 200), STATES.index(ss) if ss in STSET else 255))
+          stats['kept'] = len(rows)
+
+          # ---- encode: grouped by owner, sorted by longitude, zigzag varint deltas (0.005 degree grid) ----
+          def varint(v, out):
+              v = (v << 1) ^ (v >> 63)
+              while True:
+                  b = v & 0x7f; v >>= 7
+                  if v: out.append(b | 0x80)
+                  else: out.append(b); break
+          rows.sort()
+          XY, O, S = bytearray(), bytearray(), bytearray()
+          px = py = 0
+          for o, qx, qy, s in rows:
+              varint(qx - px, XY); varint(qy - py, XY); px, py = qx, qy
+              O.append(o); S.append(s)
+          e = lambda b: base64.b64encode(bytes(b)).decode()
+          asof = os.environ.get('ASOF') or datetime.date.today().isoformat()
+          try: asofL = datetime.date.fromisoformat(asof).strftime('%b %-d %Y')
+          except ValueError: asofL = asof
+          med = lambda a: (sorted(a)[len(a) // 2] if a else 0)
+          pack = {'v': 1, 'n': len(rows), 'q': 200, 'asof': asof, 'asofL': asofL,
+                  'src': 'FCC Antenna Structure Registration (ASR) · r_tower.zip · constructed structures',
+                  'owners': [{'k': k, 'n': n, 'c': per[k], 'h': round(med(heights[k]), 1)} for k, n, _ in OWNERS],
+                  'states': STATES, 'xy': e(XY), 'o': e(O), 's': e(S)}
+          json.dump(pack, open(OUT, 'w'), separators=(',', ':'))
+
+          report = {'asof': asof, 'stats': dict(stats), 'status_codes': dict(status), 'per_owner': dict(per), 'structure_types': struct.most_common(25),
+                    'top_names': {k: v.most_common(12) for k, v in top.items()}, 'per_state': {s: dict(c) for s, c in sorted(per_state.items())}, 'info': info,
+                    'bytes': os.path.getsize(OUT)}
+          json.dump(report, open('towers-us-report.json', 'w'), indent=1, ensure_ascii=False)
+          md = ['## FCC tower data', f"ASR complete file as of **{asof}** · {len(rows):,} constructed structures · {os.path.getsize(OUT):,} bytes", '',
+                '| Owner | Structures | Median height (m) |', '|---|---:|---:|']
+          md += [f"| {n} | {per[k]:,} | {med(heights[k]):.0f} |" for k, n, _ in OWNERS]
+          md += ['', '**Detected layout:** ' + ', '.join(f'{k}={v}' for k, v in layout.items()),
+                 '', '**Status codes:** ' + ', '.join(f'{k} {v:,}' for k, v in status.most_common()),
+                 '', '**Row stats:** ' + ', '.join(f'{k} {v:,}' for k, v in stats.items()),
+                 '', '**Largest names in "Everyone else" and "Other tower companies":**']
+          md += [f'- {v:,} · {k}' for k, v in (top['rest'] + top['oth']).most_common(20)]
+          summ = os.environ.get('GITHUB_STEP_SUMMARY')
+          if summ: open(summ, 'a').write('\n'.join(md) + '\n')
+          print('\n'.join(md))
+          if len(rows) < 20000: sys.exit('Too few structures parsed; check towers-us-report.json')
+          if per['amt'] + per['cci'] + per['sba'] < 3000: sys.exit('Tower-company owners not recognised; check towers-us-report.json')
+          PY
+          python3 build_towers_us.py r_tower.zip towers-us.json
+
+      - name: Commit towers-us.json
+        run: |
+          git config user.name "towers-bot"
+          git config user.email "towers-bot@users.noreply.github.com"
+          git add towers-us.json towers-us-report.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Tower data: FCC ASR $ASOF"
+          git pull --rebase
+          git push
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: towers-us
+          path: |
+            towers-us.json
+            towers-us-report.json
