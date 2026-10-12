@@ -101,6 +101,7 @@
   @media(max-width:420px){.stat .n{font-size:24px}}
   .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
   .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  @media(min-width:901px){#spxMoves .card:last-child{grid-column:1/-1}}
   @media(max-width:900px){.grid3,.grid2{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);padding:22px;position:relative;min-width:0}
   .card h3{margin-bottom:8px}
@@ -751,8 +752,44 @@
     <div class="lv" id="pbCards"></div>
   </div></section>
 
+  <section id="pb-spx"><div class="wrap">
+    <div class="shead"><span class="sno">03</span><h2>Keeping SpaceX out of mobile</h2><span class="sub">the defence, sized with the same metrics</span></div>
+    <p class="intro"><b>The licences can't be taken back.</b> SpaceX owns EchoStar's AWS-4, H-block and AWS-3 spectrum and has agreed to buy Grain's 800 MHz. What the Big Three can do is make a fourth retail network uneconomic, so SpaceX stays what it is to T-Mobile today: a supplier of satellite coverage, not a carrier selling phones.</p>
+    <div class="grid2">
+      <div class="card" style="border-top:3px solid var(--spx)"><h3>What SpaceX has</h3><ul class="clean" style="margin-top:12px">
+        <li><span class="mk">01</span><span><b>Spectrum:</b> ≈$19.6B of EchoStar licences (AWS-4/H-block and AWS-3), plus up to 14 MHz paired of 800 MHz from Grain (≈$8B reported, pending FCC approval).</span></li>
+        <li><span class="mk">02</span><span><b>Satellites:</b> 650+ direct-to-cell satellites reaching ≈7.4M devices a month through ≈30 carrier partners. Next-generation satellites come in 2027.</span></li>
+        <li><span class="mk">03</span><span><b>Money:</b> a $2.21T market value, and stock it can pay sellers with (up to $11B of the EchoStar price).</span></li>
+        <li><span class="mk">04</span><span><b>A channel:</b> ≈12M Starlink broadband households worldwide, many of them rural.</span></li>
+      </ul></div>
+      <div class="card" style="border-top:3px solid var(--acid)"><h3>What it still needs</h3><ul class="clean" style="margin-top:12px">
+        <li><span class="mk">01</span><span><b>Towers.</b> Indoor and city service needs a ground network. Analyst Tim Farrar calls the 800 MHz "a very limited amount of spectrum"; SpaceX says it will build a terrestrial network but has given no date.</span></li>
+        <li><span class="mk">02</span><span><b>Capacity.</b> Satellite traffic is ≈0.0002% of T-Mobile's network. Satellites cover gaps; they don't carry the 159.3 trillion MB a year Americans use.</span></li>
+        <li><span class="mk">03</span><span><b>Customers who leave.</b> Postpaid churn is 0.85–0.99% a month: the average customer stays ≈100–118 months.</span></li>
+        <li><span class="mk">04</span><span><b>A shortcut.</b> Renting a carrier's network (an MVNO) is how cable added 854K lines in Q2. Verizon and T-Mobile have both said no to SpaceX.</span></li>
+      </ul></div>
+    </div>
+    <div class="note"><b>The precedent is EchoStar.</b> It held 600 MHz, AWS-4, H-block, AWS-3 and 3.45 GHz licences and ran its own brand. It ended with Boost at 7.38M subscribers (down 118K in Q2), riding AT&amp;T's radio network, and sold its spectrum to AT&amp;T and SpaceX. Spectrum is not a network, and a network is not customers.</div>
+
+    <h3 style="margin:34px 0 12px">Seven moves</h3>
+    <div class="grid3" id="spxMoves"></div>
+
+    <h3 style="margin:34px 0 6px">Starve the pool</h3>
+    <p class="intro" style="margin-top:6px">A new carrier can only grow from customers who are already leaving someone else. Shrink that pool with churn, and cut the share SpaceX can win with coverage, price and a closed wholesale door.</p>
+    <div class="calc">
+      <div>
+        <div class="sl"><label>Monthly churn cut, each carrier <b id="spCutV">0.00 pt</b></label><input type="range" id="spCut" min="0" max="0.25" step="0.01" value="0.05"><div class="h">From 0.86% (AT&amp;T phones), 0.92% (Verizon phones), 0.99% (T-Mobile accounts).</div></div>
+        <div class="sl"><label>Share of leavers SpaceX wins (assumption) <b id="spShV">0%</b></label><input type="range" id="spSh" min="0" max="25" step="0.5" value="5"><div class="h">Nobody knows this number. It is what coverage, price and wholesale access decide.</div></div>
+        <div class="tbl compact" id="spPool" style="margin-top:18px"></div>
+      </div>
+      <div class="out" id="spOut"></div>
+    </div>
+    <div class="note" style="border-left-color:var(--acid)"><b>Do it alone, not together.</b> Each move above is something each carrier decides for itself. An agreement among AT&amp;T, Verizon and T-Mobile to refuse SpaceX wholesale access, roaming or tower space would be a group boycott under US antitrust law. The satellite joint venture is a disclosed JV whose scope is set by its own agreement and its regulators.</div>
+    <div class="src"><b>Sources</b><span id="spxSrc"></span></div>
+  </div></section>
+
   <section id="pb-all"><div class="wrap">
-    <div class="shead"><span class="sno">03</span><h2>What works for any of them</h2><span class="sub">the mechanics of telco revenue</span></div>
+    <div class="shead"><span class="sno">04</span><h2>What works for any of them</h2><span class="sub">the mechanics of telco revenue</span></div>
     <div class="grid3">
       <div class="card"><span class="pill">Keep</span><h3 style="margin-top:10px">Churn is the cheapest revenue</h3><p>At 110+ month lifetimes, every customer kept is worth years of revenue with no acquisition cost. A 0.05-point cut in monthly churn is worth $300–420M a year of run-rate revenue at any of the three (Lever Lab). Better CRM, proactive outage credits and bundle depth move it.</p></div>
       <div class="card"><span class="pill">Converge</span><h3 style="margin-top:10px">Sell the home to the phone</h3><p>Fiber and fixed wireless are where all three add customers fastest. A household with both mobile and home internet from one carrier is harder to lose. AT&amp;T has 38.6M fiber locations to fill; Verizon 30M after Frontier; T-Mobile is building through JVs.</p></div>
@@ -906,7 +943,10 @@
     cciFib:['Crown Castle fiber sale (Wireless Estimator)','https://wirelessestimator.com/articles/2026/crown-castle-completes-8-5-billion-sale-of-fiber-and-small-cell-assets-emerges-as-pure-play-tower-company/'],
     fccASR:['FCC Antenna Structure Registration','https://www.fcc.gov/wireless/systems-utilities/antenna-structure-registration'],
     usAtlas:['us-atlas (Census boundaries)','https://github.com/topojson/us-atlas'],
-    celes:['CelesTrak GP data','https://celestrak.org/NORAD/elements/']
+    celes:['CelesTrak GP data','https://celestrak.org/NORAD/elements/'],
+    eweek:['SpaceX 800 MHz plan (eWeek)','https://www.eweek.com/news/spacex-starlink-mobile-800mhz-spectrum/'],
+    fcc29:['FCC Oct 29 D2D items (TV Tech)','https://www.tvtechnology.com/regulatory-legal/fcc-to-vote-on-restrictions-for-device-testing-spectrum-for-d2d-and-drones'],
+    oobe:['AT&T and Verizon vs SpaceX waiver (Benton)','https://www.benton.org/headlines/att-and-verizon-ask-fcc-throw-wrench-starlink%E2%80%99s-mobile-plan']
   };
   const srcLinks=keys=>keys.map(k=>SRC[k]?'<a href="'+SRC[k][1]+'" target="_blank" rel="noopener">'+SRC[k][0]+'</a>':'').join('');
 
@@ -1460,7 +1500,7 @@
       seg.innerHTML=CK.map(k=>'<button data-k="'+k+'" style="--c:'+CAR[k].col+'"'+(k===labK?' class="on"':'')+'>'+CAR[k].n+'</button>').join('');
       seg.querySelectorAll('button').forEach(b=>b.onclick=()=>{ labK=b.dataset.k; seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); labCalc(); });
       ['labCh','labPr','labFb','labFw','labSt','labEl'].forEach(id=>$(id).oninput=labCalc); }
-    labCalc();
+    labCalc(); spxRender();
     setSrc('labSrc',['attT','att2','vz2','tm1','tmSat']);
     const z={ch:-0.05,el:0,pr:0,fb:0,fw:0,st:0};
     const sz=(k,o)=>usdM(labVals(k,{...z,...o}).tot/1e6)+' a year';
@@ -1496,6 +1536,38 @@
       '<div class="verdict">'+(o.pr>0&&elx>0?'The price rise brings in '+usdM(v.rPrice/1e6)+' but the extra '+elx.toFixed(3)+'-point churn it causes costs '+usdM(Math.abs(labVals(k,{ch:0,el:elx,pr:0,fb:0,fw:0,st:0}).rChurn)/1e6)+'. Break-even extra churn for this price rise: <b>'+((o.pr/100)/(12*(1+o.pr/100))*100).toFixed(3)+' pt</b> a month.':'Churn and price are the big levers because they apply to the whole base. Fiber and fixed wireless add customers one home at a time.')+'</div>';
   }
 
+
+  // ---- keeping SpaceX out of mobile ----
+  function spxRender(){
+    const kept=k=>usdM(labVals(k,{ch:-0.05,el:0,pr:0,fb:0,fw:0,st:0}).tot/1e6);
+    const M=[
+      ['Starve the switcher pool','Every month ≈644K AT&T phones, ≈866K Verizon phones and ≈344K T-Mobile accounts leave. That pool is the only place a new carrier grows from. Better CRM, outage credits and bundle depth shrink it.','−0.05 pt churn keeps '+kept('att')+' (AT&T), '+kept('vz')+' (Verizon), '+kept('tmo')+' (T-Mobile) a year'],
+      ['Keep the wholesale door shut','Cable grew 854K lines in Q2 on rented networks. Verizon: "There is no backdoor to our MVNOs in any structure." T-Mobile ruled out a SpaceX MVNO. AT&T’s position is the open one; it already hosts Boost to 2031.','no MVNO = SpaceX must build every tower itself'],
+      ['Own the satellite feature','The carriers’ joint venture (signed Oct 1) and AST (≈45 satellites targeted by early 2027) mean dead-zone texting doesn’t require Starlink. Under the FCC’s supplemental-coverage rules a satellite operator uses a carrier’s spectrum only by leasing it from that carrier.','T-Mobile’s Starlink exclusivity "does not end this year": plan the hand-over'],
+      ['Close the dead zones from the ground','SpaceX sells 800 MHz as indoor and rural reach. The carriers already hold low-band: AT&T’s ≈20 MHz of 600 MHz from EchoStar, T-Mobile’s 600 MHz (plus Grain’s and Comcast’s), AT&T and Verizon 700 MHz. Light it up where coverage is thin.','fewer dead zones = fewer reasons to switch'],
+      ['Win the rural home first','Starlink’s ≈12M households are SpaceX’s easiest mobile channel, and its ARPU has fallen from $85 to $66. Fixed wireless (T-Mobile 8.45M, Verizon 6.21M, AT&T 2.61M) plus phones on one bill gets there first.','+1M fixed wireless ≈ '+usdM(1e6*FW_ARPU*12/1e6)+' a year (at an assumed $50)'],
+      ['Fight on the FCC record','Grain’s 800 MHz sale needs FCC approval: argue for interference protection and terrestrial build-out conditions. On Oct 29 the FCC takes up a proposed 25 MHz direct-to-device auction and 482 MHz more for satellite coverage. AT&T and Verizon opposed a SpaceX interference waiver in 2024.','then bid for mid-band: upper C-band auction by July 2027'],
+      ['Match price with flankers, not the flagship','Starlink competes on price. Meet it with Cricket, Visible, Metro and Mint, and keep flagship pricing intact.','+1% ARPU is worth '+usdM(labVals('att',{ch:0,el:0,pr:1,fb:0,fw:0,st:0}).tot/1e6)+' / '+usdM(labVals('vz',{ch:0,el:0,pr:1,fb:0,fw:0,st:0}).tot/1e6)+' / '+usdM(labVals('tmo',{ch:0,el:0,pr:1,fb:0,fw:0,st:0}).tot/1e6)+' a year']];
+    $('spxMoves').innerHTML=M.map(([t,p,z],i)=>'<div class="card"><span class="pill">0'+(i+1)+'</span><h3 style="margin-top:10px">'+t+'</h3><p>'+p+'</p><p style="margin-top:10px"><span class="pill" style="color:var(--acid);border-color:var(--line);text-transform:none;letter-spacing:0;white-space:normal">'+z+'</span></p></div>').join('');
+    const c=$('spCut'), h=$('spSh'); if(!c.dataset.done){ c.dataset.done='1'; c.oninput=spxCalc; h.oninput=spxCalc; }
+    spxCalc();
+    setSrc('spxSrc',['spxE','sats','grainLR','grainBB','eweek','slQ2','sl12','d2c','tmSat','tmSat2','vzSL','dz','jvT','ast','echoQ2','boost','chtr','cmcsa','fcc29','oobe','cband','ctia','attT','vz2','tm1']);
+  }
+  const SPX_POOL=[['att','AT&T',74.921,0.86,'phones'],['vz','Verizon',94.098,0.92,'phones'],['tmo','T-Mobile',34.7,0.99,'accounts']];
+  function spxCalc(){
+    const cut=+$('spCut').value, sh=+$('spSh').value/100;
+    $('spCutV').textContent=(cut?'−':'')+cut.toFixed(2)+' pt'; $('spShV').textContent=(sh*100).toFixed(1)+'%';
+    let p0=0, p1=0, rev=0;
+    const rows=SPX_POOL.map(([k,n,b,ch,u])=>{ const a=b*1e6*ch/100*12, z=b*1e6*Math.max(0,ch-cut)/100*12; p0+=a; p1+=z; rev+=labVals(k,{ch:-cut,el:0,pr:0,fb:0,fw:0,st:0}).tot;
+      return [sw(CAR[k].col)+n,fmt1(a/1e6)+'M',fmt1(z/1e6)+'M',u]; });
+    table($('spPool'),['Leavers a year','Today','After cut','Units'],rows);
+    const win=p1*sh, yrs=win>0?7.38e6/win:Infinity, win0=p0*sh;
+    $('spOut').innerHTML='<div class="k">SpaceX customers a year at this share</div><div class="big" style="color:var(--spx)">'+(win>=1e6?fmt2(win/1e6)+'M':fmt0(win/1e3)+'K')+'</div>'+
+      [['Leavers a year, all three',fmt1(p0/1e6)+'M → '+fmt1(p1/1e6)+'M'],['Taken from SpaceX by the churn cut',fmt0((win0-win)/1e3)+'K a year'],['Revenue kept by the churn cut',usdM(rev/1e6)+' a year'],['Years at this rate to Boost’s size (7.38M)',isFinite(yrs)?yrs.toFixed(1):'never']]
+      .map(([a,b])=>'<div class="rw"><span>'+a+'</span><b>'+b+'</b></div>').join('')+
+      '<div class="verdict">'+(sh===0?'<b>At a zero share SpaceX never becomes a carrier,</b> whatever the churn.':'A '+cut.toFixed(2)+'-point churn cut shrinks the pool by '+((1-p1/p0)*100).toFixed(0)+'%. Halving SpaceX’s share does more: '+fmt0(win/2e3)+'K a year instead of '+fmt0(win/1e3)+'K. <b>The share is decided by coverage, price and wholesale access</b>, which is what moves 2–7 attack.')+'</div>';
+  }
+
   // ================= 10 · CALENDAR =================
   const WATCH={att:['First balance sheet with EchoStar: leverage vs ≈3.2×','Postpaid phone adds vs 432K in Q2; churn vs 0.86%','Fiber adds and the new fiber JV'],
     vz:['Service revenue growth vs −0.7% total revenue in Q2','ARPA trend after −1.4%','Consumer phone churn vs 0.84%'],
@@ -1504,7 +1576,7 @@
     const el=$('cdCards'); if(!el.dataset.done){ el.dataset.done='1';
       el.innerHTML=CK.map(k=>'<div class="cdc" style="--c:'+CAR[k].col+'"><div class="nm">'+CAR[k].n+' · Q3 2026</div><div class="when">'+CAR[k].q3.L+'</div><div class="t" id="cd'+k+'">—</div><ul>'+WATCH[k].map(w=>'<li>◦ '+w+'</li>').join('')+'</ul></div>').join(''); }
     setSrc('cdSrc',['attQ3','vzQ3','tmQ3','tmCall']);
-    const EV=[['2026-10-14','tmo','Chris Sambar starts as T-Mobile Chief Enterprise Officer (no later than)'],['2026-10-21','att','AT&T Q3 2026 results'],['2026-10-26','vz','Verizon Q3 2026 results'],['2026-10-28','tmo','T-Mobile Q3 2026 results'],
+    const EV=[['2026-10-14','tmo','Chris Sambar starts as T-Mobile Chief Enterprise Officer (no later than)'],['2026-10-21','att','AT&T Q3 2026 results'],['2026-10-26','vz','Verizon Q3 2026 results'],['2026-10-28','tmo','T-Mobile Q3 2026 results'],['2026-10-29','fcc','FCC open meeting: proposed 25 MHz direct-to-device auction (1675–1695 and 2020–2025 MHz) and 482 MHz more for satellite coverage'],
       ['2026-12-31','att','AT&T CFO Pascal Desroches retires'],['2027-01-01','att','Jennifer Biry becomes AT&T CFO'],['2027-02-01','tmo','Jessica Uhl becomes T-Mobile CFO','Feb 2027'],['2027-03-31','att','AST SpaceMobile: ≈45 satellites targeted; AT&T\u2019s satellite service follows','Early 2027'],
       ['2027-06-30','att','AT&T–GIP–CPP fiber JV expected to close','H1 2027'],['2027-07-31','fcc','Upper C-band auction must close','By Jul 2027'],['2027-11-30','spx','SpaceX–EchoStar final closing (target)'],['2027-12-31','vz','Verizon–BT JV expected to close','H2 2027']];
     $('calList').innerHTML=EV.map(([d,k,t,lbl])=>{ const w=WHO[k], dt=new Date(d+'T12:00:00Z');
@@ -1720,7 +1792,7 @@
     spec:[['sp-spend','Who Bought'],['sp-deals','Deal Timeline'],['sp-pipe','What Comes Next'],['sp-101','Why Bands Matter']],
     sat:[['sat-live','Starlink Live'],['sat-money','Starlink vs Carriers'],['sat-d2c','Direct-to-Phone Race'],['sat-fourth','A Fourth Carrier?']],
     cov:[['cov-towers','FCC Tower Map'],['cov-steel','Who Owns the Steel'],['cov-home','Fiber & FWA Reach']],
-    play:[['pb-lab','Lever Lab'],['pb-moves','Carrier Playbooks'],['pb-all','What Works for All']],
+    play:[['pb-lab','Lever Lab'],['pb-moves','Carrier Playbooks'],['pb-spx','Keep SpaceX Out'],['pb-all','What Works for All']],
     cal:[['cal-q3','Q3 Countdown'],['cal-next','Dated Events'],['cal-src','Sources & Method']]
   };
   const LBL={brief:'Brief',biz:'The Business',val:'Valuation',debt:'Debt',cust:'Customers',spec:'Spectrum',sat:'Satellite',cov:'Coverage',play:'Revenue Playbook',cal:'Calendar'};
