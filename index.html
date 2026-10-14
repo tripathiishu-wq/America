@@ -14,7 +14,7 @@
     --bg:#070b17;--panel:#0c1324;--panel-2:#111a30;--line:#1b2743;
     --ink:#eef2fb;--mute:#8a96b3;--dim:#58648a;
     --acid:#3d7cff;--amber:#ff2d44;--red:#ff2d44;--blue:#3d7cff;--grid:#0d1529;
-    --att:#12b0ea;--vz:#ee3a43;--tmo:#f0509e;--spx:#c9d4d8;
+    --att:#1c95d8;--vz:#e8452f;--tmo:#c13cb8;--spx:#c9d4d8;
     color-scheme:dark;
   }
   :root[data-theme="light"]{color-scheme:light}
@@ -43,12 +43,12 @@
   .tab.on{color:var(--acid);border-color:var(--line);background:var(--panel)}
   .tab .no{color:var(--dim);margin-right:5px;font-size:10px;opacity:.7}
   .tab.on .no{color:var(--amber);opacity:1}
-  @media(max-width:1180px){.tab{padding:7px 7px;font-size:11.5px}.tab .no{display:none}}
+  @media(max-width:1260px){.tab{padding:7px 6px;font-size:11.5px}.tab .no{display:none}}
   .menubtn{display:none;background:var(--panel);border:1px solid var(--line);color:var(--ink);padding:8px 12px;font-family:'IBM Plex Mono';font-size:12px;cursor:pointer;border-radius:2px;flex-shrink:0}
   .themebtn{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono';font-size:11.5px;padding:6px 10px;background:var(--panel);border:1px solid var(--acid);color:var(--ink);cursor:pointer;border-radius:2px}
   .themebtn .thi{font-size:13px;line-height:1}
   .themebtn .thl{display:none}
-  @media(max-width:960px){
+  @media(max-width:1100px){
     .bar{gap:12px}
     .tabs{display:none;position:absolute;top:60px;left:-24px;right:-24px;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 14px;margin:0;gap:2px}
     .tabs.open{display:flex}
@@ -57,7 +57,7 @@
     .menubtn{display:block;margin-left:auto}
   }
   @media(max-width:620px){.tabs{left:-16px;right:-16px;padding:8px 16px 14px}}
-  @media(max-width:480px){.brand small{display:none}}
+  @media(max-width:1500px){.brand small{display:none}}
   .subnav{border-bottom:1px solid var(--line);background:rgba(7,11,23,.8);backdrop-filter:blur(6px);position:sticky;top:60px;z-index:30;overflow-x:auto;scrollbar-width:none}
   .subnav::-webkit-scrollbar{display:none}
   .subnav .inner{display:flex;gap:20px;height:44px;align-items:center}
@@ -309,6 +309,285 @@
   .wf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
   @media(max-width:980px){.wf{grid-template-columns:1fr}}
 
+
+  /* tooltip */
+  .vtip{position:fixed;z-index:80;pointer-events:none;display:none;max-width:280px;background:var(--panel);border:1px solid var(--line);padding:9px 11px;font-size:12px;line-height:1.45;color:var(--mute);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+  .vtip b{color:var(--ink);font-weight:600}
+  [data-tip]{cursor:default}
+  /* journey */
+  .jr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 18px}
+  .jst{position:relative;padding:36px 4px 0 0;outline:none}
+  .jst .nd,.jloop .nd{position:absolute;top:0;left:0;width:28px;height:28px;border-radius:50%;border:2px solid var(--acid);background:var(--bg);font:600 11px 'IBM Plex Mono',monospace;color:var(--ink);display:flex;align-items:center;justify-content:center;z-index:1;transition:background .15s}
+  .jst::before{content:'';position:absolute;top:13px;left:30px;right:-18px;height:2px;background:linear-gradient(90deg,var(--acid),var(--line))}
+  .jst:nth-child(4n)::before{right:0;background:linear-gradient(90deg,var(--acid),transparent)}
+  .jst:hover .nd,.jst:focus .nd{background:var(--acid)}
+  .jst .st{font:600 10.5px 'IBM Plex Mono',monospace;color:var(--red);text-transform:uppercase;letter-spacing:.14em}
+  .jst .bv{font-family:'Space Grotesk';font-weight:700;font-size:42px;line-height:1.02;margin-top:6px;letter-spacing:-.02em}
+  .jst .bl{font-size:13.5px;color:var(--ink);margin-top:6px;line-height:1.4}
+  .jst .bs{font:500 10.5px 'IBM Plex Mono',monospace;color:var(--dim);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+  .jloop{grid-column:1/-1;position:relative;padding:4px 0 0 44px;min-height:30px;font-size:13.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+  .jloop .nd{top:12px;border-color:var(--red);font-size:14px}
+  .jloop b{color:var(--ink)}
+  @media(max-width:980px){.jr{grid-template-columns:repeat(2,minmax(0,1fr))}.jst:nth-child(2n)::before{right:0;background:linear-gradient(90deg,var(--acid),transparent)}.jst:nth-child(4n+1)::before,.jst:nth-child(4n+3)::before{right:-18px;background:linear-gradient(90deg,var(--acid),var(--line))}}
+  @media(max-width:560px){.jr{grid-template-columns:1fr;gap:22px}.jst{padding:0 0 0 44px}.jst::before{top:30px;left:13px;right:auto;bottom:-22px;width:2px;height:auto;background:var(--line)!important}.jst .bv{font-size:36px}}
+  /* waffle */
+  .wafw{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:22px;align-items:center;margin-top:14px}
+  .waf{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px;margin-top:14px;max-width:300px}
+  .waf i{display:block;aspect-ratio:1/1;border-radius:3px;transition:opacity .15s}
+  .waf:hover i{opacity:.55}
+  .waf i:hover{opacity:1}
+  .wlg{display:flex;flex-direction:column;gap:7px;margin-top:16px}
+  .wlg>div{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:9px;align-items:center;font-size:13px;color:var(--mute)}
+  .wlg>div i{width:12px;height:12px;border-radius:3px;display:block}
+  .wlg>div b{color:var(--ink);font-family:'IBM Plex Mono';font-weight:500;font-variant-numeric:tabular-nums}
+  .wlg>div.tot{border-top:1px solid var(--line);padding-top:7px}
+  .wlg>div.tot span{color:var(--ink);font-weight:600}
+  .wlg.row{flex-direction:row;flex-wrap:wrap;gap:6px 16px}
+  .wlg.row>div{grid-template-columns:12px auto}
+  /* 100% stacked bars */
+  .sb{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+  .sbr{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center}
+  .sbl{font-size:13px;color:var(--ink)}
+  .sbt{display:flex;gap:2px;height:26px}
+  .sbt b{display:flex;align-items:center;justify-content:center;min-width:0;border-radius:0}
+  .sbt b:first-child{border-radius:4px 0 0 4px}
+  .sbt b:last-child{border-radius:0 4px 4px 0}
+  .sbt em{font-style:normal;font:600 11px 'IBM Plex Mono',monospace;white-space:nowrap}
+  @media(max-width:560px){.sbr{grid-template-columns:1fr;gap:6px}}
+
+  /* keep-a-phone dumbbells */
+  .kph{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
+  .kbig{text-align:right}
+  .kbig b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:36px;color:var(--red);line-height:1}
+  .kbig span{font-size:12px;color:var(--mute)}
+  .kk{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--acid);vertical-align:-1px;margin:0 2px}
+  .kk.o{background:transparent;border:2px solid var(--acid)}
+  .kp{margin-top:18px}
+  .kr{display:grid;grid-template-columns:200px minmax(0,1fr) 64px;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+  .kr.hd{border-top:0;padding:0 0 4px}
+  .kr.sep{border-top:1px solid var(--dim)}
+  .kl b{display:block;font-size:13.5px;color:var(--ink);font-weight:600}
+  .kl span{font:500 10px 'IBM Plex Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .kt{position:relative;height:30px}
+  .kt::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+  .kt u{position:absolute;top:0;bottom:0;width:1px;background:var(--line);opacity:.7}
+  .kt s{position:absolute;top:50%;height:4px;margin-top:-2px;background:var(--acid);opacity:.45;border-radius:2px}
+  .kt i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 2px var(--panel);z-index:2}
+  .kt i.o{background:var(--panel);border:2px solid var(--acid);box-shadow:none}
+  .kt em{position:absolute;top:-6px;transform:translate(10px,-50%);font:600 11px 'IBM Plex Mono',monospace;font-style:normal;color:var(--ink);white-space:nowrap}
+  .kt q{position:absolute;top:-2px;bottom:-2px;border:1px dashed var(--red);border-radius:4px;quotes:none;pointer-events:none}
+  .kt q span{position:absolute;bottom:-18px;left:0;font:500 10px 'IBM Plex Mono',monospace;color:var(--red);white-space:nowrap}
+  .kt.ticks{height:16px}
+  .kt.ticks::before{display:none}
+  .kt.ticks span{position:absolute;transform:translateX(-50%);font:500 10.5px 'IBM Plex Mono',monospace;color:var(--mute);white-space:nowrap}
+  .kt.ticks span:first-child{transform:none}
+  .kt.ticks span:last-child{transform:translateX(-100%)}
+  .kd{font:600 12px 'IBM Plex Mono',monospace;color:var(--ink);text-align:right;white-space:nowrap}
+  @media(max-width:620px){.kt.ticks span:nth-child(2n){display:none}.kt q span{display:none}#hbWhy .hbr .lb{white-space:normal}.kr{grid-template-columns:minmax(0,1fr) 52px;gap:6px 10px}.kr .kl{grid-column:1/-1}.kr.hd>div:first-child,.kr.hd>div:last-child{display:none}.kr.hd{grid-template-columns:1fr 52px}.kr.hd .kt{grid-column:1}.kbig{text-align:left}}
+  /* ranked leaderboard */
+  .lb{margin-top:12px}
+  .lbg{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:16px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .lbg span{font:600 10.5px 'IBM Plex Mono',monospace;color:var(--mute);text-transform:uppercase;letter-spacing:.1em}
+  .lbg em{font:500 10.5px 'IBM Plex Mono',monospace;font-style:normal;color:var(--dim)}
+  .lbr{display:grid;grid-template-columns:22px minmax(0,1.15fr) minmax(0,1fr) 52px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);outline:none}
+  .lbr:hover,.lbr:focus{background:var(--panel-2)}
+  .lbr.axis{padding:4px 0 0;border-bottom:0}
+  .lbr.axis:hover{background:none}
+  .lbk{font:600 12px 'IBM Plex Mono',monospace;color:var(--dim);text-align:center}
+  .lbn2 b{display:block;font-size:14px;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lbn2 span{display:block;font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lbt{position:relative;height:20px}
+  .lbr:not(.axis) .lbt::before{content:'';position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;border-radius:2px;background:var(--panel-2)}
+  .lbt u{position:absolute;top:-2px;bottom:-2px;width:2px;margin-left:-1px;background:var(--mute);opacity:.7}
+  .lbt s{position:absolute;top:50%;height:4px;margin-top:-2px;opacity:.5;border-radius:2px}
+  .lbt i{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;box-shadow:0 0 0 2px var(--panel);z-index:1}
+  .lbr.axis .lbt{height:14px}
+  .lbr.axis .lbt span{position:absolute;font:500 10px 'IBM Plex Mono',monospace;color:var(--dim)}
+  .lbr.axis .lbt span:last-child{transform:translateX(-100%)}
+  .lbv{font-family:'Space Grotesk';font-weight:700;font-size:20px;color:var(--ink);text-align:right}
+  .lbn{font-size:12px;color:var(--mute);padding:9px 0 0 34px;font-style:italic}
+  @media(max-width:620px){.lbr{grid-template-columns:18px minmax(0,1fr) 44px;gap:4px 10px}.lbr .lbt{grid-column:2/3;grid-row:2}.lbr.axis{display:none}.lbv{grid-row:1/3;grid-column:3}}
+  /* stacked bars and two-column bar list */
+  .hb.two{display:grid;grid-template-columns:1fr 1fr;gap:10px 32px}
+  @media(max-width:900px){.hb.two{grid-template-columns:1fr}}
+  #hbShop .hbr{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 48px}
+  #hbShop .hbr .lb{white-space:normal}
+  /* ---- ratings: explainer, head-to-head rings ---- */
+  .rx{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px;margin:0 0 30px}
+  .rxk{background:var(--panel);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;justify-content:center}
+  .rxk .k{margin-bottom:6px}
+  .rxk b{font-family:'Space Grotesk';font-weight:700;font-size:64px;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+  .rxk span{font-size:13.5px;color:var(--mute);margin-top:10px}
+  .rxk span b{font-size:13.5px;font-family:'Inter';font-weight:600}
+  .rxf{background:var(--panel);border:1px solid var(--line);padding:20px 22px}
+  .rxf .k{margin-bottom:14px}
+  .rxg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 12px}
+  .rxi{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink);line-height:1.25}
+  .rxi svg{width:44px;height:44px;flex-shrink:0;padding:9px;border:1px solid var(--line);border-radius:50%;background:var(--panel-2);stroke:var(--acid);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  @media(max-width:900px){.rx{grid-template-columns:1fr}.rxg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .bigq{font-family:'Space Grotesk';font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:-.01em;line-height:1.15;margin:0 0 18px;max-width:900px}
+  .vs3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media(max-width:1060px){.vs3{grid-template-columns:1fr}}
+  .vs{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c);padding:20px 20px 16px;min-width:0}
+  .vsh{display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap}
+  .vsh b{font-family:'Space Grotesk';font-weight:700;font-size:26px;color:var(--c)}
+  .vsh span{font:500 10.5px 'IBM Plex Mono',monospace;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+  .vsr{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);align-items:start;gap:6px;margin-top:16px}
+  .rg{text-align:center;margin:0;outline:none}
+  .rg svg{width:100%;max-width:160px;height:auto;display:block;margin:0 auto}
+  .rg .tk{fill:none;stroke:var(--line);stroke-width:14}
+  .rg .ar{fill:none;stroke-width:14}
+  .rg text{font-family:'Space Grotesk';font-weight:700;fill:var(--ink);text-anchor:middle}
+  .rg text.s{font:500 12px 'IBM Plex Mono',monospace;fill:var(--mute)}
+  .rg figcaption b{display:block;font-family:'Space Grotesk';font-size:18px;color:var(--ink);margin-top:10px;line-height:1.1}
+  .rg figcaption span{display:block;font-size:11.5px;color:var(--mute);margin-top:3px;line-height:1.3}
+  .rg figcaption em{display:block;font:500 11px 'IBM Plex Mono',monospace;font-style:normal;color:var(--ink);margin-top:6px;line-height:1.3}
+  .rg.v figcaption b{color:var(--c)}
+  .vsd{text-align:center;padding-top:34px}
+  .vsd b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:32px;color:var(--c);line-height:1}
+  .vsd span{display:block;font:500 9.5px 'IBM Plex Mono',monospace;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-top:5px;line-height:1.3}
+  .vsd i{display:block;font-style:normal;font-size:28px;color:var(--c);line-height:1;margin-top:8px}
+  .vsx{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
+  .vsx b{color:var(--ink);font-weight:600}
+  @media(max-width:420px){.vsr{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr)}.vsd b{font-size:26px}.rg figcaption b{font-size:16px}}
+  /* ---- subscribers ---- */
+  .sbw{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:16px}
+  @media(max-width:900px){.sbw{grid-template-columns:1fr}}
+  .sbwin{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--vz);padding:22px}
+  .sbwin .bd{display:inline-block;font:600 10.5px 'IBM Plex Mono',monospace;color:#fefefe;background:var(--vz);padding:3px 8px;letter-spacing:.08em;text-transform:uppercase}
+  .sbwin .wn{font-family:'Space Grotesk';font-weight:700;font-size:40px;line-height:1;color:var(--vz);margin-top:14px}
+  .sbwin .wv{font-family:'Space Grotesk';font-weight:700;font-size:56px;line-height:1;letter-spacing:-.02em;color:var(--ink);margin-top:10px;font-variant-numeric:tabular-nums}
+  .sbwin .wl{font-size:13px;color:var(--mute);margin-top:6px}
+  .sbwin .wr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink)}
+  .sbwin .wr:first-of-type{margin-top:18px}
+  .sbwin .wr b{font-family:'Space Grotesk';font-weight:700;color:var(--c)}
+  .sbwin .wr span{font-family:'IBM Plex Mono';font-size:13px;font-variant-numeric:tabular-nums;text-align:right}
+  .sbwin .wr small{display:block;font-size:10.5px;color:var(--dim)}
+  .sbwin .wft{font-size:13px;color:var(--mute);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .sbwin .wft b{color:var(--ink)}
+  .sr{padding:4px 0 18px}
+  .sr+.sr{border-top:1px solid var(--line);padding-top:16px}
+  .srh{display:flex;justify-content:space-between;align-items:baseline;gap:4px 12px;flex-wrap:wrap;margin-bottom:8px}
+  .srh b{font-family:'Space Grotesk';font-weight:700;font-size:22px;color:var(--c)}
+  .srh span{font:500 12px 'IBM Plex Mono',monospace;color:var(--mute)}
+  .srh span strong{font-family:'Space Grotesk';font-size:22px;color:var(--ink);margin-right:6px}
+  .srb{display:flex;height:40px;gap:2px;min-width:0}
+  .srb i{display:flex;align-items:center;justify-content:center;min-width:0;outline:none}
+  .srb i:first-child{border-radius:4px 0 0 4px}
+  .srb i:last-child{border-radius:0 4px 4px 0}
+  .srb em{font:600 12px 'IBM Plex Mono',monospace;font-style:normal;white-space:nowrap}
+  .srv{display:none;font:500 11.5px 'IBM Plex Mono',monospace;color:var(--mute);margin-top:6px}
+  .srk{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:12px;color:var(--mute)}
+  .srk span{border:1px solid var(--line);background:var(--panel-2);padding:3px 8px;color:var(--ink);font-size:12px;border-radius:2px}
+  .srk span:first-child{border:0;background:none;padding:0;color:var(--mute)}
+  @media(max-width:620px){.srb em{display:none}.srv{display:block}}
+  /* ---- state map ---- */
+  .smh{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  @media(max-width:1180px){.smh{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:620px){.smh{grid-template-columns:1fr}}
+  .smt b{overflow-wrap:anywhere}
+  .smt{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c);padding:18px 20px}
+  .smt .k{display:block}
+  .smt b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:34px;line-height:1.05;color:var(--c);margin-top:10px}
+  .smt strong{display:block;font-family:'Space Grotesk';font-weight:700;font-size:22px;color:var(--ink);margin-top:6px;font-variant-numeric:tabular-nums}
+  .smt span{display:block;font-size:12.5px;color:var(--mute);margin-top:4px}
+  .smw{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:16px}
+  @media(max-width:900px){.smw{grid-template-columns:1fr}}
+  .smc{padding:16px}
+  .smap svg{width:100%;height:auto;display:block}
+  .smap path{stroke:var(--panel);stroke-width:1;stroke-linejoin:round;outline:none;cursor:default;transition:opacity .15s}
+  .smap path:hover,.smap path:focus{stroke:var(--ink);stroke-width:2.5}
+  .smap text{font:600 14px 'IBM Plex Mono',monospace;fill:var(--ink);text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+  .smap text.dk{fill:var(--bg)}
+  .smap text.wh{fill:#fefefe}
+  @media(max-width:620px){.smap text{display:none}.smc{padding:10px}}
+  #smSide .big{font-family:'Space Grotesk';font-weight:700;font-size:48px;line-height:1;color:var(--tmo)}
+  .smr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink)}
+  .smr span{color:var(--mute);font-size:12.5px;text-align:right}
+  .smr b i{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:0}
+  /* ---- plans ---- */
+  .pl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media(max-width:1060px){.pl3{grid-template-columns:1fr}}
+  .plt{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c);padding:20px;min-width:0}
+  .plt .pp{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:stretch;gap:8px;margin-top:14px}
+  .tag{position:relative;padding:14px 12px 12px 26px;border:1px solid var(--line);border-radius:4px 16px 16px 4px;background:var(--panel-2);min-width:0}
+  .tag::before{content:'';position:absolute;left:9px;top:18px;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--mute)}
+  .tag .tn{display:block;font-size:12.5px;color:var(--ink);font-weight:600;line-height:1.25}
+  .tag b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:40px;line-height:1;color:var(--ink);margin-top:8px;font-variant-numeric:tabular-nums}
+  .tag b small{font-size:13px;color:var(--mute);font-weight:500;margin-left:2px}
+  .tag .tx{display:block;font-size:11.5px;color:var(--mute);margin-top:8px;line-height:1.3}
+  .tag.v{border-color:var(--c)}
+  .tag.v::before{border-color:var(--c)}
+  .tag.v b{color:var(--c)}
+  .plt .ar{align-self:center;text-align:center;font-size:22px;color:var(--mute)}
+  @media(max-width:440px){.tag b{font-size:32px}.tag{padding-left:24px;padding-right:10px}}
+  .plt .sv{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .plt .sv b{font-family:'Space Grotesk';font-weight:700;font-size:24px;color:var(--ink)}
+  .plt .sv span{display:block;font-size:12.5px;color:var(--mute);margin-top:2px}
+  .plt .sv span b{font-family:inherit;font-size:inherit;font-weight:600;color:var(--ink)}
+  .pd{margin-top:6px}
+  .pdg{font:600 10.5px 'IBM Plex Mono',monospace;color:var(--mute);text-transform:uppercase;letter-spacing:.1em;margin-top:18px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .pdr{display:grid;grid-template-columns:160px minmax(0,1fr);gap:16px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+  .pdr.ax{border-bottom:0;padding:10px 0 0}
+  .pdl b{display:block;font-size:14px;color:var(--ink);font-weight:600}
+  .pdl span{display:block;font-size:11px;color:var(--mute)}
+  .pdt{position:relative;height:44px;margin:0 14px}
+  .pdt::before{content:'';position:absolute;left:0;right:0;top:30px;height:2px;margin-top:-1px;background:var(--panel-2)}
+  .pdt u{position:absolute;top:8px;bottom:0;width:1px;background:var(--line)}
+  .pdt i{position:absolute;top:30px;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;z-index:1;outline:none}
+  .pdt i.o{background:var(--panel)!important;border:3px solid}
+  .pdt em{position:absolute;top:0;transform:translateX(-50%);font:600 11.5px 'IBM Plex Mono',monospace;font-style:normal;color:var(--ink);white-space:nowrap}
+  .pdr.ax .pdt{height:16px}
+  .pdr.ax .pdt::before{display:none}
+  .pdr.ax .pdt span{position:absolute;transform:translateX(-50%);font:500 10.5px 'IBM Plex Mono',monospace;color:var(--dim)}
+  @media(max-width:620px){.pdr{grid-template-columns:1fr;gap:2px}.pdr.ax>div:first-child{display:none}.pdl{display:flex;gap:8px;align-items:baseline}.pdt{margin:0 10px}}
+  .tbl td.w{text-align:left;white-space:normal;color:var(--mute);min-width:128px;max-width:210px;font-size:12.5px;line-height:1.35}
+  #plTbl table{min-width:1080px}
+  #plTbl th,#plTbl td{padding:10px 10px}
+  .tcap{padding:12px 14px;font-size:13px;color:var(--mute);border-bottom:1px solid var(--line);background:var(--panel-2);position:sticky;left:0}
+  .tcap b{color:var(--ink)}
+  #sbPre .hbr .lb small,#sbPh .hbr .lb small{white-space:normal}
+  #smTop .hbr{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) 52px}
+  #plTbl td:first-child{min-width:170px;white-space:normal}
+  /* ---- real price builder ---- */
+  .chip:disabled{opacity:.4;cursor:not-allowed}
+  .rbw{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;margin-top:16px}
+  @media(max-width:900px){.rbw{grid-template-columns:1fr}}
+  .rbg{margin-bottom:14px}
+  .rbg .k{display:block;margin-bottom:7px}
+  .rbh2{font-size:12px;color:var(--mute);margin-top:7px;line-height:1.4}
+  .rsel{width:100%;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);font:500 12.5px 'IBM Plex Mono',monospace;padding:9px 10px;border-radius:2px}
+  .rbo{background:var(--panel-2);border:1px solid var(--line);border-top:4px solid var(--c);padding:20px;min-width:0}
+  .rbt{font-family:'Space Grotesk';font-weight:700;font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.02em;color:var(--ink);margin-top:8px;font-variant-numeric:tabular-nums}
+  .rbt small{font-size:18px;color:var(--mute);font-weight:500;margin-left:4px}
+  .rbl{font-size:12.5px;color:var(--mute);margin-top:8px}
+  .rbb{display:flex;gap:2px;height:30px;margin-top:16px}
+  .rbb i{min-width:3px;outline:none}
+  .rbb i:first-child{border-radius:3px 0 0 3px}
+  .rbb i:last-child{border-radius:0 3px 3px 0}
+  .rbr{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+  .rbr:first-of-type{margin-top:14px}
+  .rbr b{color:var(--ink);font-family:'IBM Plex Mono';font-weight:600;font-size:13.5px;text-align:right;font-variant-numeric:tabular-nums}
+  .rbr b em{display:block;font-style:normal;color:var(--red);font-size:12px}
+  .rbr b.sm{font-family:'Inter';font-weight:500;font-size:12.5px}
+  .rbn{font-size:11.5px;color:var(--dim);margin-top:12px;line-height:1.45}
+  /* ---- advertised vs real ranking ---- */
+  .rr{display:grid;grid-template-columns:230px minmax(0,1fr) 92px;gap:14px;align-items:center;padding:7px 0;border-top:1px solid var(--line);outline:none}
+  .rr:hover,.rr:focus{background:var(--panel-2)}
+  .rrl b{display:block;font-size:13.5px;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rrl span{display:block;font-size:11px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rrt{position:relative;height:22px}
+  .rrb{display:flex;gap:1px;height:100%}
+  .rrb i{min-width:0}
+  .rrb i:first-child{border-radius:3px 0 0 3px}
+  .rrb i:last-child{border-radius:0 3px 3px 0}
+  .rr.inc .rrb i{opacity:.75}
+  .rrt u{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--ink)}
+  .rrv{text-align:right}
+  .rrv b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:17px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .rrv span{display:block;font:500 10.5px 'IBM Plex Mono',monospace;color:var(--mute)}
+  @media(max-width:620px){.rr{grid-template-columns:minmax(0,1fr) 78px;gap:4px 10px}.rr .rrt{grid-column:1/2;grid-row:2}.rr .rrv{grid-row:1/3;grid-column:2}}
+  .tbl small.adv{display:block;font:500 10.5px 'IBM Plex Mono',monospace;color:var(--red)}
   footer{padding:40px 0 60px;color:var(--dim);font-size:12px}
   footer p+p{margin-top:8px}
 </style>
@@ -324,11 +603,12 @@
       <button class="tab" data-view="val" title="Market cap, multiples, under-valued?"><span class="no">3</span>Valuation</button>
       <button class="tab" data-view="debt" title="Debt and leverage"><span class="no">4</span>Debt</button>
       <button class="tab" data-view="cust" title="Churn, ARPU, CAC to LTV"><span class="no">5</span>Customers</button>
-      <button class="tab" data-view="spec" title="Spectrum deals: EchoStar, SpaceX, auctions"><span class="no">6</span>Spectrum</button>
-      <button class="tab" data-view="sat" title="Starlink and the satellite market"><span class="no">7</span>Satellite</button>
-      <button class="tab" data-view="cov" title="FCC towers by owner, fiber and fixed wireless"><span class="no">8</span>Coverage</button>
-      <button class="tab" data-view="play" title="How each carrier grows revenue"><span class="no">9</span>Playbook</button>
-      <button class="tab" data-view="cal" title="Q3 earnings countdown, events and sources"><span class="no">10</span>Calendar</button>
+      <button class="tab" data-view="phone" title="Phones and plans: buying habits, ratings, subscribers by brand, state map, plan prices, financing"><span class="no">6</span>Phones &amp; Plans</button>
+      <button class="tab" data-view="spec" title="Spectrum deals: EchoStar, SpaceX, auctions"><span class="no">7</span>Spectrum</button>
+      <button class="tab" data-view="sat" title="Starlink and the satellite market"><span class="no">8</span>Satellite</button>
+      <button class="tab" data-view="cov" title="FCC towers by owner, fiber and fixed wireless"><span class="no">9</span>Coverage</button>
+      <button class="tab" data-view="play" title="How each carrier grows revenue"><span class="no">10</span>Playbook</button>
+      <button class="tab" data-view="cal" title="Q3 earnings countdown, events and sources"><span class="no">11</span>Calendar</button>
     </div>
     <button class="themebtn" id="themeBtn" title="Switch to light mode" aria-pressed="false"><span class="thi">☀</span><span class="thl">Light mode</span></button>
   </div>
@@ -587,7 +867,156 @@
   </div></section>
 </div>
 
-<!-- ===================== 6 · SPECTRUM ===================== -->
+<!-- ===================== 6 · PHONES & PLANS ===================== -->
+<div class="view" id="v-phone">
+  <div class="wrap"><div class="hero" style="padding-bottom:30px">
+    <div class="eyebrow">Phones &amp; Plans · the Big Three as America's phone store, lender and plan seller</div>
+    <h1>Carriers sell three in four iPhones.<br><span class="fade">And lend the money to buy them.</span></h1>
+    <p class="lede">AT&amp;T, Verizon and T-Mobile booked $13.7B of device revenue in Q2 2026, sold phones below cost to win and keep customers, and carry billions in phone loans. The new iPhone is the hook; the 36-month payment plan is the lock. Below: who buys, how they rate it, who has the subscribers, state by state, and what every plan costs.</p>
+    <div class="strip" id="phStrip"></div>
+  </div></div>
+
+  <section id="ph-journey"><div class="wrap">
+    <div class="shead"><span class="sno">01</span><h2>From viewing to buying: the American phone journey</h2><span class="sub">eight steps, one number each</span></div>
+    <p class="intro">How a US consumer goes from seeing a phone to paying for it, keeping it and judging the company that sold it. Each step carries the one number that defines it, with its source and date. <b>Hover or tap a step</b> for the detail.</p>
+    <div class="jr" id="phJourney"></div>
+    <div class="src"><b>Sources</b><span id="phJrSrc"></span></div>
+  </div></section>
+
+  <section id="ph-who"><div class="wrap">
+    <div class="shead"><span class="sno">02</span><h2>How many buy from the Big Three</h2><span class="sub">every square is one iPhone buyer in 100</span></div>
+    <p class="intro"><b>About 3 in 4 iPhones are bought from a carrier, and almost 9 in 10 iPhone buyers are on AT&amp;T, Verizon or T-Mobile.</b> Apple's own stores and website sell about 1 in 7. For Android, no research firm publishes a public channel split; Samsung, Motorola and Google lean on carriers even more, through prepaid brands and in-store deals.</p>
+    <div class="grid2">
+      <div class="card"><h3>Where 100 iPhones are bought</h3><p style="font-size:12.5px;margin-top:2px">CIRP, past year to Aug 2026</p><div class="waf" id="wafWhere"></div><div class="wlg" id="wafWhereL"></div></div>
+      <div class="card"><h3>Whose network 100 iPhone buyers are on</h3><p style="font-size:12.5px;margin-top:2px">CIRP, 12 months to Dec 2025</p><div class="waf" id="wafWho"></div><div class="wlg" id="wafWhoL"></div></div>
+    </div>
+    <div class="note">"Others" in the carrier split are regional carriers, cable (Spectrum and Xfinity Mobile, which run on Verizon's network) and prepaid brands not owned by the three. Mass-merchant share (Best Buy, Walmart, Amazon) is the remainder after carriers and Apple, so it is approximate.</div>
+    <div class="src"><b>Sources</b><span id="phWhoSrc"></span></div>
+  </div></section>
+
+  <section id="ph-habits"><div class="wrap">
+    <div class="shead"><span class="sno">03</span><h2>How Americans shop, pay and hold on</h2><span class="sub">2025–26 surveys only</span></div>
+    <div class="grid2">
+      <div class="card"><h3>How they paid for the phone in their hand</h3><p style="font-size:12.5px;margin-top:2px">Reviews.org surveys of 1,000 US adults · Sep 2025 and Aug 2026</p><div class="sb" id="hbPay"></div><p style="margin-top:12px;font-size:12.5px"><b style="color:var(--ink)">About 4 in 10 finance</b> (34% through the carrier, 5.5% through the maker); 45% pay in full. Leasing shows up for the first time, at 2.2%.</p></div>
+      <div class="card"><h3>Stores still matter; digital is rising</h3><p style="font-size:12.5px;margin-top:2px">OXIO survey of 1,000+ US consumers · Mar 2026</p><div class="hb" id="hbShop" style="margin-top:14px"></div></div>
+    </div>
+    <div class="card" style="margin-top:16px"><div class="kph"><div><h3>How long they keep a phone</h3><p style="font-size:12.5px;margin-top:2px">Months · earlier reading <span class="kk o"></span> → latest <span class="kk"></span> · Reviews.org (2025 → 2026) and Assurant trade-in data</p></div><div class="kbig"><b>12 mo</b><span>gap between the plan (20) and reality (32), 2026</span></div></div><div class="kp" id="hbKeep"></div></div>
+    <div class="card" style="margin-top:16px"><h3>Why they finally upgrade</h3><p style="font-size:12.5px;margin-top:2px">Reasons given · Reviews.org survey, Aug 2026</p><div class="hb two" id="hbWhy" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Things wearing out (speed, battery, a broken phone) drive 55% of upgrades. Only 4.9% upgrade for a better camera, the feature launch ads lead with.</p></div>
+    <div class="src"><b>Sources</b><span id="phHabSrc"></span></div>
+  </div></section>
+
+  <section id="ph-rate"><div class="wrap">
+    <div class="shead"><span class="sno">04</span><h2>How happy their customers are</h2><span class="sub">J.D. Power 2026 · ACSI 2026</span></div>
+    <p class="intro">J.D. Power asked <b>59,097 US customers</b> to rate their carrier on eight things and turned the answers into <b>one score out of 1,000</b>. Higher means happier. The result is the same at all three carriers: <b>customers of the cheaper brand the carrier owns are happier than customers of its main brand.</b></p>
+    <div class="rx" id="rtHow"></div>
+    <h3 class="bigq">The cheap brand beats the main brand, at every one of the Big Three</h3>
+    <div class="vs3" id="rtVs"></div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><h3>All 16 scores, ranked</h3><p style="font-size:12.5px;margin-top:2px">J.D. Power 2026, out of 1,000 · colour = who owns the brand</p><div class="lb" id="rtJdp"></div></div>
+      <div class="card"><h3>A second opinion: ACSI</h3><p style="font-size:12.5px;margin-top:2px">American Customer Satisfaction Index, out of 100 · May 2026</p><div class="lb" id="rtAcsi"></div>
+        <p style="margin-top:14px">Same answer from a different survey: the low-cost "value" brands score <b>79</b>, above all three big networks. Wireless as a whole hit a record <b>77</b>.</p>
+        <p>Why the cheap brands win: simpler plans, no contracts, taxes often included, and fewer billing surprises. "Value for price paid" is one of J.D. Power's eight factors.</p></div>
+    </div>
+    <div class="wlg row" style="margin-top:14px"><div><i style="background:var(--att)"></i><span>AT&amp;T or AT&amp;T-owned</span></div><div><i style="background:var(--vz)"></i><span>Verizon or Verizon-owned</span></div><div><i style="background:var(--tmo)"></i><span>T-Mobile or T-Mobile-owned</span></div><div><i style="background:#c9d4d8"></i><span>Independent or cable</span></div></div>
+    <div class="src"><b>Sources</b><span id="phRtSrc"></span></div>
+  </div></section>
+
+  <section id="ph-subs"><div class="wrap">
+    <div class="shead"><span class="sno">05</span><h2>Who has the subscribers: main brands and second brands</h2><span class="sub">latest counts each carrier reports</span></div>
+    <p class="intro">Each carrier runs a <b>main brand</b>, mostly postpaid (a monthly bill, often with a phone on a payment plan), and <b>second brands</b>, mostly prepaid (pay up front, no credit check): Cricket at AT&amp;T; Visible, Total Wireless and Straight Talk at Verizon; Metro and Mint at T-Mobile. None of the three reports brand by brand, so the second brands appear together as each carrier's prepaid base.</p>
+    <div class="sbw">
+      <div class="sbwin" id="sbWin"></div>
+      <div class="card"><h3>Every line, by type</h3><p style="font-size:12.5px;margin-top:2px">Millions of lines (connections) · bar length = total</p><div id="sbBars" style="margin-top:16px"></div><div class="wlg row" id="sbLeg" style="margin-top:6px"></div></div>
+    </div>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><h3>Phones only</h3><p style="font-size:12.5px;margin-top:2px">Main-brand plus second-brand phones, millions</p><div class="hb" id="sbPh" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Verizon leads by about 1.2M phones, but its count is six months newer than T-Mobile's, and T-Mobile's prepaid count may include a few non-phone lines. T-Mobile now reports accounts instead of customers (<b>34.7M</b> postpaid accounts at Jun 30, 2026), so Dec 31, 2025 is its last full count.</p></div>
+      <div class="card"><h3>Second brands (prepaid) only</h3><p style="font-size:12.5px;margin-top:2px">Prepaid lines, millions · AT&amp;T counts phones only</p><div class="hb" id="sbPre" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px"><b>T-Mobile owns the biggest second-brand business</b>: Metro and Mint. Outside the Big Three, cable resells Verizon's network (Charter 12.54M, Comcast 10.19M lines) and Boost (7.38M) rides AT&amp;T's.</p></div>
+    </div>
+    <div class="src"><b>Sources</b><span id="phSubSrc"></span></div>
+  </div></section>
+
+  <section id="ph-map"><div class="wrap">
+    <div class="shead"><span class="sno">06</span><h2>State by state</h2><span class="sub">where the lines are, and whose network is fastest</span></div>
+    <div class="smh" id="smHead"></div>
+    <div class="chips" id="smMode" style="margin:16px 0 12px"></div>
+    <div class="smw">
+      <div class="card smc"><div class="smap" id="smMap"></div><div class="wlg row" id="smLeg"></div></div>
+      <div class="card" id="smSide"></div>
+    </div>
+    <div class="note"><b>Who has the most subscribers in each state? That number isn't public.</b> The carriers report national totals only, and the FCC reports one total per state (the map above), not a split by carrier. State-by-carrier counts exist only inside paid research. What is public: <b>nationally, Verizon has the most lines</b> (section 05), and T-Mobile has the fastest network in 47 states.</div>
+    <div class="src"><b>Sources</b><span id="phMapSrc"></span></div>
+  </div></section>
+
+  <section id="ph-plans"><div class="wrap">
+    <div class="shead"><span class="sno">07</span><h2>Plans and prices: the real market price</h2><span class="sub">att.com · verizon.com · t-mobile.com · Oct 14, 2026</span></div>
+    <p class="intro">The price in the ad is the floor. It assumes <b>AutoPay from a bank account</b>, and often <b>four lines</b> or a <b>switching promo</b>. It leaves out the carrier's own <b>monthly fee</b> ($3.99 to $5.49 a line) and <b>taxes</b>, which average <b>28.8%</b> of a US phone bill. The real price puts them back.</p>
+    <div class="pl3" id="plHero"></div>
+    <div class="card rb" id="plBuild" style="margin-top:16px"></div>
+    <div class="card" style="margin-top:16px"><h3>Advertised vs real: every unlimited plan, one line</h3><p style="font-size:12.5px;margin-top:2px">Monthly, with AutoPay, no switching promo · taxes at the US average (28.8%) · cheapest real price first</p><div id="plReal" style="margin-top:16px"></div><div class="wlg row" id="plRealL" style="margin-top:10px"></div></div>
+    <div class="tbl" id="plTbl" style="margin-top:16px"></div>
+    <div class="note"><b>How the real price is built.</b> Plan price from the carrier's own site (with AutoPay from a bank account), plus the carrier's monthly fee per line (AT&amp;T $4.99, Verizon $3.99, T-Mobile $5.49), plus taxes at the state's average combined rate from the Tax Foundation (July 2026), applied to plan and fee. Actual taxes depend on your address. Cricket, Visible and Total Wireless include taxes and fees in the price. <b>T-Mobile is about to change its lineup:</b> its "T-Mix" plans (Standard, More, Loaded; leaked at $65, $85 and $105 for one line before AutoPay) were on store displays from Oct 8 but not yet launched. "—" in the table means not included or not stated.</div>
+    <div class="src"><b>Sources</b><span id="phPlanSrc"></span></div>
+  </div></section>
+
+  <section id="ph-launch"><div class="wrap">
+    <div class="shead"><span class="sno">08</span><h2>The fall 2026 lineup and the launch deals</h2><span class="sub">US prices before carrier discounts</span></div>
+    <p class="intro">Apple raised the iPhone 18 Pro's entry price by $100 and launched its first foldable, the iPhone Duo, at $1,999. The base iPhone 18 is reported for March 2027. All three carriers matched each other at <b>up to $1,200 off with a trade-in</b>; at Verizon that arrives as monthly credits over a 36-month plan.</p>
+    <div class="grid2">
+      <div class="tbl compact" id="phModels"></div>
+      <div class="tbl compact" id="phDeals"></div>
+    </div>
+    <div class="src"><b>Sources</b><span id="phLaunchSrc"></span></div>
+  </div></section>
+
+  <section id="ph-sales"><div class="wrap">
+    <div class="shead"><span class="sno">09</span><h2>The device money</h2><span class="sub">brands shipped, device revenue, phones sold below cost</span></div>
+    <p class="intro">No carrier reports how many phones it sells. What is reported: device revenue, upgrade rates, and what the phones cost them. Two of the three sell phones below cost to win and keep the customer on a monthly plan.</p>
+    <div class="grid2">
+      <div class="card"><h3>US smartphone shipments, Q2 2026 · Counterpoint</h3><div class="hb" id="phBrand" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Shipments rose 6% while sales to consumers fell 5%: makers filled carrier and retail shelves ahead of rising component costs. Samsung's gain came from the $249.99 Galaxy A17 5G.</p></div>
+      <div class="card"><h3>Device revenue and the loss on phones, Q2 2026 ($B)</h3><div class="hb" id="phLoss" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Bar = equipment revenue; the line marks what the phones cost the carrier. AT&amp;T's release doesn't give its equipment cost.</p></div>
+    </div>
+    <div class="live" style="margin-top:16px">
+      <div class="lvh"><span class="on"><i></i>Live</span><span>Device revenue at the Q2 2026 pace</span><span class="ck" id="phClock">—</span></div>
+      <div class="lvrows" id="phRows"></div>
+      <div class="lvfoot">Equipment revenue as reported (AT&amp;T: Advanced Connectivity segment). "Below cost" = cost of equipment minus equipment revenue, as reported; AT&amp;T's release doesn't give its equipment cost. Upgrade rate: share of postpaid connections that upgraded in the quarter.</div>
+    </div>
+    <div class="src"><b>Sources</b><span id="phSalesSrc"></span></div>
+  </div></section>
+
+  <section id="ph-buy"><div class="wrap">
+    <div class="shead"><span class="sno">10</span><h2>Ease of buying: the plans side by side</h2><span class="sub">postpaid financing, prepaid options, unlocking</span></div>
+    <p class="intro">All three now spread a phone over <b>36 months at 0% interest</b>. T-Mobile went furthest in August: $0 down with taxes and fees financed too, for well-qualified buyers. The catch is the same everywhere: the discount arrives as monthly credits, so it only pays out in full if you stay.</p>
+    <div class="tbl" id="phBuyTbl"></div>
+    <div class="src"><b>Sources</b><span id="phBuySrc"></span></div>
+  </div></section>
+
+  <section id="ph-lock"><div class="wrap">
+    <div class="shead"><span class="sno">11</span><h2>The 36-month lock</h2><span class="sub">what it costs a customer to leave</span></div>
+    <p class="intro">This is the churn moat in one calculator. At Verizon, "$1,200 off" is 36 monthly credits of $33.33. Leave early and the credits stop while the remaining phone balance becomes due. That gap is why postpaid churn sits under 1% a month.</p>
+    <div class="calc">
+      <div>
+        <div class="sl"><label>Phone price <b id="lkPv">$0</b></label><input type="range" id="lkP" min="249" max="2599" step="50" value="1199"><div class="h">iPhone 18 Pro $1,199 · Pro Max $1,299 · Duo $1,999 · Galaxy A17 5G $249.99</div></div>
+        <div class="sl"><label>Promo credit (spread over 36 months) <b id="lkCv">$0</b></label><input type="range" id="lkC" min="0" max="1200" step="10" value="1200"></div>
+        <div class="sl"><label>Months before leaving <b id="lkMv">0</b></label><input type="range" id="lkM" min="1" max="36" step="1" value="12"></div>
+        <div class="sl"><label>Switching offer from the new carrier <b id="lkSv">$0</b></label><input type="range" id="lkS" min="0" max="1000" step="50" value="800"><div class="h">AT&amp;T's iPhone 18 launch offer: up to $800 toward a switcher's device balance.</div></div>
+      </div>
+      <div class="out" id="lkOut"></div>
+    </div>
+  </div></section>
+
+  <section id="ph-lease"><div class="wrap">
+    <div class="shead"><span class="sno">12</span><h2>Leasing: gone at the carriers, back at Apple</h2><span class="sub">who leases phones now</span></div>
+    <div class="grid3">
+      <div class="card cc" style="--c:var(--tmo)"><span class="pill">Ended</span><h3 style="margin-top:10px">T-Mobile wound down Sprint's leases</h3><p>Lease revenue was <b>$0</b> in Q2 2026, from $6M a year earlier. Sprint-era leasing is gone; T-Mobile now finances phones through its 36-month EIP plans.</p></div>
+      <div class="card cc" style="--c:var(--att)"><span class="pill">Prepaid · Cricket (AT&amp;T)</span><h3 style="margin-top:10px">Lease-to-own and point-of-sale loans</h3><p>Since Oct 29, 2025 Cricket offers <b>Progressive Leasing</b> (lease-to-own, fixed payments over 12 months; not in MN, NJ, VT, WI or WY) and <b>Bread Pay</b> ($0 down, 0% or 14.99% APR by credit, 24 months). Checking eligibility doesn't hit your credit.</p></div>
+      <div class="card cc" style="--c:var(--spx)"><span class="pill">New · Apple, Jul 28, 2026</span><h3 style="margin-top:10px">Apple Upgrade: Apple leases iPhones itself</h3><p>A lease through <b>Klarna</b>, from $17.99 a month: an iPhone 17 Pro is $31.99 a month over 24 months or $45.99 over 12. Soft credit check, no deposit. It requires an AT&amp;T, T-Mobile or Verizon postpaid plan, and <b>the leased iPhone is unlocked</b>. Apple ended its iPhone Upgrade Program to make room for it. Already 2.2% of Americans say their phone is leased (Reviews.org, Aug 2026).</p></div>
+      <div class="card"><span class="pill">For the buyer</span><h3 style="margin-top:10px">Leasing costs more</h3><p>Lease-to-own is built for buyers who can't pass a credit check: the total of the payments is usually well above the cash price, and you don't own the phone until the end. A 0% installment plan, where you qualify, is the cheaper way to spread the cost.</p></div>
+    </div>
+    <div class="src"><b>Sources</b><span id="phLeaseSrc"></span></div>
+  </div></section>
+</div>
+
+<!-- ===================== 7 · SPECTRUM ===================== -->
 <div class="view" id="v-spec">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Spectrum · 2025–26 deals</div>
@@ -624,7 +1053,7 @@
   </div></section>
 </div>
 
-<!-- ===================== 7 · SATELLITE ===================== -->
+<!-- ===================== 8 · SATELLITE ===================== -->
 <div class="view" id="v-sat">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Satellite · Starlink and direct-to-phone</div>
@@ -683,7 +1112,7 @@
   </div></section>
 </div>
 
-<!-- ===================== 8 · COVERAGE ===================== -->
+<!-- ===================== 9 · COVERAGE ===================== -->
 <div class="view" id="v-cov">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Coverage · towers, fiber, fixed wireless</div>
@@ -722,7 +1151,7 @@
   </div></section>
 </div>
 
-<!-- ===================== 9 · PLAYBOOK ===================== -->
+<!-- ===================== 10 · PLAYBOOK ===================== -->
 <div class="view" id="v-play">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Playbook · the end goal: more revenue</div>
@@ -801,7 +1230,7 @@
   </div></section>
 </div>
 
-<!-- ===================== 10 · CALENDAR ===================== -->
+<!-- ===================== 11 · CALENDAR ===================== -->
 <div class="view" id="v-cal">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Calendar · Q3 2026 earnings and what's dated</div>
@@ -944,15 +1373,73 @@
     fccASR:['FCC Antenna Structure Registration','https://www.fcc.gov/wireless/systems-utilities/antenna-structure-registration'],
     usAtlas:['us-atlas (Census boundaries)','https://github.com/topojson/us-atlas'],
     celes:['CelesTrak GP data','https://celestrak.org/NORAD/elements/'],
+    revOrg:['Smartphone Lifespan Report 2026 (Reviews.org)','https://www.reviews.org/mobile/how-long-americans-keep-phones/'],
+    revOrg25:['Smartphone Lifespan Report 2025 (Reviews.org)','https://www.reviews.org/mobile/how-long-americans-keep-phones-2025/'],
+    oxio:['US Mobile Consumer Survey 2026 (OXIO)','https://oxio.com/company/press-room/us-mobile-consumer-survey-2026/'],
+    recon:['Device purchase journey (Recon Analytics)','https://www.reconanalytics.com/products/2026-april-us-consumer-device-purchase-journey-part3-vf/'],
+    cirp26:['CIRP: three-quarters via carriers, Aug 2026 (Apple World Today)','https://appleworld.today/2026/08/cirp-about-three-quarters-of-apple-iphones-sold-in-the-us-were-through-carrier-retail-operations/'],
+    assur:['Assurant trade-in trends Q2 2026','https://www.assurant.com/news-insights/news_releases/mobile-trade-in-programs-trends-Q2-2026'],
+    assurAge:['Assurant upgrade cycles (SammyFans)','https://www.sammyfans.com/2026/08/03/us-android-and-iphone-users-wait-nearly-four-years-to-upgrade/amp/'],
+    acsi:['ACSI telecom and cell phone study 2026','https://theacsi.com/news-and-resources/press-releases/2026/05/19/press-release-telecommunications-cell-phone-and-smartwatch-study-2026/'],
+    jdp:['J.D. Power 2026 wireless carrier satisfaction','https://www.dev.jdpower.com/business/press-releases/2026-us-wireless-carrier-satisfaction-study-volume-1/'],
+    appUp:['Apple Upgrade launch (Apple Newsroom)','https://www.apple.com/newsroom/2026/07/apple-upgrade-launches-in-the-united-states/'],
+    bgrPh:['Fall 2026 iPhone prices (BGR)','https://www.bgr.com/2254261/iphone-18-pro-vs-iphone-duo-price-apple-september-2026/'],
+    cinDuo:['iPhone Duo $1,999 (Channel Insider)','https://www.channelinsider.com/apple/news-apple-iphone-duo-1999-launch/'],
+    mrDeals:['iPhone 18 Pro carrier deals (MacRumors)','https://www.macrumors.com/2026/09/12/best-carrier-deals-iphone-18-pro/'],
+    aaDeals:['iPhone 18 Pro carrier deals (Android Authority)','https://www.androidauthority.com/iphone-18-pro-carrier-deals-3709917/'],
+    cirpVz:['CIRP: iPhone buyers by carrier (MacTech)','https://www.mactech.com/2025/12/17/cirp-says-iphone-buyers-prefer-verizon'],
+    cpQ2:['Counterpoint US Q2 2026 (PhoneArena)','https://www.phonearena.com/news/q2-2026-us-smartphone-market-report-apple-leader-samsung-terrific-result-no-galaxy-s26-contribution_id182975'],
+    attSEC:['AT&T 2Q26 release (SEC)','https://www.sec.gov/Archives/edgar/data/0000732717/000073271726000294/t-2q2026exhibit991.htm'],
+    attInst:['AT&T installment plans','https://www.att.com/support/article/wireless/KM1106686/'],
+    tmFlex:['T-Mobile EIP Flex 36 (Droid Life)','https://www.droid-life.com/2026/08/04/finance-t-mobiles-taxes-and-fees-over-36-months/'],
+    dlUnlock:['Unlock policies 2026 (Droid Life)','https://www.droid-life.com/2026/01/27/device-unlock-policy-t-mobile-verizon-att/'],
+    breadCk:['Cricket payment options (Bread Financial)','https://newsroom.breadfinancial.com/cricket-wireless-announcement'],
     eweek:['SpaceX 800 MHz plan (eWeek)','https://www.eweek.com/news/spacex-starlink-mobile-800mhz-spectrum/'],
     fcc29:['FCC Oct 29 D2D items (TV Tech)','https://www.tvtechnology.com/regulatory-legal/fcc-to-vote-on-restrictions-for-device-testing-spectrum-for-d2d-and-drones'],
-    oobe:['AT&T and Verizon vs SpaceX waiver (Benton)','https://www.benton.org/headlines/att-and-verizon-ask-fcc-throw-wrench-starlink%E2%80%99s-mobile-plan']
+    oobe:['AT&T and Verizon vs SpaceX waiver (Benton)','https://www.benton.org/headlines/att-and-verizon-ask-fcc-throw-wrench-starlink%E2%80%99s-mobile-plan'],
+    jdpFox:['J.D. Power 2026 scores, all brands (Nexstar)','https://fox40.com/news/national-and-world-news/these-are-americas-favorite-cell-carriers-for-2026-study-finds/amp/'],
+    attSub:['AT&T 2Q26 operating data (SEC)','https://www.sec.gov/Archives/edgar/data/732717/000073271726000294/t-2q2026exhibit992.htm'],
+    vzFS:['Verizon 2Q26 financial statements','https://www.verizon.com/about/sites/default/files/2026-07/vz_2q2026_fs_072426.pdf'],
+    tmYE:['T-Mobile Q4 2025 factbook (SEC)','https://www.sec.gov/Archives/edgar/data/1283699/000128369926000007/tmus12312025ex992.htm'],
+    tmQ2fb:['T-Mobile Q2 2026 factbook (SEC)','https://www.sec.gov/Archives/edgar/data/1283699/000128369926000100/tmus06302026ex992.htm'],
+    fccVT:['FCC Voice Telephone Services, Jun 30 2025','https://docs.fcc.gov/public/attachments/DOC-421558A1.pdf'],
+    ookla26:['Ookla US Connectivity Report 1H 2026 (Mashable)','https://tech.yahoo.com/phones/articles/fastest-u-mobile-internet-services-070902418.html'],
+    plAtt:['AT&T 2.0 plans (Reviews.org)','https://www.reviews.org/mobile/att-unlimited-plans-explained/'],
+    plAttE:['AT&T Elite 2.0 launch (SaveOnPhone)','https://saveonphone.com/2026/04/16/att-elite-2-0-launch/'],
+    plVz:['Verizon myPlan prices (Droid Life)','https://www.droid-life.com/2026/05/08/verizons-best-unlimited-plan/'],
+    plVzU:['Verizon Ultimate price rise (Droid Life)','https://www.droid-life.com/2026/05/07/verizon-raises-price-on-unlimited-ultimate-plan-with-3-year-price-lock/'],
+    plVzS:['Verizon myPlan','https://www.verizon.com/plans/unlimited/myplan/'],
+    plTm:['T-Mobile plans (ShopCellPlans)','https://shopcellplans.com/t-mobile-plans/'],
+    plTmR:['T-Mobile plans (Reviews.org)','https://www.reviews.org/mobile/t-mobile-cell-phone-plans/'],
+    plTmB:['Experience Beyond 2.0 (PhoneArena)','https://www.phonearena.com/news/t-mobile-experience-beyond-2.0_id183125'],
+    plTmE:['Family plan prices 2026 (SlashGear)','https://www.slashgear.com/2271605/cheapest-phone-carrier-family-plan-2026/'],
+    plCk:['Cricket plans (WhistleOut)','https://www.whistleout.com/CellPhones/Guides/best-cricket-wireless-plans'],
+    plVis:['Visible plans','https://www.visible.com/plans'],
+    plTot:['Total Wireless plans (Verizon)','https://www.verizon.com/about/news/total-wireless-refreshed-lineup-of-unlimited-plans'],
+    plSt:['Straight Talk plans (Verizon)','https://www.verizon.com/about/news/straight-talk-new-enhanced-unlimited-plans'],
+    plMet:['Metro plans and price lock (Clark)','https://clark.com/cell-phones/metro-by-t-mobile-new-plans-with-price-lock/'],
+    plMetB:['Metro plans 2026 (BestPhonePlans)','https://www.bestphoneplans.net/carriers/metro-by-t-mobile'],
+    plMint:['Mint plans (WhistleOut)','https://www.whistleout.com/CellPhones/Guides/best-mint-mobile-plans'],
+    tmix:['T-Mix early look (The Mobile Report)','https://tmo.report/2026/10/t-mobiles-new-plans-are-called-t-mix-heres-an-exclusive-early-look/'],
+    tmix2:['T-Mix on store displays (Android Authority)','https://www.androidauthority.com/t-mobile-t-mix-tease-3720937/'],
+    attWeb:['AT&T wireless plans (att.com)','https://www.att.com/plans/wireless/'],
+    attRate:['AT&T Unlimited Your Way rate card 2026','https://about.att.com/ecms/dam/snrdocs/pdf/2026/get-more-with-unlimited-your-way.pdf'],
+    vzByod:['Verizon bring your own device (verizon.com)','https://www.verizon.com/bring-your-own-device/'],
+    vzSimp:['Verizon Simplicity FAQs','https://www.verizon.com/support/verizon-simplicity-faqs/'],
+    vzSwitch:['Verizon Switch & Save FAQs','https://www.verizon.com/support/switcher-discount-faqs/'],
+    vzSimpN:['Simplicity vs myPlan (Droid Life)','https://www.droid-life.com/2026/06/16/verizon-myplan-is-still-here-to-complicate-simplicity/'],
+    tmWeb:['T-Mobile plans (t-mobile.com)','https://www.t-mobile.com/cell-phone-plans'],
+    tmAP:['T-Mobile AutoPay $5 a line (PhoneArena)','https://www.phonearena.com/news/t-mobile-autopay-discount-credit-card_id175151'],
+    attFee:['AT&T fee to $4.99 (Droid Life)','https://www.droid-life.com/2026/06/23/your-att-bill-is-going-up/'],
+    vzFee:['Verizon fees (Tom\'s Guide)','https://www.tomsguide.com/phones/network-carriers/verizon-just-confirmed-its-raising-fees-again-heres-what-youll-pay-now'],
+    tmFee:['T-Mobile fee to $5.49 (Droid Life)','https://www.droid-life.com/2026/09/28/t-mobile-fees-increasing-on-your-bill-for-2nd-time-this-year/'],
+    taxF:['Wireless taxes by state 2026 (Tax Foundation)','https://taxfoundation.org/data/all/state/wireless-taxes-cell-phone-tax-rates-by-state-2026/']
   };
   const srcLinks=keys=>keys.map(k=>SRC[k]?'<a href="'+SRC[k][1]+'" target="_blank" rel="noopener">'+SRC[k][0]+'</a>':'').join('');
 
   // ---- the three carriers ----
   const CAR={
-    att:{k:'att',n:'AT&T',tk:'NYSE: T',col:'#12b0ea',hq:'Dallas, Texas',ceo:'John Stankey',cfo:'Pascal Desroches; Jennifer Biry from Jan 1, 2027',
+    att:{k:'att',n:'AT&T',tk:'NYSE: T',col:'#1c95d8',hq:'Dallas, Texas',ceo:'John Stankey',cfo:'Pascal Desroches; Jennifer Biry from Jan 1, 2027',
       q1:{rev:31500,ebitda:11800,fcf:2500}, q2:{rev:31558,ebitda:12300,fcf:4700,capex:5700}, mg:'39.1% of revenue',
       fy25:{rev:125600,ebitda:46400,fcf:16600,capex:20800},
       g26:{fcf:18000,fcfL:'$18B+',ebitdaL:'+3–4% growth',capL:'$23–24B capital investment',epsL:'$2.25–2.35'},
@@ -964,7 +1451,7 @@
       fiber:{subs:12.144,subsL:'12.1M AT&T Fiber',loc:38.6,arpu:72.29}, fwa:2.611, fwaL:'2.61M fixed wireless (Internet Air 1.95M)',
       q3:{at:Date.UTC(2026,9,21,12,30),L:'Wed Oct 21 · before the open · call 8:30 a.m. ET'},
       s:['att2','attT','attPR','att1','att4','saT']},
-    vz:{k:'vz',n:'Verizon',tk:'NYSE: VZ',col:'#ee3a43',hq:'New York, New York',ceo:'Dan Schulman',cfo:'Tony Skiadas',
+    vz:{k:'vz',n:'Verizon',tk:'NYSE: VZ',col:'#e8452f',hq:'New York, New York',ceo:'Dan Schulman',cfo:'Tony Skiadas',
       q1:{rev:34440,ebitda:13395,fcf:3783}, q2:{rev:34253,ebitda:13723,fcf:6426,capex:4009}, mg:'40.1% of revenue',
       fy25:{rev:138200,ebitda:49997,fcf:20100,capex:17000},
       g26:{fcf:22040,fcfL:'$21.94–22.14B',ebitdaL:'not guided (EPS $4.99–5.04)',capL:'$16.0–16.5B capex',epsL:'$4.99–5.04'},
@@ -976,7 +1463,7 @@
       fiber:{subs:10.913,subsL:'10.9M fiber connections',loc:30,arpu:null}, fwa:6.208, fwaL:'6.21M fixed wireless',
       q3:{at:Date.UTC(2026,9,26,12,30),L:'Mon Oct 26 · webcast 8:30 a.m. ET'},
       s:['vz2','vz1','vz4','vzG','saV']},
-    tmo:{k:'tmo',n:'T-Mobile',tk:'NASDAQ: TMUS',col:'#f0509e',hq:'Bellevue, Washington',ceo:'Srini Gopalan',cfo:'Peter Osvaldik; Jessica Uhl from Feb 2027',
+    tmo:{k:'tmo',n:'T-Mobile',tk:'NASDAQ: TMUS',col:'#c13cb8',hq:'Bellevue, Washington',ceo:'Srini Gopalan',cfo:'Peter Osvaldik; Jessica Uhl from Feb 2027',
       q1:{rev:23107,ebitda:9240,fcf:4599}, q2:{rev:22791,ebitda:9537,fcf:4797,capex:2703}, mg:'50.2% of service revenue',
       fy25:{rev:88309,ebitda:33924,fcf:17995,capex:9955},
       g26:{fcf:18600,fcfL:'$18.4–18.8B',ebitdaL:'core EBITDA $37.1–37.5B',capL:'≈$10.0B capex',epsL:'n/a'},
@@ -1035,7 +1522,9 @@
     ['070b17','f3f5f6'],['0c1013','f7f9fa'],['0c1324','fdfdfd'],['12181d','f8fafb'],['0d1529','e4eaed'],['111a30','eef2f4'],
     ['1b2743','d6dee2'],['eef2fb','0f1a1f'],['dfe8ea','1d2a30'],['8a96b3','4b5b62'],['58648a','7a8a91'],
     ['ffffff','16222a'],['3d7cff','1a56db'],['21c7a8','0e8c74'],['ffb703','b36b00'],['ff2d44','d0102a'],['3a86ff','1a62d6'],['8ce99a','1f9a4a'],
-    ['b08ad8','7d52ad'],['ff9f1c','b86200'],['12b0ea','0b7fae'],['ee3a43','c41f28'],['f0509e','c8166f'],['c9d4d8','3c4a51'],['26365c','c9d3d8'],['0b1222','f1f4f6'],['c08552','8a5a2e']
+    ['b08ad8','7d52ad'],['ff9f1c','b86200'],['1c95d8','0b7fbf'],['e8452f','d33a26'],['c13cb8','a62e9e'],['c9d4d8','3c4a51'],['26365c','c9d3d8'],['0b1222','f1f4f6'],['c08552','8a5a2e'],['8fb0ff','9bb8f2'],
+    ['142447','dce7fa'],['1d3a73','b2c9f2'],['2a56a8','7ea3e6'],['4a7fe0','3f72d4'],['9cbcff','173f99'],
+    ['14547e','84bede'],['7a2c29','e89b91'],['66276e','d195cd']
   ];
   const thH2R=h=>[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
   const TH_F=new Map(), TH_B=new Map();
@@ -1127,10 +1616,19 @@
   function table(el,head,rows,cls){
     if(!el) return;
     const r0=rows.find(r=>!r.grp)||[];
-    el.innerHTML='<table class="'+(cls||'')+'"><thead><tr>'+head.map((h,i)=>'<th'+(r0[i]&&typeof r0[i]==='object'&&r0[i].c==='l'?' style="text-align:left"':'')+'>'+h+'</th>').join('')+'</tr></thead><tbody>'+
+    el.innerHTML='<table class="'+(cls||'')+'"><thead><tr>'+head.map((h,i)=>'<th'+(r0[i]&&typeof r0[i]==='object'&&(r0[i].c==='l'||r0[i].c==='w')?' style="text-align:left"':'')+'>'+h+'</th>').join('')+'</tr></thead><tbody>'+
       rows.map(r=>r.grp?'<tr class="grp"><td colspan="'+head.length+'">'+r.grp+'</td></tr>':'<tr>'+r.map((c,i)=>{ if(c&&typeof c==='object') return '<td class="'+(c.c||'')+'">'+c.v+'</td>'; return '<td>'+c+'</td>'; }).join('')+'</tr>').join('')+'</tbody></table>';
   }
   const sw=c=>'<span class="sw" style="background:'+c+'"></span>';
+  // ---- one shared hover / focus tooltip for any element with data-tip ----
+  const VTIP=document.createElement('div'); VTIP.className='vtip'; document.body.appendChild(VTIP);
+  function vtipAt(x,y){ const w=VTIP.offsetWidth, h=VTIP.offsetHeight, vw=window.innerWidth, vh=window.innerHeight; VTIP.style.left=Math.max(8,Math.min(x+14,vw-w-8))+'px'; VTIP.style.top=Math.max(8,(y+16+h>vh?y-h-12:y+16))+'px'; }
+  function vtipShow(t,x,y){ VTIP.innerHTML=t.getAttribute('data-tip'); VTIP.style.display='block'; vtipAt(x,y); }
+  document.addEventListener('mouseover',e=>{ const t=e.target&&e.target.closest?e.target.closest('[data-tip]'):null; if(t) vtipShow(t,e.clientX,e.clientY); else VTIP.style.display='none'; });
+  document.addEventListener('mousemove',e=>{ if(VTIP.style.display==='block') vtipAt(e.clientX,e.clientY); });
+  document.addEventListener('focusin',e=>{ const t=e.target&&e.target.closest?e.target.closest('[data-tip]'):null; if(t){ const r=t.getBoundingClientRect(); vtipShow(t,r.left+r.width/2,r.bottom); } });
+  document.addEventListener('focusout',()=>{ VTIP.style.display='none'; });
+  window.addEventListener('scroll',()=>{ VTIP.style.display='none'; },{passive:true});
   const setSrc=(id,keys)=>{ const e=$(id); if(e) e.innerHTML=srcLinks(keys); };
 
   // ================= 1 · BRIEF =================
@@ -1374,9 +1872,9 @@
     const X=f=>L+f*(W-L-R); let s='';
     [2,2.5,3,3.5].forEach(v=>{ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#1b2743"/><text x="'+(L-10)+'" y="'+(Y(v)+4*f)+'" text-anchor="end" class="svgt"'+fs(11)+'>'+v.toFixed(1)+'×</text>'; });
     s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(2.68)+'" y2="'+Y(2.68)+'" stroke="#3d7cff" stroke-dasharray="3 4" opacity=".6"/>';
-    s+='<path d="M'+X(pts[0][0])+','+Y(pts[0][1])+' L'+X(pts[1][0])+','+Y(pts[1][1])+'" stroke="#12b0ea" stroke-width="2.5" fill="none"/>';
-    s+='<path d="M'+X(pts[1][0])+','+Y(pts[1][1])+' L'+X(pts[2][0])+','+Y(pts[2][1])+'" stroke="#12b0ea" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>';
-    pts.forEach(([p,v,l,d],i)=>{ s+='<circle cx="'+X(p)+'" cy="'+Y(v)+'" r="'+(7*Math.min(f,1.4))+'" fill="'+(i?'#0c1324':'#12b0ea')+'" stroke="#12b0ea" stroke-width="2.5"/>';
+    s+='<path d="M'+X(pts[0][0])+','+Y(pts[0][1])+' L'+X(pts[1][0])+','+Y(pts[1][1])+'" stroke="#1c95d8" stroke-width="2.5" fill="none"/>';
+    s+='<path d="M'+X(pts[1][0])+','+Y(pts[1][1])+' L'+X(pts[2][0])+','+Y(pts[2][1])+'" stroke="#1c95d8" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>';
+    pts.forEach(([p,v,l,d],i)=>{ s+='<circle cx="'+X(p)+'" cy="'+Y(v)+'" r="'+(7*Math.min(f,1.4))+'" fill="'+(i?'#0c1324':'#1c95d8')+'" stroke="#1c95d8" stroke-width="2.5"/>';
       s+='<text x="'+X(p)+'" y="'+(i===2?Y(v)+28*f:Y(v)-16*f*0.9)+'" text-anchor="middle" class="svgb"'+fs(13)+'>'+d+'</text><text x="'+X(p)+'" y="'+(H-B+26*f)+'" text-anchor="middle" class="svgt"'+fs(11)+'>'+l+'</text>'; });
     el.innerHTML=s;
   }
@@ -1426,7 +1924,7 @@
   }
 
   // ================= 6 · SPECTRUM =================
-  const WHO={att:['AT&T','#12b0ea'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],spx:['SpaceX','#c9d4d8'],fcc:['FCC','#ffb703'],cci:['Crown Castle','#21c7a8'],all:['All three','#eef2fb']};
+  const WHO={att:['AT&T','#1c95d8'],vz:['Verizon','#e8452f'],tmo:['T-Mobile','#c13cb8'],spx:['SpaceX','#c9d4d8'],fcc:['FCC','#ffb703'],cci:['Crown Castle','#21c7a8'],all:['All three','#eef2fb']};
   let dlF='all';
   function renderSpec(){
     stacked($('spBars'),SPEND.map(r=>({lb:WHO[r.k][0],col:WHO[r.k][1],parts:r.parts,note:r.sold?'sold 800 MHz to Grain for $2.9B':''})),{fmt:v=>v<1?'$'+fmt0(v*1000)+'M':'$'+fmt2(v)+'B'});
@@ -1576,7 +2074,7 @@
     const el=$('cdCards'); if(!el.dataset.done){ el.dataset.done='1';
       el.innerHTML=CK.map(k=>'<div class="cdc" style="--c:'+CAR[k].col+'"><div class="nm">'+CAR[k].n+' · Q3 2026</div><div class="when">'+CAR[k].q3.L+'</div><div class="t" id="cd'+k+'">—</div><ul>'+WATCH[k].map(w=>'<li>◦ '+w+'</li>').join('')+'</ul></div>').join(''); }
     setSrc('cdSrc',['attQ3','vzQ3','tmQ3','tmCall']);
-    const EV=[['2026-10-14','tmo','Chris Sambar starts as T-Mobile Chief Enterprise Officer (no later than)'],['2026-10-21','att','AT&T Q3 2026 results'],['2026-10-26','vz','Verizon Q3 2026 results'],['2026-10-28','tmo','T-Mobile Q3 2026 results'],['2026-10-29','fcc','FCC open meeting: proposed 25 MHz direct-to-device auction (1675–1695 and 2020–2025 MHz) and 482 MHz more for satellite coverage'],
+    const EV=[['2026-10-14','tmo','Chris Sambar starts as T-Mobile Chief Enterprise Officer (no later than)'],['2026-10-16','all','iPhone Duo pre-orders open at all three carriers ($1,999)'],['2026-10-21','att','AT&T Q3 2026 results'],['2026-10-23','all','iPhone Duo, Apple\u2019s first foldable, goes on sale'],['2026-10-26','vz','Verizon Q3 2026 results'],['2026-10-28','tmo','T-Mobile Q3 2026 results'],['2026-10-29','fcc','FCC open meeting: proposed 25 MHz direct-to-device auction (1675–1695 and 2020–2025 MHz) and 482 MHz more for satellite coverage'],
       ['2026-12-31','att','AT&T CFO Pascal Desroches retires'],['2027-01-01','att','Jennifer Biry becomes AT&T CFO'],['2027-02-01','tmo','Jessica Uhl becomes T-Mobile CFO','Feb 2027'],['2027-03-31','att','AST SpaceMobile: ≈45 satellites targeted; AT&T\u2019s satellite service follows','Early 2027'],
       ['2027-06-30','att','AT&T–GIP–CPP fiber JV expected to close','H1 2027'],['2027-07-31','fcc','Upper C-band auction must close','By Jul 2027'],['2027-11-30','spx','SpaceX–EchoStar final closing (target)'],['2027-12-31','vz','Verizon–BT JV expected to close','H2 2027']];
     $('calList').innerHTML=EV.map(([d,k,t,lbl])=>{ const w=WHO[k], dt=new Date(d+'T12:00:00Z');
@@ -1591,6 +2089,388 @@
         const D=Math.floor(d/864e5), H=Math.floor(d%864e5/36e5), M=Math.floor(d%36e5/6e4), S=Math.floor(d%6e4/1e3);
         e.innerHTML=D+'<small>d</small>'+String(H).padStart(2,'0')+'<small>h</small>'+String(M).padStart(2,'0')+'<small>m</small>'+String(S).padStart(2,'0')+'<small>s</small>'; }); }
     cdRAF=requestAnimationFrame(cdTick);
+  }
+
+  // ================= 6 · PHONES =================
+  const PH={
+    eq:{att:[5137,5163],vz:[5024,6255],tmo:[3524,3439]},          // equipment revenue Q2 2026, Q2 2025 ($M)
+    cost:{att:null,vz:[5859,7007],tmo:[5055,4659]},               // cost of equipment Q2 2026, Q2 2025 ($M)
+    up:{att:null,vz:[2.6,3.6],tmo:[2.6,2.5]},                     // upgrade rate %, Q2 2026 vs Q2 2025
+    loans:{vz:20.648,tmo:7.173}                                    // device-plan receivables ($B, Jun 30, 2026; T-Mobile net)
+  };
+  let phRAF=null, phLast=0; const PH_OPEN=Date.now();
+  function renderPhone(){
+    const eqAll=CK.reduce((a,k)=>a+PH.eq[k][0],0);
+    $('phStrip').innerHTML=[
+      ['≈75%','of iPhones bought from a carrier','CIRP, Aug 2026 · Apple direct 14%'],
+      ['≈88%','of iPhone buyers on the Big Three','Verizon 38% · AT&T ≈25% · T-Mobile ≈25%'],
+      [usdM(eqAll),'Device revenue, Q2 2026','AT&T $5.1B · Verizon $5.0B · T-Mobile $3.5B'],
+      ['$2.4B','Phones sold below cost, Q2','Verizon $0.8B + T-Mobile $1.5B; AT&T not reported'],
+      ['$27.8B','Phone loans on the books','Verizon $20.6B device-payment receivables + T-Mobile $7.2B net EIP, Jun 30'],
+    ].map(([n,l,d])=>'<div class="stat"><div class="n">'+n+'</div><div class="l">'+l+'</div><div class="d">'+d+'</div></div>').join('');
+    table($('phModels'),['Model','From','On sale'],[
+      ['iPhone Duo (foldable)','$1,999','Oct 23 (orders Oct 16)'],['iPhone 18 Pro Max','$1,299','Sep 18'],['iPhone 18 Pro','$1,199 (+$100)','Sep 18'],
+      ['iPhone Air','$1,099','on sale'],['iPhone 17','$899–929','on sale'],['iPhone 17e','$699','on sale'],['Base iPhone 18','—','reported for Mar 2027'],
+      [{v:'Galaxy A17 5G (Samsung)',c:''},'$249.99','drove Samsung’s Q2 gain']]);
+    table($('phDeals'),['Launch deal','Up to','How'],[
+      [sw(CAR.att.col)+'AT&T','$1,200 off',{v:'Trade-in in any condition, upgrading on Next Up Anytime or switching. Switchers: up to $800 toward the old phone’s balance; $200 off per line online.',c:'l'}],
+      [sw(CAR.vz.col)+'Verizon','$1,200 off',{v:'New myPlan line with a trade-in ($1,020 to upgrade). Monthly credits over a 36-month, interest-free plan. Watch and iPad deals on top.',c:'l'}],
+      [sw(CAR.tmo.col)+'T-Mobile','$1,200 off',{v:'Trade-in in any condition or a switched line, on Experience Beyond or Go5G Next. $930 on Experience More; $730 or $300 on Essentials.',c:'l'}]]);
+    setSrc('phLaunchSrc',['bgrPh','cinDuo','mrDeals','aaDeals']);
+    hbars($('phBrand'),[{lb:'Apple',v:54,col:'#c9d4d8',vl:'54%'},{lb:'Samsung',sub:'+3 pts y/y',v:30,col:'#3d7cff',vl:'30%'},{lb:'Motorola',v:11,col:'#58648a',vl:'11%'},{lb:'Google',v:3,col:'#58648a',vl:'3%'},{lb:'Others',v:2,col:'#58648a',vl:'≈2%'}],{max:60});
+    hbars($('phLoss'),CK.map(k=>({lb:CAR[k].n,sub:PH.cost[k]?'cost $'+fmt1(PH.cost[k][0]/1000)+'B':'cost not reported',v:PH.eq[k][0]/1000,col:CAR[k].col,mark:PH.cost[k]?PH.cost[k][0]/1000:null,vl:'$'+fmt1(PH.eq[k][0]/1000)+'B'})),{max:6.5});
+    renderConsumer();
+    const el=$('phRows'); if(el&&!el.dataset.done){ el.dataset.done='1';
+      el.innerHTML=CK.map(k=>{ const e=PH.eq[k], c=PH.cost[k], u=PH.up[k], ch=(e[0]/e[1]-1)*100;
+        return '<div class="lvc" style="--c:'+CAR[k].col+'"><div class="nm">'+CAR[k].n+'</div>'+
+          '<div class="r"><span>Equipment revenue, Q2</span><b>'+usdM(e[0])+' <span class="'+(ch<0?'down':'up')+'">'+pct(ch,1)+'</span></b></div>'+
+          '<div class="r"><span>Sold below cost, Q2</span><b>'+(c?'−'+usdM(c[0]-e[0]):'not reported')+'</b></div>'+
+          '<div class="r"><span>Upgrade rate</span><b>'+(u?u[0].toFixed(1)+'% (was '+u[1].toFixed(1)+'%)':'not reported')+'</b></div>'+
+          '<div class="r"><span>Phone loans, Jun 30</span><b>'+(PH.loans[k]?'$'+fmt1(PH.loans[k])+'B':'not reported')+'</b></div>'+
+          '<div class="r" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--line)"><span>Device revenue since you opened this page</span><b id="phO'+k+'">$0</b></div></div>'; }).join(''); }
+    setSrc('phSalesSrc',['cpQ2','att2','attSEC','vz2','vzQ','tm2']);
+    table($('phBuyTbl'),['','AT&T','Verizon','T-Mobile'],[
+      ['Term and interest',{v:'36 monthly installments; pay off anytime',c:'l'},{v:'36-month device payment, interest-free',c:'l'},{v:'EIP Standard 36: 0% APR for all. EIP Flex 36 (from Aug 6, 2026): $0 down, taxes and fees financed too, for well-qualified buyers',c:'l'}],
+      ['Down payment',{v:'Not stated on AT&T\u2019s plan page',c:'l'},{v:'May be required, depending on credit',c:'l'},{v:'$0 down on EIP Flex 36 for well-qualified buyers',c:'l'}],
+      ['Upgrade early',{v:'Next Up Anytime: +$10 a month, upgrade after one installment, up to 3 times in 12 months',c:'l'},{v:'Not covered in these sources',c:'l'},{v:'Go5G Next includes yearly upgrades',c:'l'}],
+      ['Leave early',{v:'Remaining balance due (industry practice); AT&T itself pays up to $800 of a switcher\u2019s old balance',c:'l'},{v:'"The balance of your device will become immediately due"',c:'l'},{v:'Remaining balance due (industry practice)',c:'l'}],
+      ['Unlocking (postpaid)',{v:'60 days after purchase and paid in full, on request',c:'l'},{v:'Unlocks automatically when paid off (35-day delay if paid online, in the app or by gift card), under a Jan 2026 FCC waiver',c:'l'},{v:'40 days active and paid in full, on request',c:'l'}],
+      ['Unlocking (prepaid)',{v:'6 months of paid service',c:'l'},{v:'365 days of paid service',c:'l'},{v:'365 days, or more than $100 of refills',c:'l'}],
+      ['Prepaid financing',{v:'Cricket: Bread Pay ($0 down, 0% or 14.99% APR, 24 months) and Progressive Leasing',c:'l'},{v:'Visible: $480 off iPhone 18 Pro on Visible+ Pro, phone bought at full price',c:'l'},{v:'Metro and Mint: not covered here',c:'l'}]]);
+    setSrc('phBuySrc',['attInst','mrDeals','aaDeals','tmFlex','dlUnlock','breadCk']);
+    const L=['lkP','lkC','lkM','lkS']; if(!$('lkP').dataset.done){ $('lkP').dataset.done='1'; L.forEach(id=>$(id).oninput=lkCalc); }
+    lkCalc();
+    setSrc('phLeaseSrc',['tm2','breadCk','appUp','revOrg']);
+  }
+  function lkCalc(){
+    const P=+$('lkP').value, C=Math.min(+$('lkC').value,P), M=+$('lkM').value, S=+$('lkS').value;
+    $('lkPv').textContent='$'+fmt0(P); $('lkCv').textContent='$'+fmt0(C)+(+$('lkC').value>P?' (capped at price)':''); $('lkMv').textContent=M+' month'+(M===1?'':'s'); $('lkSv').textContent='$'+fmt0(S);
+    const inst=P/36, cr=C/36, paid=inst*M, got=cr*M, bal=inst*(36-M), lost=cr*(36-M), net=Math.max(0,bal-S);
+    $('lkOut').innerHTML='<div class="k">Cost to leave at month '+M+'</div><div class="big" style="color:var(--red)">$'+fmt0(bal)+'</div>'+
+      [['Monthly installment','$'+fmt2(inst)],['Monthly credit','−$'+fmt2(cr)],['Your net monthly cost while you stay','$'+fmt2(inst-cr)],['Paid so far (net of credits)','$'+fmt0(paid-got)],['Credits you walk away from','$'+fmt0(lost)],['Balance due after a $'+fmt0(S)+' switching offer','$'+fmt0(net)],['Stay all 36 months: total cost','$'+fmt0(P-C)]]
+      .map(([a,b])=>'<div class="rw"><span>'+a+'</span><b>'+b+'</b></div>').join('')+
+      '<div class="verdict">'+(C>=P?'<b>"Free" phone, with a $'+fmt0(bal)+' exit fee.</b> The phone only becomes free if the customer stays the full 36 months; leaving at month '+M+' forfeits $'+fmt0(lost)+' of credits.':'Leaving at month '+M+' means paying $'+fmt0(bal)+' at once and forfeiting $'+fmt0(lost)+' of credits.')+(S?' A rival’s $'+fmt0(S)+' offer '+(S>=bal?'<b>covers the whole balance</b>: that is how carriers break each other’s lock.':'covers '+Math.round(S/bal*100)+'% of it.'):'')+'</div>';
+  }
+  function phTick(now){
+    if(now-phLast>100||!phLast){ phLast=now; const t=Math.min(Date.now(),T_Y1), o=Math.min(PH_OPEN,T_Y1);
+      CK.forEach(k=>{ const e=$('phO'+k); if(e) e.textContent=usdLive(Math.max(0,(t-o)*PH.eq[k][0]*1e6/Q2MS)); });
+      if($('phClock')) $('phClock').textContent=etClock(Date.now()); }
+    phRAF=requestAnimationFrame(phTick);
+  }
+
+
+  // ================= Phones · consumer behaviour infographics =================
+  const C_ACC='#3d7cff', C_ACC2='#8fb0ff', C_GL='#c9d4d8', C_GD='#58648a', C_GX='#26365c', C_AMB='#ffb703';
+  function renderConsumer(){
+    // ---- 01 journey ----
+    const J=[
+      ['See','58%','of US smartphone owners carry an iPhone','Android 42% (Reviews.org survey, Aug 2026). In Q2 2026 Apple shipped 54% of US smartphones and Samsung 30% (Counterpoint).','Reviews.org Aug 2026'],
+      ['Research','#1','friends and family: the top research source','Ahead of every digital channel, for every brand tier, every month from May to Dec 2025 (cited at 9.5–13.5% across brand tiers).','Recon Analytics 2025'],
+      ['Shop','81%','say store access matters when choosing a carrier','90% of Gen Z agree. Yet 56% would consider buying service from a retailer (50% in 2025) and 38% are open to digital-only brands.','OXIO Mar 2026'],
+      ['Buy','≈75%','of iPhones are bought from a carrier','Apple sells 14% directly; mass merchants such as Best Buy and Walmart sell the rest. Verizon serves 38% of iPhone buyers.','CIRP Aug 2026'],
+      ['Pay','34%','finance the phone through their carrier','45% paid in full up front, 5.5% financed through the maker and 2.2% lease (survey of 1,000 US adults).','Reviews.org Aug 2026'],
+      ['Keep','32 mo','average upgrade cycle, a year longer than planned','Buyers planned to upgrade after 20 months. Mean price paid for the phone in use: $634 (median $600).','Reviews.org Aug 2026'],
+      ['Trade in','$1.43B','paid to US consumers for trade-ins, Q2 2026','The average iPhone handed in passed four years old for the first time. Most traded-in: iPhone 13.','Assurant Q2 2026'],
+      ['Rate','77','ACSI wireless satisfaction, a record high','T-Mobile 78, AT&T 76, Verizon 76. Phones themselves: Samsung 81, Apple 80, Google 77, Motorola 77.','ACSI May 2026']];
+    $('phJourney').innerHTML=J.map(([st,v,l,d,s],i)=>'<div class="jst" tabindex="0" data-tip="<b>'+st+'</b><br>'+esc(d)+'"><span class="nd">'+(i+1)+'</span><div class="st">'+st+'</div><div class="bv">'+v+'</div><div class="bl">'+l+'</div><div class="bs">'+s+'</div></div>').join('')+
+      '<div class="jloop"><span class="nd">↺</span><div><b>Then they stay or switch.</b> 0.85–0.99% of postpaid customers leave each month; the 36-month payment plan and its credits are what hold the rest (sections 10 and 11 below, and the churn treadmill on the Brief tab).</div></div>';
+    setSrc('phJrSrc',['revOrg','cpQ2','recon','oxio','cirp26','assur','acsi']);
+    // ---- 02 waffles ----
+    waffle('wafWhere','wafWhereL',[['Carriers (stores and online)',75,C_ACC,1],['Apple (stores and apple.com)',14,C_GL,0],['Other retailers (remainder)',11,C_GD,1]],'iPhone buyers');
+    waffle('wafWho','wafWhoL',[['Verizon',38,CAR.vz.col,0],['AT&T',25,CAR.att.col,1],['T-Mobile',25,CAR.tmo.col,1],['Others',12,C_GD,1]],'iPhone buyers',[['Big Three',88]]);
+    setSrc('phWhoSrc',['cirp26','cirpVz']);
+    // ---- 03 habits ----
+    const PAYC=[['Paid in full',C_GL],['Financed via carrier',C_ACC],['Financed via maker',C_ACC2],['Lease or return plan',C_AMB],['Gift, used or other',C_GX]];
+    sbars('hbPay',[['Aug 2026',[[PAYC[0][0],45.1,PAYC[0][1]],[PAYC[1][0],34.2,PAYC[1][1]],[PAYC[2][0],5.5,PAYC[2][1]],[PAYC[3][0],2.2,PAYC[3][1]],[PAYC[4][0],13.1,PAYC[4][1]]]],
+      ['Sep 2025',[[PAYC[0][0],46.8,PAYC[0][1]],[PAYC[1][0],35.4,PAYC[1][1]],[PAYC[2][0],5.3,PAYC[2][1]],[PAYC[3][0],0,PAYC[3][1]],[PAYC[4][0],12.7,PAYC[4][1]]]]],
+      [[PAYC[0][0]+' 45%',C_GL],[PAYC[1][0]+' 34%',C_ACC],[PAYC[2][0]+' 5.5%',C_ACC2],[PAYC[3][0]+' 2.2% (new)',C_AMB],[PAYC[4][0]+' 13%',C_GX]]);
+    hbars($('hbShop'),[{lb:'Say store access matters when choosing a provider',sub:'Gen Z: 90%',v:81,col:C_ACC,vl:'81%'},{lb:'Would consider buying service from a retailer',sub:'up from 50% in 2025',v:56,col:C_ACC,vl:'56%'},{lb:'Have used an eSIM',sub:'85% of them rated it positive',v:44,col:C_ACC,vl:'44%'},{lb:'Open to digital-only mobile brands',v:38,col:C_ACC,vl:'38%'}],{max:100});
+    keepRows();
+    hbars($('hbWhy'),[['Faster performance',21.25],['Battery issues',19.19],['Broken or lost phone',14.42],['New features',9.73],['Want the newest model',7.86],['Trade-in or contract deals',7.49],['Not enough storage',7.05],['5G and new-tech compatibility',6.49],['Better camera',4.92]].map(([l,v])=>({lb:l,v,col:C_ACC,vl:v.toFixed(1)+'%'})),{max:25});
+    setSrc('phHabSrc',['revOrg','revOrg25','oxio','assur','assurAge']);
+    // ---- 04 ratings ----
+    renderRate();
+    // ---- 05 subscribers, 06 state map, 07 plans ----
+    renderSubs(); renderSMap(); renderPlans();
+  }
+  function waffle(id,lid,cats,unit,extra){
+    const el=$(id); if(!el) return; let cells=''; cats.forEach(([n,v,c])=>{ for(let i=0;i<v;i++) cells+='<i style="background:'+c+'" data-tip="<b>'+esc(n)+'</b><br>'+v+' of every 100 '+unit+'"></i>'; });
+    el.innerHTML=cells;
+    $(lid).innerHTML=cats.map(([n,v,c,ap])=>'<div><i style="background:'+c+'"></i><span>'+n+'</span><b>'+(ap?'≈':'')+v+'</b></div>').join('')+(extra||[]).map(([n,v])=>'<div class="tot"><i></i><span>'+n+'</span><b>≈'+v+'</b></div>').join('');
+  }
+  const segText=c=>c===C_GL||c===C_ACC2||c===C_AMB?'#070b17':c===C_GX?'#eef2fb':'#fefefe';
+  function sbars(id,rows,legend){
+    const el=$(id); if(!el) return; const leg=legend||rows[0][1].map(([n,v,c])=>[n,c]);
+    el.innerHTML=rows.map(([lb,segs])=>'<div class="sbr"><div class="sbl">'+lb+'</div><div class="sbt">'+segs.filter(s=>s[1]>0).map(([n,v,c])=>'<b style="flex:'+v+' 0 0;background:'+c+'" tabindex="0" data-tip="<b>'+esc(lb)+'</b><br>'+esc(n)+': '+v+'%">'+(v>=11?'<em style="color:'+segText(c)+'">'+Math.round(v)+'%</em>':'')+'</b>').join('')+'</div></div>').join('')+
+      '<div class="wlg row">'+leg.map(([n,c])=>'<div><i style="background:'+c+'"></i><span>'+n+'</span></div>').join('')+'</div>';
+  }
+  // How long they keep a phone: HTML dumbbells on one 0–60 month scale
+  function keepRows(){
+    const el=$('hbKeep'); if(!el) return; const P=v=>(v/60*100).toFixed(2)+'%';
+    const R=[['Planned time until upgrade','Reviews.org',16,20,'2025','2026','+4 mo'],['Age of the phone in hand','Reviews.org',22,24,'2025','2026','+2 mo'],['Actual upgrade cycle','Reviews.org',29,32,'2025','2026','+3 mo'],
+      ['Expected total phone life','Reviews.org',null,45,'','2026','new'],['iPhone age at trade-in','Assurant',45.6,48.5,'3.8 yrs · 2025','4+ yrs · Q2 2026','4 yrs+'],['Android age at trade-in','Assurant',42.2,47.5,'3.52 yrs · 2024','3.96 yrs · 2025','+5.3 mo']];
+    const ticks=[0,12,24,36,48,60].map(v=>'<span style="left:'+P(v)+'">'+(v===0?'0':v/12+(v===12?' yr':' yrs'))+'</span>').join('');
+    el.innerHTML='<div class="kr hd"><div></div><div class="kt ticks">'+ticks+'</div><div></div></div>'+R.map(([lb,src,a,b,la,lbb,d],i)=>{
+      const grid=[12,24,36,48].map(v=>'<u style="left:'+P(v)+'"></u>').join('');
+      const tipA=a!=null?'<b>'+esc(lb)+'</b><br>'+la+': '+(a>=40?(a/12).toFixed(2)+' yrs':a+' months'):'', tipB='<b>'+esc(lb)+'</b><br>'+lbb+': '+(b>=40?(b===48.5?'more than 4 years':(b/12).toFixed(2)+' yrs'):b+' months');
+      return '<div class="kr'+(i===3?' sep':'')+'"><div class="kl"><b>'+lb+'</b><span>'+src+'</span></div><div class="kt">'+grid+
+        (a!=null?'<s style="left:'+P(Math.min(a,b))+';width:'+(Math.abs(b-a)/60*100).toFixed(2)+'%"></s><i class="o" style="left:'+P(a)+'" tabindex="0" data-tip="'+tipA+'"></i>':'')+
+        '<i style="left:'+P(b)+'" tabindex="0" data-tip="'+tipB+'"></i><em style="left:'+P(b)+'">'+(b===48.5?'48+':b)+'</em>'+(i===2?'<q style="left:'+P(20)+';width:'+P(12)+'"><span>12-month gap vs plan</span></q>':'')+'</div><div class="kd">'+d+'</div></div>'; }).join('');
+  }
+  // ranked leaderboard: one row per brand, position on a zoomed scale, the score as text
+  function leader(id,x0,x1,rows){
+    const el=$(id); if(!el) return; const P=v=>((v-x0)/(x1-x0)*100).toFixed(2)+'%'; let rank=0, avg=null, h='';
+    rows.forEach(r=>{
+      if(r.g){ rank=0; avg=r.avg!=null?r.avg:null; h+='<div class="lbg"><span>'+r.g+'</span>'+(r.avgL?'<em>'+r.avgL+'</em>':'')+'</div><div class="lbr axis"><div></div><div></div><div class="lbt"><span style="left:0">'+x0+'</span><span style="left:100%">'+x1+'</span></div><div></div></div>'; return; }
+      if(r.note){ h+='<div class="lbn">'+r.note+'</div>'; return; }
+      const [n,sub,v,c,segAvg]=r; rank++; const a=segAvg!=null?segAvg:avg;
+      h+='<div class="lbr" tabindex="0" data-tip="<b>'+esc(n)+'</b><br>'+v+(a!=null?' · '+(v-a>=0?'+':'')+(v-a)+' vs average '+a:'')+'"><div class="lbk">'+rank+'</div><div class="lbn2"><b>'+n+'</b>'+(sub?'<span>'+sub+'</span>':'')+'</div>'+
+        '<div class="lbt">'+(a!=null?'<u style="left:'+P(a)+'"></u>':'')+(segAvg!=null?'<s style="left:'+P(Math.min(segAvg,v))+';width:'+(Math.abs(v-segAvg)/(x1-x0)*100).toFixed(2)+'%;background:'+c+'"></s>':'')+'<i style="left:'+P(v)+';background:'+c+'"></i></div><div class="lbv">'+v+'</div></div>';
+    });
+    el.innerHTML=h;
+  }
+
+  // ================= 04 · ratings as a head-to-head infographic =================
+  const RX_IC={
+    price:'<circle cx="12" cy="12" r="9"/><path d="M14.8 9.4c-.5-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.8-2.8 2 0 2.9 5.8 1.6 5.8 4.3 0 1.3-1.3 2.1-3 2.1-1.3 0-2.5-.6-3-1.6M12 6.2v1.8M12 16.1v1.7"/>',
+    signal:'<path d="M5 19v-3M10 19v-7M15 19V8M20 19V4"/>',
+    trust:'<path d="M12 3l7 3v5c0 4.6-3 8.2-7 10-4-1.8-7-5.4-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    ease:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.5L16 9.5"/>',
+    people:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>',
+    offers:'<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+    digital:'<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
+    fix:'<path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12z"/><path d="M9 12l2 2 4-4"/>'};
+  function ring(v,col,op){
+    const C=2*Math.PI*58, L=v/1000*C;
+    return '<svg viewBox="0 0 140 140" aria-hidden="true"><circle class="tk" cx="70" cy="70" r="58"/><circle class="ar" cx="70" cy="70" r="58" stroke="'+col+'"'+(op?' stroke-opacity="'+op+'"':'')+' stroke-dasharray="'+L.toFixed(1)+' '+C.toFixed(1)+'" transform="rotate(-90 70 70)"/>'+
+      '<text x="70" y="72" font-size="38" dominant-baseline="middle">'+v+'</text><text class="s" x="70" y="100" dominant-baseline="middle">of 1,000</text></svg>';
+  }
+  function renderRate(){
+    const F=[['price','Value for the price'],['signal','Network quality'],['trust','Trust'],['ease','Ease of doing business'],['people','Staff'],['offers','Products and plans'],['digital','App and website'],['fix','Fixing problems']];
+    $('rtHow').innerHTML='<div class="rxk"><span class="k">The score</span><b>1,000</b><span>is a perfect score. Each ring below fills to the brand\'s score. This year\'s range: <b>587</b> (AT&amp;T\'s main brand) to <b>721</b> (Consumer Cellular).</span></div>'+
+      '<div class="rxf"><span class="k">The eight things customers rated</span><div class="rxg">'+F.map(([k,t])=>'<div class="rxi"><svg viewBox="0 0 24 24" aria-hidden="true">'+RX_IC[k]+'</svg><span>'+t+'</span></div>').join('')+'</div></div>';
+    const VS=[
+      {k:'att',n:'AT&amp;T',m:['AT&amp;T','main brand · postpaid',587,'Unlimited from $50/mo + taxes'],v:['Cricket','owned by AT&amp;T · prepaid',647,'Unlimited from $35/mo, taxes in'],x:'Also rated: <b>AT&amp;T Prepaid 604</b>.'},
+      {k:'vz',n:'Verizon',m:['Verizon','main brand · postpaid',593,'Unlimited from $55/mo + taxes'],v:['Visible','owned by Verizon · prepaid',702,'Unlimited from $25/mo, taxes in'],x:'Also rated: <b>Straight Talk 647</b> (Verizon-owned) and <b>Verizon Prepaid 602</b>.'},
+      {k:'tmo',n:'T-Mobile',m:['T-Mobile','main brand · postpaid',631,'Unlimited from $60/mo + taxes'],v:['Mint','owned by T-Mobile · prepaid',715,'Unlimited from $30/mo, paid yearly'],x:'Also rated: <b>Metro 632</b> and <b>T-Mobile Prepaid 629</b>. T-Mobile\'s main brand still scores highest of the three networks.'}];
+    $('rtVs').innerHTML=VS.map(c=>{ const col=CAR[c.k].col, d=c.v[2]-c.m[2];
+      const fig=(b,cls,op)=>'<figure class="rg'+cls+'" tabindex="0" data-tip="<b>'+b[0]+'</b> ('+b[1]+')<br>'+b[2]+' out of 1,000 · J.D. Power 2026<br>'+b[3]+'">'+ring(b[2],col,op)+'<figcaption><b>'+b[0]+'</b><span>'+b[1]+'</span><em>'+b[3]+'</em></figcaption></figure>';
+      return '<div class="vs" style="--c:var(--'+c.k+')"><div class="vsh"><b>'+c.n+'</b><span>main brand vs its cheap brand</span></div><div class="vsr">'+fig(c.m,'',0.38)+
+        '<div class="vsd"><b>+'+d+'</b><span>points happier</span><i>→</i></div>'+fig(c.v,' v',0)+'</div><div class="vsx">'+c.x+'</div></div>'; }).join('');
+    const JD=[['Consumer Cellular','independent · postpaid',721,C_GL],['Mint','T-Mobile-owned · prepaid',715,CAR.tmo.col],['Visible','Verizon-owned · prepaid',702,CAR.vz.col],['Google Fi','Google · postpaid',685,C_GL],
+      ['Cricket','AT&T-owned · prepaid',647,CAR.att.col],['Straight Talk','Verizon-owned · prepaid',647,CAR.vz.col],['Metro by T-Mobile','T-Mobile-owned · prepaid',632,CAR.tmo.col],['T-Mobile','main brand · postpaid',631,CAR.tmo.col],
+      ['T-Mobile Prepaid','prepaid',629,CAR.tmo.col],['Spectrum Mobile','Charter (cable) · postpaid',614,C_GL],['Boost Mobile','EchoStar · postpaid',612,C_GL],['AT&T Prepaid','prepaid',604,CAR.att.col],
+      ['Verizon Prepaid','prepaid',602,CAR.vz.col],['Xfinity Mobile','Comcast (cable) · postpaid',594,C_GL],['Verizon','main brand · postpaid',593,CAR.vz.col],['AT&T','main brand · postpaid',587,CAR.att.col]];
+    leader('rtJdp',560,740,[{g:'Highest to lowest',avgL:'scale 560–740'}].concat(JD));
+    leader('rtAcsi',70,85,[{g:'Wireless service',avg:77,avgL:'line = industry average 77 (a record)'},['Value brands','lower-cost brands, as one group',79,C_GL],['T-Mobile','',78,CAR.tmo.col],['AT&T','',76,CAR.att.col],['Verizon','',76,CAR.vz.col]]);
+    setSrc('phRtSrc',['jdpFox','jdp','acsi','plAtt','plCk','plVz','plVis','plTmR','plMint']);
+  }
+
+  // ================= 05 · subscribers: main brands vs second brands =================
+  const TINT={att:'#14547e',vz:'#7a2c29',tmo:'#66276e'};
+  function renderSubs(){
+    const S=[
+      {k:'vz',n:'Verizon',d:'Jun 30, 2026',tot:146.953,seg:[94.098,19.351,33.504],br:['Visible','Total Wireless','Straight Talk','Tracfone brands']},
+      {k:'tmo',n:'T-Mobile',d:'Dec 31, 2025 (last customer count)',tot:142.388,seg:[85.594,25.943,30.851],br:['Metro by T-Mobile','Mint Mobile','T-Mobile Prepaid']},
+      {k:'att',n:'AT&amp;T',d:'Jun 30, 2026',tot:109.8,seg:[74.921,16.518,18.361],br:['Cricket','AT&amp;T Prepaid']}];
+    const SEG=['Postpaid phones (main brand)','Prepaid (second brands)','Tablets, watches and other devices'];
+    $('sbWin').innerHTML='<span class="bd">#1 · most subscribers</span><div class="wn">Verizon</div><div class="wv">146.95M</div><div class="wl">lines (connections) at Jun 30, 2026</div>'+
+      '<div class="wr" style="--c:var(--tmo)"><b>#2 T-Mobile</b><span>142.39M<small>Dec 31, 2025</small></span></div><div class="wr" style="--c:var(--att)"><b>#3 AT&amp;T</b><span>109.80M<small>Jun 30, 2026</small></span></div>'+
+      '<div class="wft">Verizon also leads on <b>phones alone</b>: 112.8M, against about 111.5M at T-Mobile and 91.4M at AT&amp;T.</div><div class="wft">A line is any connection: a phone, tablet, watch or other device. One customer can have several.</div>';
+    const mx=S[0].tot;
+    $('sbBars').innerHTML=S.map(c=>{ const col=CAR[c.k].col, cs=[col,TINT[c.k],C_GX], tc=['#fefefe','#eef2fb','#eef2fb'];
+      return '<div class="sr" style="--c:var(--'+c.k+')"><div class="srh"><b>'+c.n+'</b><span><strong>'+c.tot.toFixed(2)+'M</strong>'+c.d+'</span></div>'+
+        '<div class="srb" style="width:'+(c.tot/mx*100).toFixed(2)+'%">'+c.seg.map((v,i)=>'<i tabindex="0" style="flex:'+v+' 0 0;background:'+cs[i]+'" data-tip="<b>'+c.n+'</b><br>'+SEG[i]+': '+v.toFixed(2)+'M ('+(v/c.tot*100).toFixed(0)+'%)">'+(v/mx>=0.1?'<em style="color:'+tc[i]+'">'+v.toFixed(1)+'M</em>':'')+'</i>').join('')+'</div>'+
+        '<div class="srv">'+c.seg.map((v,i)=>v.toFixed(1)+'M '+['postpaid phones','prepaid','other'][i]).join(' · ')+'</div>'+
+        '<div class="srk"><span>Second brands:</span>'+c.br.map(b=>'<span>'+b+'</span>').join('')+'</div></div>'; }).join('');
+    const g=(a,b,c)=>'linear-gradient(90deg,'+a+' 0 33%,'+b+' 33% 66%,'+c+' 66%)';
+    $('sbLeg').innerHTML='<div><i style="background:'+g(CAR.att.col,CAR.vz.col,CAR.tmo.col)+'"></i><span>'+SEG[0]+'</span></div><div><i style="background:'+g(TINT.att,TINT.vz,TINT.tmo)+'"></i><span>'+SEG[1]+'</span></div><div><i style="background:'+C_GX+'"></i><span>'+SEG[2]+'</span></div>';
+    hbars($('sbPh'),[{lb:'Verizon',sub:'Jun 2026',v:112.752,col:CAR.vz.col,vl:'112.8M'},{lb:'T-Mobile',sub:'Dec 2025',v:111.537,col:CAR.tmo.col,vl:'≈111.5M'},{lb:'AT&amp;T',sub:'Jun 2026',v:91.439,col:CAR.att.col,vl:'91.4M'}],{max:120});
+    hbars($('sbPre'),[{lb:'T-Mobile',sub:'Metro, Mint, T-Mobile Prepaid',v:25.943,col:CAR.tmo.col,vl:'25.9M'},{lb:'Verizon',sub:'Total, Visible, Straight Talk',v:19.351,col:CAR.vz.col,vl:'19.4M'},{lb:'AT&amp;T',sub:'Cricket, AT&amp;T Prepaid',v:16.518,col:CAR.att.col,vl:'16.5M'}],{max:30});
+    setSrc('phSubSrc',['attSub','vzFS','tmYE','tmQ2fb','chtr','cmcsa','sats']);
+  }
+
+  // ================= 06 · state map (FCC lines per state; Ookla fastest network) =================
+  const FCC_ST={AL:5596,AK:794,AZ:8317,AR:3265,CA:49645,CO:6723,CT:4356,DE:1211,DC:1705,FL:26575,GA:12830,HI:1746,ID:2068,IL:15226,IN:7403,IA:3464,KS:3200,KY:4817,LA:5211,ME:1469,MD:7311,MA:8406,MI:11377,MN:6520,MS:2985,MO:6732,MT:1229,NE:2258,NV:3649,NH:1562,NJ:11642,NM:2389,NY:25638,NC:11888,ND:924,OH:13622,OK:4240,OR:4776,PA:15105,RI:1224,SC:5681,SD:1007,TN:8035,TX:35152,UT:3668,VT:649,VA:10072,WA:8868,WV:1737,WI:6282,WY:688};
+  const FCC_US=394505;
+  // Tax Foundation: combined federal + state + local taxes and fees on a wireless bill, % of bill, July 2026
+  const TAX_ST={AL:27.12,AK:29.09,AZ:27.34,AR:36.43,CA:27.63,CO:31.15,CT:23.12,DE:23.07,DC:26.68,FL:29.50,GA:27.62,HI:22.54,ID:17.78,IL:39.41,IN:25.68,IA:24.50,KS:33.50,KY:25.94,LA:32.99,ME:23.21,MD:31.98,MA:25.17,MI:24.49,MN:26.74,MS:27.58,MO:30.77,MT:21.46,NE:32.70,NV:20.46,NH:24.41,NJ:23.73,NM:28.20,NY:35.03,NC:23.53,ND:30.89,OH:24.20,OK:30.81,OR:23.96,PA:32.27,RI:30.16,SC:28.29,SD:31.17,TN:28.42,TX:31.88,UT:32.57,VT:23.56,VA:22.23,WA:36.24,WV:27.61,WI:23.71,WY:22.84};
+  const TAX_US=28.81;
+  const TX_LBL=['under 22%','22–26%','26–30%','30–34%','34% or more'], txBin=v=>v<22?0:v<26?1:v<30?2:v<34?3:4;
+  const stNames=()=>{ const m={}; if(typeof US_GEO!=='undefined') US_GEO.s.forEach(s=>m[s.a]=s.n); return m; };
+  const SM={mode:'lines',paths:null};
+  const SM_RAMP=['#142447','#1d3a73','#2a56a8','#4a7fe0','#9cbcff'], SM_LBL=['under 2M','2M–5M','5M–10M','10M–20M','20M or more'];
+  const smBin=v=>v<2000?0:v<5000?1:v<10000?2:v<20000?3:4;
+  const SM_OFF={FL:[22,12]};
+  const SM_NOLAB={VT:1,NH:1,MA:1,RI:1,CT:1,NJ:1,DE:1,MD:1,DC:1};
+  const OOK={ND:['none','No clear winner','#58648a'],VT:['none','No clear winner','#58648a'],AK:['gci','GCI (Alaska carrier)','#c9d4d8'],DC:['na','Not in the state list','#26365c']};
+  const ookOf=a=>OOK[a]||['tmo','T-Mobile',CAR.tmo.col];
+  const mFmt=k=>(k/1000).toFixed(1)+'M';
+  function renderSMap(){
+    const el=$('smMap'); if(!el) return;
+    if(!SM.paths){ if(typeof US_GEO==='undefined') return;
+      SM.paths=US_GEO.s.map(s=>({a:s.a,n:s.n,c:s.c,d:s.r.map(r=>{ const p=geoDec(r); let o='M'+p[0]+' '+p[1]; for(let i=2;i<p.length;i+=2) o+='L'+p[i]+' '+p[i+1]; return o+'Z'; }).join('')})); }
+    const rank=Object.keys(FCC_ST).sort((x,y)=>FCC_ST[y]-FCC_ST[x]), rk={}; rank.forEach((a,i)=>rk[a]=i+1);
+    const top4=rank.slice(0,4).reduce((t,a)=>t+FCC_ST[a],0), top10=rank.slice(0,10).reduce((t,a)=>t+FCC_ST[a],0);
+    $('smHead').innerHTML=
+      '<div class="smt" style="--c:var(--acid)"><span class="k">Biggest market</span><b>California</b><strong>'+mFmt(FCC_ST.CA)+' lines</strong><span>1 in 8 US mobile lines. Top four (CA, TX, FL, NY): '+Math.round(top4/FCC_US*100)+'%.</span></div>'+
+      '<div class="smt" style="--c:var(--vz)"><span class="k">Most subscribers nationally</span><b>Verizon</b><strong>146.95M lines</strong><span>T-Mobile 142.39M (Dec 2025) · AT&amp;T 109.80M</span></div>'+
+      '<div class="smt" style="--c:var(--tmo)"><span class="k">Fastest network</span><b>T-Mobile</b><strong>47 of 50 states</strong><span>Ookla Speedtest, first half of 2026</span></div>'+
+      '<div class="smt" style="--c:var(--red)"><span class="k">Highest tax on a phone bill</span><b>Illinois</b><strong>39.4% of the bill</strong><span>Lowest: Idaho 17.8% · US average 28.8%</span></div>';
+    const M=SM.mode;
+    $('smMode').innerHTML=[['lines','Mobile lines per state (FCC)'],['fast','Fastest network (Ookla)'],['tax','Tax on a phone bill (Tax Foundation)']].map(([k,t])=>'<button class="chip'+(k===M?' on':'')+'" data-m="'+k+'">'+t+'</button>').join('');
+    $('smMode').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ SM.mode=b.dataset.m; renderSMap(); });
+    let svg='<svg viewBox="0 0 975 610" role="img" aria-label="'+(M==='lines'?'US map of mobile lines per state':M==='tax'?'US map of taxes and fees on a phone bill by state':'US map of the fastest mobile network in each state')+'">', lab='';
+    SM.paths.forEach(s=>{ const v=FCC_ST[s.a], o=ookOf(s.a); if(v==null) return;
+      const lines=mFmt(v)+' mobile lines · '+(v/FCC_US*100).toFixed(1)+'% of US · #'+rk[s.a]+' of 51';
+      let fill, cls='', tip;
+      if(M==='lines'){ const b=smBin(v); fill=SM_RAMP[b]; cls=b===4?'dk':''; tip='<b>'+s.n+'</b><br>'+lines+'<br>Fastest network: '+o[1]; }
+      else if(M==='tax'){ const t=TAX_ST[s.a], b=txBin(t); fill=SM_RAMP[b]; cls=b===4?'dk':''; tip='<b>'+s.n+'</b><br>Taxes and fees: '+t.toFixed(2)+'% of a phone bill<br>Verizon Simplicity, one line: $'+((45+FEE.vz)*(1+t/100)).toFixed(2)+' a month all-in'; }
+      else { fill=o[2]; cls=o[0]==='gci'?'dk':o[0]==='na'?'':'wh'; tip='<b>'+s.n+'</b><br>Fastest network, 1H 2026: '+o[1]+'<br>'+lines; }
+      svg+='<path d="'+s.d+'" fill="'+fill+'" tabindex="0" data-tip="'+tip+'"></path>';
+      const off=SM_OFF[s.a]||[0,0]; if(!SM_NOLAB[s.a]&&s.c) lab+='<text x="'+(s.c[0]+off[0])+'" y="'+(s.c[1]+off[1])+'"'+(cls?' class="'+cls+'"':'')+'>'+s.a+'</text>'; });
+    el.innerHTML=svg+lab+'</svg>';
+    $('smLeg').innerHTML=M!=='fast'?SM_RAMP.map((c,i)=>'<div><i style="background:'+c+'"></i><span>'+(M==='tax'?TX_LBL:SM_LBL)[i]+'</span></div>').join(''):
+      [['T-Mobile',CAR.tmo.col],['No clear winner','#58648a'],['GCI (Alaska carrier)','#c9d4d8'],['Not in the state list (DC)','#26365c']].map(([t,c])=>'<div><i style="background:'+c+'"></i><span>'+t+'</span></div>').join('');
+    const side=$('smSide');
+    if(M==='lines'){
+      side.innerHTML='<h3>Top 10 states by mobile lines</h3><p style="font-size:12.5px;margin-top:2px">FCC, Jun 30, 2025 · millions</p><div class="hb" id="smTop" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">US total <b>'+(FCC_US/1000).toFixed(1)+'M</b> mobile lines, including territories. These ten states hold <b>'+Math.round(top10/FCC_US*100)+'%</b>. Hover or tap any state for its count.</p>';
+      const NM={}; SM.paths.forEach(s=>NM[s.a]=s.n);
+      hbars($('smTop'),rank.slice(0,10).map(a=>({lb:NM[a]||a,v:FCC_ST[a]/1000,col:C_ACC,vl:mFmt(FCC_ST[a])})),{max:50});
+    } else if(M==='tax'){
+      const NM=stNames(), tr=Object.keys(TAX_ST).sort((x,y)=>TAX_ST[y]-TAX_ST[x]), allin=t=>'$'+((45+FEE.vz)*(1+t/100)).toFixed(2);
+      side.innerHTML='<h3>Tax on a phone bill, by state</h3><p style="font-size:12.5px;margin-top:2px">Federal, state and local taxes and fees, % of the bill · Tax Foundation, July 2026</p>'+
+        '<div class="k" style="margin-top:16px">Highest</div>'+tr.slice(0,5).map(a=>'<div class="smr"><b>'+NM[a]+'</b><span>'+TAX_ST[a].toFixed(2)+'%</span></div>').join('')+
+        '<div class="k" style="margin-top:14px">Lowest</div>'+tr.slice(-5).reverse().map(a=>'<div class="smr"><b>'+NM[a]+'</b><span>'+TAX_ST[a].toFixed(2)+'%</span></div>').join('')+
+        '<p style="margin-top:12px;font-size:12.5px">US average <b>28.8%</b>: 14.4% state and local plus the 14.4% federal Universal Service charge. The same Verizon Simplicity line ($45 with AutoPay, plus the $3.99 fee) costs <b>'+allin(TAX_ST.IL)+'</b> a month in Illinois and <b>'+allin(TAX_ST.ID)+'</b> in Idaho.</p>';
+    } else {
+      side.innerHTML='<h3>Fastest network, state by state</h3><p style="font-size:12.5px;margin-top:2px">Ookla Speedtest Connectivity Report, first half of 2026</p><div class="big" style="margin-top:16px">47</div><p style="margin-top:4px">of 50 states go to <b>T-Mobile</b>.</p>'+
+        '<div style="margin-top:14px"><div class="smr"><b><i style="background:#58648a"></i>No clear winner</b><span>North Dakota, Vermont</span></div><div class="smr"><b><i style="background:#c9d4d8"></i>GCI</b><span>Alaska</span></div></div>'+
+        '<p style="margin-top:12px;font-size:12.5px">Nationally T-Mobile posted a <b>275.55 Mbps</b> median download (314.38 on 5G). Verizon and AT&amp;T took the top two places for <b>coverage</b>, so fastest isn\'t the same as everywhere.</p>';
+    }
+    animateBars(side);
+    setSrc('phMapSrc',['fccVT','ookla26','taxF','vzFS','tmYE','attSub','vzSimp','vzFee']);
+  }
+
+  // ================= 07 · plans and prices: the real market price =================
+  // carrier monthly fee per voice line: AT&T Admin & Regulatory Cost Recovery $4.99 (Aug 5, 2026);
+  // Verizon Admin & Telco Recovery $3.78 + Regulatory $0.21; T-Mobile Regulatory Programs & Telco Recovery $5.49 (Oct 12, 2026)
+  const FEE={att:4.99,vz:3.99,tmo:5.49};
+  const ONE={att:'activation up to $50 a line',vz:'$40 activation a line (Verizon\'s loyalty program can waive it)',tmo:'$35 device connection charge a line'};
+  const APX={att:'AutoPay and paperless billing from a bank account: $10 a line ($5 with a debit card)',vz:'AutoPay and paper-free billing: $10 a line',tmo:'AutoPay from a bank account or debit card: $5 a line'};
+  // p1 = one line [no AutoPay, AutoPay]; p4 = per line with 4 lines [no AutoPay, AutoPay]
+  // pr = promo per line (l: lines it needs, 0 = any); ad1/ad4 = headline price on the carrier site
+  const RP=[
+    {id:'av',c:'att',n:'Value 2.0',p1:[60,50],p4:[40,30],pr:{v:5,l:4,t:'4-line promo credit'},ad1:50,ad4:25,h:'5GB full-speed · 3GB hotspot'},
+    {id:'ae',c:'att',n:'Extra 2.0',p1:[80,70],p4:[50,40],pr:{v:5,l:4,t:'4-line promo credit'},ad1:70,ad4:35,h:'100GB full-speed · 50GB hotspot'},
+    {id:'ap',c:'att',n:'Premium 2.0',p1:[100,90],p4:[60,50],pr:{v:5,l:4,t:'4-line promo credit'},ad1:90,ad4:45,h:'Unlimited full-speed · 100GB hotspot'},
+    {id:'al',c:'att',n:'Elite 2.0',p1:[120,110],p4:[80,70],pr:{v:5,l:4,t:'4-line promo credit'},ad1:110,ad4:65,h:'Unlimited · 250GB hotspot · 210+ countries'},
+    {id:'vs',c:'vz',n:'Simplicity',p1:[55,45],p4:[55,45],pr:{v:15,l:0,t:'Switch & Save'},ad1:30,ad4:30,h:'Unlimited 5G Ultra Wideband · 10GB hotspot'},
+    {id:'vw',c:'vz',n:'Unlimited Welcome',p1:[65,55],p4:[35,25],ad1:55,ad4:25,h:'Not full-speed when busy · no hotspot'},
+    {id:'vp',c:'vz',n:'Unlimited Plus',p1:[80,70],p4:[50,40],ad1:70,ad4:40,h:'Unlimited 5G Ultra Wideband · 30GB hotspot'},
+    {id:'vu',c:'vz',n:'Unlimited Ultimate',p1:[95,85],p4:[65,55],ad1:85,ad4:55,h:'Unlimited · 200GB hotspot · 210+ countries'},
+    {id:'te',c:'tmo',n:'Essentials 2.0',p1:[65,60],p4:[35,30],pr:{v:5,l:4,t:'Essentials 4 Line Offer'},ad1:60,ad4:25,h:'50GB full-speed · 3G-speed hotspot'},
+    {id:'tm',c:'tmo',n:'Experience More 2.0',p1:[90,85],p4:[55,50],ad1:85,ad4:50,h:'Unlimited full-speed · 60GB hotspot'},
+    {id:'tb',c:'tmo',n:'Experience Beyond 2.0',p1:[105,100],p4:[70,65],ad1:100,ad4:65,h:'Unlimited · unlimited hotspot · T-Satellite'}];
+  const PRX={att:'att.com\'s 4-line price is $5 a line below the regular AutoPay price: a promo credit (new line or a new bring-your-own phone).',vz:'Switch & Save: $15 a line off for customers switching from an eligible carrier, with no end date while the line stays active.',tmo:'Essentials 4 Line Offer (limited time): $120 for 4 lines before AutoPay instead of $140.'};
+  const CN={att:'AT&amp;T',vz:'Verizon',tmo:'T-Mobile'};
+  const RB={c:'att',id:'av',l:1,ap:1,pr:0,st:'US'};
+  const usd=v=>'$'+v.toFixed(2);
+  function realOf(p,l,ap,pr,rate){
+    let plan=(l===1?p.p1:p.p4)[ap?1:0]; const promo=pr&&p.pr&&(p.pr.l===0||p.pr.l===l)?p.pr.v:0; plan-=promo;
+    const fee=FEE[p.c], tax=(plan+fee)*rate/100;
+    return {plan,promo,fee,tax,real:plan+fee+tax,ad:l===1?p.ad1:p.ad4};
+  }
+  function renderPlans(){
+    // ---- hero: cheapest unlimited, advertised vs real ----
+    const H=[['av','Cricket Select Unlimited: <b>$35</b>, taxes and fees included'],['vs','Visible: <b>$25</b>, taxes and fees included'],['te','Mint Unlimited: <b>$30</b> a month on a 12-month plan, plus taxes']];
+    $('plHero').innerHTML=H.map(([id,sec])=>{ const p=RP.find(x=>x.id===id), r=realOf(p,1,1,0,TAX_US), gap=r.real-p.ad1;
+      return '<div class="plt" style="--c:var(--'+p.c+')"><span class="k">'+CN[p.c]+' · cheapest unlimited · one line</span><div class="pp">'+
+        '<div class="tag"><span class="tn">Advertised</span><b>$'+p.ad1+'<small>/mo</small></b><span class="tx">'+p.n+(p.id==='vs'?', for switchers with AutoPay ($45 for everyone else)':', with AutoPay')+'</span></div><div class="ar">→</div>'+
+        '<div class="tag v"><span class="tn">Real price</span><b>'+usd(r.real)+'</b><span class="tx">'+(p.id==='vs'?'$45 plan':'plan')+' + '+usd(r.fee)+' fee + '+usd(r.tax)+' taxes (US average)</span></div></div>'+
+        '<div class="sv"><b>+'+usd(gap)+' a month</b><span>'+Math.round(gap/p.ad1*100)+'% more than the ad. Its second brand: '+sec+'.</span></div></div>'; }).join('');
+    renderBuild();
+    // ---- advertised vs real, one line, every unlimited plan ----
+    const R=RP.map(p=>{ const r=realOf(p,1,1,0,TAX_US); return {c:p.c,n:CN[p.c]+' '+p.n,s:'taxes and '+usd(FEE[p.c])+' fee extra',plan:r.plan,fee:r.fee,tax:r.tax,real:r.real,ad:p.ad1}; });
+    [['att','Cricket Select Unlimited',35],['att','Cricket Smart Unlimited',45],['att','Cricket Supreme Unlimited',55],['vz','Visible',25],['vz','Visible+',35],['vz','Visible+ Pro',45],['vz','Total Wireless Starter',35],['vz','Total Wireless MAX 5G',50],['vz','Total Wireless All Access',60]]
+      .forEach(([c,n,v])=>R.push({c,n,s:CN[c]+'-owned · taxes and fees included',plan:v,fee:0,tax:0,real:v,ad:v,inc:1}));
+    R.sort((x,y)=>x.real-y.real||x.ad-y.ad);
+    const MX=150, W=v=>(v/MX*100).toFixed(2)+'%';
+    $('plReal').innerHTML=R.map(r=>{ const col=CAR[r.c].col;
+      return '<div class="rr'+(r.inc?' inc':'')+'" tabindex="0" data-tip="<b>'+r.n+'</b><br>'+(r.inc?'$'+r.real+' a month, taxes and fees included':'Advertised $'+r.ad+' · plan '+usd(r.plan)+' + fee '+usd(r.fee)+' + taxes '+usd(r.tax)+'<br>Real price '+usd(r.real))+'">'+
+        '<div class="rrl"><b>'+r.n+'</b><span>'+r.s+'</span></div><div class="rrt"><div class="rrb" style="width:'+W(r.real)+'"><i style="flex:'+r.plan+' 0 0;background:'+col+'"></i>'+(r.fee?'<i style="flex:'+r.fee+' 0 0;background:'+C_AMB+'"></i><i style="flex:'+r.tax.toFixed(2)+' 0 0;background:'+C_GD+'"></i>':'')+'</div>'+
+        (r.ad<r.plan?'<u style="left:'+W(r.ad)+'" title="advertised"></u>':'')+'</div><div class="rrv"><b>'+(r.inc?'$'+r.real:usd(r.real))+'</b><span>'+(r.inc?'all-in':'ad $'+r.ad)+'</span></div></div>'; }).join('');
+    $('plRealL').innerHTML='<div><i style="background:linear-gradient(90deg,'+CAR.att.col+' 0 33%,'+CAR.vz.col+' 33% 66%,'+CAR.tmo.col+' 66%)"></i><span>Plan price with AutoPay</span></div><div><i style="background:'+C_AMB+'"></i><span>Carrier fee</span></div><div><i style="background:'+C_GD+'"></i><span>Taxes (US average 28.8%)</span></div><div><i style="background:transparent;border-left:2px solid var(--ink);width:2px"></i><span>Advertised price, where lower (Verizon\'s switcher price)</span></div><div><span style="color:var(--dim)">Metro, Mint and Straight Talk add taxes at checkout and aren\'t shown.</span></div>';
+    // ---- what every plan includes ----
+    const Wc=v=>({v,c:'w'}), dash='<span style="color:var(--dim)">—</span>', D=v=>v==='—'?Wc(dash):Wc(v);
+    const rows=[], grp=t=>rows.push({grp:t});
+    const add=(k,list)=>list.forEach(r=>rows.push([sw(CAR[k].col)+r[0],r[1],r[2]==='—'?dash:r[2]].concat(r.slice(3).map(D))));
+    grp('AT&amp;T · main brand · postpaid · prices with AutoPay · plus $4.99 fee a line and taxes');
+    add('att',[['Value 2.0','$50','$30 <small class="adv">ad $25</small>','5GB, then may slow','3GB','Unlimited talk, text and data','—','—','ActiveArmor security'],
+      ['Extra 2.0','$70','$40 <small class="adv">ad $35</small>','100GB','50GB','Unlimited talk, text and data','—','—','Turbo add-on, $7/mo'],
+      ['Premium 2.0','$90','$50 <small class="adv">ad $45</small>','Unlimited','100GB','Unlimited talk, text and data','Talk, text and data in 20 Latin American countries','—','4K video'],
+      ['Elite 2.0','$110','$70 <small class="adv">ad $65</small>','Unlimited','250GB','Unlimited talk, text and data','Talk and text to 210+ destinations, 20GB data there','—','Turbo; one watch and one tablet line included']]);
+    grp('Cricket · AT&amp;T-owned · prepaid · taxes and fees included');
+    add('att',[['Select Unlimited','$35','$25','Slows when busy','—','Talk and text to Mexico and Canada','—','—','New lines only'],
+      ['Smart Unlimited','$45','$27.50','Slows when busy','15GB','Talk, text and data while there','Texting to 200+ countries','—','100GB cloud storage'],
+      ['Supreme Unlimited','$55','$32.50','Unlimited','50GB','Talk, text and data while there','Texting to 200+ countries','—','HBO Max Basic with ads; 150GB cloud']]);
+    grp('Verizon · main brand · postpaid · prices with AutoPay · plus $3.99 fee a line and taxes');
+    add('vz',[['Simplicity','$45 <small class="adv">ad $30</small>','$45 <small class="adv">ad $30</small>','Unlimited (5G Ultra Wideband)','10GB','Talk, text and data','Texting to 200+ countries','—','Satellite texting; 3% back in Verizon Dollars; video at 720p ($30 needs Switch &amp; Save)'],
+      ['Unlimited Welcome','$55','$25','Slows when busy','—','Talk, text and data (2GB a day at full speed)','Texting to 200+ countries','3 years','Perks from $10/mo each'],
+      ['Unlimited Plus','$70','$40','Unlimited (5G Ultra Wideband)','30GB','Talk, text and data (2GB a day at full speed)','Texting to 200+ countries','3 years','Half off one watch or tablet plan'],
+      ['Unlimited Ultimate','$85','$55','Unlimited (5G Ultra Wideband)','200GB','Talk, text and data (2GB a day at full speed)','Talk and text in 210+ countries, 15GB data','3 years','Family Plus and Identity Secure; half off two device plans']]);
+    grp('Visible · Verizon-owned · taxes and fees included · priced per line');
+    add('vz',[['Visible','$25','—','Slows when busy','Unlimited at 5 Mbps','Talk and text to Mexico and Canada','Global Pass from $5 a day','—','SD video'],
+      ['Visible+','$35','—','Unlimited (5G Ultra Wideband)','Unlimited at 10 Mbps','Talk, text and 2GB a day while there','One Global Pass day a month','$5 off for 5 years with a switch-in code (to Oct 29)','HD video'],
+      ['Visible+ Pro','$45','—','Unlimited (5G Ultra Wideband)','Unlimited at 15 Mbps','Talk, text and 2GB a day while there','500 min to 85+ countries; two Global Pass days a month','$5 off for 5 years with a switch-in code (to Oct 29)','4K video']]);
+    grp('Total Wireless · Verizon-owned · prepaid · taxes and fees included');
+    add('vz',[['Total Starter','$35','—','—','10GB','Roaming included','Calls to 85 countries','5 years, taxes included','—'],
+      ['Total MAX 5G','$50','—','Unlimited','Unlimited','Included (roaming in 140+ countries)','Roaming in 140+ countries; talk and text to 200+','5 years, taxes included','Disney+ for 6 months; 100GB cloud'],
+      ['Total All Access','$60','—','Unlimited','Unlimited, up to 2x faster','Included (roaming in 140+ countries)','Roaming in 140+ countries; $10 calling credit','5 years, taxes included','Disney+ included; 1TB cloud']]);
+    grp('Straight Talk · Verizon-owned · prepaid, sold at Walmart');
+    add('vz',[['Gold Unlimited','$50','—','Unlimited (5G Ultra Wideband)','30GB','—','—','—','Walmart+; $100 a year device credit; 100GB cloud'],
+      ['Platinum Unlimited','$60','—','Unlimited (5G Ultra Wideband)','Unlimited','—','—','—','Gold perks plus device protection']]);
+    grp('T-Mobile · main brand · postpaid · prices with AutoPay · plus $5.49 fee a line, taxes and a $35 connection charge');
+    add('tmo',[['Essentials 2.0','$60','$30 <small class="adv">ad $25</small>','50GB','Unlimited at 3G speed','Talk and text; data at 128 kbps','—','—','—'],
+      ['Experience More 2.0','$85','$50','Unlimited','60GB','Unlimited text, 15GB full-speed data','Unlimited text, 5GB data in 215+ countries','5 years','Netflix with ads; Apple TV $3; 4K video; upgrade every 3 years'],
+      ['Experience Beyond 2.0','$100','$65','Unlimited','Unlimited','Unlimited text, 30GB full-speed data','Unlimited text, 15GB data in 215+ countries','5 years','Netflix with ads; Apple TV $3; T-Satellite; early upgrades']]);
+    grp('Metro by T-Mobile · T-Mobile-owned · prepaid');
+    add('tmo',[['Unlimited 25 (own phone)','$25','—','35GB','—','Add-on: $5 for 5GB','$10 calling add-on','5 years','Bring your own phone and number'],
+      ['Flex Unlimited','$50','$30','35GB','8GB','Add-on: $5 for 5GB','—','5 years','Google One 100GB; phone upgrades'],
+      ['Flex Unlimited Plus','$60','$35','35GB','25GB','Add-on: $5 for 5GB','Texting to 210+ countries','5 years','Amazon Prime; HD video; phone upgrades']]);
+    grp('Mint Mobile · T-Mobile-owned · prepaid, paid up front · taxes extra');
+    add('tmo',[['Unlimited, 12 months','$30','$30','50GB','20GB','Free calls to Mexico and Canada','—','Fixed for the term','Lines 2–5 at the same price'],
+      ['Unlimited, 3 months','$40','—','50GB','20GB','Free calls to Mexico and Canada','—','Fixed for the term','—']]);
+    table($('plTbl'),['Plan','1 line','Per line, 4 lines','Full-speed data','Hotspot','Mexico &amp; Canada','International','Price lock','Extras'],rows);
+    $('plTbl').insertAdjacentHTML('afterbegin','<div class="tcap"><b>Every plan below:</b> unlimited talk, text and data in the US. Prices are monthly. "ad" = the lower price the carrier advertises, which needs a promo.</div>');
+    setSrc('phPlanSrc',['attWeb','attRate','plAttE','vzByod','vzSimp','vzSwitch','vzSimpN','plVz','plVzU','tmWeb','tmAP','attFee','vzFee','tmFee','taxF','plCk','plVis','plTot','plSt','plMet','plMetB','plMint','tmix','tmix2']);
+  }
+  // ---- real price builder ----
+  function renderBuild(){
+    const el=$('plBuild'); if(!el) return;
+    const NM=stNames(), plans=RP.filter(p=>p.c===RB.c); if(!plans.find(p=>p.id===RB.id)) RB.id=plans[0].id;
+    const p=RP.find(x=>x.id===RB.id), prOK=!!(p.pr&&(p.pr.l===0||p.pr.l===RB.l)); if(!prOK) RB.pr=0;
+    const rate=RB.st==='US'?TAX_US:TAX_ST[RB.st], r=realOf(p,RB.l,RB.ap,RB.pr,rate), stL=RB.st==='US'?'US average':NM[RB.st]||RB.st;
+    const chips=(k,opts)=>'<div class="chips" data-k="'+k+'">'+opts.map(([v,t,dis])=>'<button class="chip'+(String(RB[k])===String(v)?' on':'')+'" data-v="'+v+'"'+(dis?' disabled':'')+'>'+t+'</button>').join('')+'</div>';
+    const tot=r.real*RB.l, seg=[['Plan',r.plan,CAR[p.c].col],['Carrier fee',r.fee,C_AMB],['Taxes',r.tax,C_GD]];
+    const over=r.real-r.ad;
+    el.innerHTML='<div class="rbh"><h3>Build your real price</h3><p style="font-size:12.5px;margin-top:2px">Pick a plan, lines, payment and state. Prices from each carrier\'s website, Oct 14, 2026.</p></div><div class="rbw"><div class="rbc">'+
+      '<div class="rbg"><span class="k">Carrier</span>'+chips('c',[['att','AT&amp;T'],['vz','Verizon'],['tmo','T-Mobile']])+'</div>'+
+      '<div class="rbg"><span class="k">Plan</span>'+chips('id',plans.map(x=>[x.id,x.n]))+'<div class="rbh2">'+p.h+'</div></div>'+
+      '<div class="rbg"><span class="k">Lines</span>'+chips('l',[[1,'1 line'],[4,'4 lines']])+'</div>'+
+      '<div class="rbg"><span class="k">Payment</span>'+chips('ap',[[1,'AutoPay'],[0,'No AutoPay']])+'<div class="rbh2">'+APX[p.c]+'</div></div>'+
+      '<div class="rbg"><span class="k">Promo</span>'+chips('pr',[[0,'None'],[1,p.pr?p.pr.t+' (−$'+p.pr.v+' a line)':'None for this plan',!prOK]])+(p.pr?'<div class="rbh2">'+PRX[p.c]+(p.pr.l===4?' Needs 4 lines.':'')+'</div>':'')+'</div>'+
+      '<div class="rbg"><span class="k">State, for taxes</span><select class="rsel" id="rbSt"><option value="US">US average (28.81%)</option>'+Object.keys(TAX_ST).sort((a,b)=>(NM[a]||a).localeCompare(NM[b]||b)).map(a=>'<option value="'+a+'"'+(RB.st===a?' selected':'')+'>'+(NM[a]||a)+' ('+TAX_ST[a].toFixed(2)+'%)</option>').join('')+'</select></div>'+
+      '</div><div class="rbo" style="--c:var(--'+p.c+')"><span class="k">Your real monthly bill</span><div class="rbt">'+usd(tot)+'<small>/mo</small></div><div class="rbl">'+CN[p.c]+' '+p.n+' · '+RB.l+' line'+(RB.l>1?'s':'')+' · '+usd(r.real)+' a line · '+stL+'</div>'+
+      '<div class="rbb">'+seg.map(([t,v,c])=>'<i style="flex:'+v.toFixed(2)+' 0 0;background:'+c+'" tabindex="0" data-tip="<b>'+t+'</b><br>'+usd(v)+' a line"></i>').join('')+'</div>'+
+      '<div class="wlg row" style="margin-top:8px">'+seg.map(([t,v,c])=>'<div><i style="background:'+c+'"></i><span>'+t+' '+usd(v)+'</span></div>').join('')+'</div>'+
+      '<div class="rbr"><span>Advertised on '+(p.c==='att'?'att.com':p.c==='vz'?'verizon.com':'t-mobile.com')+'</span><b>$'+r.ad+' a line</b></div>'+
+      '<div class="rbr"><span>What you really pay</span><b>'+usd(r.real)+' a line <em>'+(over>=0?'+':'−')+usd(Math.abs(over))+' ('+(over>=0?'+':'−')+Math.abs(Math.round(over/r.ad*100))+'%)</em></b></div>'+
+      '<div class="rbr"><span>Over 36 months</span><b>$'+Math.round(tot*36).toLocaleString('en-US')+'</b></div>'+
+      '<div class="rbr"><span>One-time</span><b class="sm">'+ONE[p.c]+'</b></div>'+
+      '<div class="rbn">Taxes are estimated at '+rate.toFixed(2)+'% of plan plus fee (Tax Foundation, July 2026); your bill depends on your address.'+(p.c==='att'&&RB.l===1?' AT&amp;T 1-line prices are from its 2026 rate card; att.com shows 4-line prices.':'')+(p.id==='vs'?' Simplicity is a flat price per line; there is no multi-line discount.':'')+'</div></div></div>';
+    el.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{ if(b.disabled) return; const k=g.dataset.k, v=b.dataset.v; RB[k]=k==='c'||k==='id'?v:+v; if(k==='c') RB.id=RP.find(x=>x.c===v).id; renderBuild(); }));
+    $('rbSt').onchange=e=>{ RB.st=e.target.value; renderBuild(); };
   }
 
   // ================= US basemap (us-atlas, Albers USA frame 975×610) =================
@@ -1615,7 +2495,7 @@
 
   // ================= FCC towers by owner =================
   const TW={J:null,X:null,Y:null,O:null,S:null,n:0,off:new Set(),cv:null,ctx:null,W:0,H:0,dpr:1,F:null,init:0,loading:0,byState:null,hover:null};
-  const TW_OWN={amt:['American Tower','#ffb703'],cci:['Crown Castle','#21c7a8'],sba:['SBA Communications','#8ce99a'],vb:['Vertical Bridge','#b08ad8'],att:['AT&T','#12b0ea'],vz:['Verizon','#ee3a43'],tmo:['T-Mobile','#f0509e'],oth:['Other tower companies','#c08552'],rest:['Everyone else','#58648a']};
+  const TW_OWN={amt:['American Tower','#ffb703'],cci:['Crown Castle','#21c7a8'],sba:['SBA Communications','#8ce99a'],vb:['Vertical Bridge','#b08ad8'],att:['AT&T','#1c95d8'],vz:['Verizon','#e8452f'],tmo:['T-Mobile','#c13cb8'],oth:['Other tower companies','#c08552'],rest:['Everyone else','#58648a']};
   function twB64(s){ const b=atob(s), u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i); return u; }
   function twUse(J){
     const xy=twB64(J.xy), o=twB64(J.o), st=twB64(J.s), n=J.n, q=J.q||200;
@@ -1788,6 +2668,7 @@
     biz:[['biz-mix','Revenue Mix'],['biz-flow','Revenue → FCF'],['biz-trend','Run-rate & Guidance'],['biz-ret','Dividends & Buybacks']],
     val:[['val-board','Multiples'],['val-map','Carriers vs Towers vs SpaceX'],['val-implied','What the Price Implies'],['val-take','Under-valued?']],
     debt:[['d-board','Debt & Targets'],['d-live','Live EBITDA vs Debt'],['d-echo','AT&T EchoStar Path']],
+    phone:[['ph-journey','Viewing → Buying'],['ph-who','% from Big Three'],['ph-habits','Shop, Pay, Keep'],['ph-rate','Ratings'],['ph-subs','Subscribers'],['ph-map','State Map'],['ph-plans','Plans & Prices'],['ph-launch','Lineup & Deals'],['ph-sales','Device Money'],['ph-buy','Ease of Buying'],['ph-lock','36-Month Lock'],['ph-lease','Leasing']],
     cust:[['c-churn','Churn → Lifetime'],['c-ltv','CAC → LTV'],['c-arpu','ARPU vs ARPA'],['c-home','Fiber & FWA'],['c-cable','Cable MVNOs']],
     spec:[['sp-spend','Who Bought'],['sp-deals','Deal Timeline'],['sp-pipe','What Comes Next'],['sp-101','Why Bands Matter']],
     sat:[['sat-live','Starlink Live'],['sat-money','Starlink vs Carriers'],['sat-d2c','Direct-to-Phone Race'],['sat-fourth','A Fourth Carrier?']],
@@ -1795,14 +2676,14 @@
     play:[['pb-lab','Lever Lab'],['pb-moves','Carrier Playbooks'],['pb-spx','Keep SpaceX Out'],['pb-all','What Works for All']],
     cal:[['cal-q3','Q3 Countdown'],['cal-next','Dated Events'],['cal-src','Sources & Method']]
   };
-  const LBL={brief:'Brief',biz:'The Business',val:'Valuation',debt:'Debt',cust:'Customers',spec:'Spectrum',sat:'Satellite',cov:'Coverage',play:'Revenue Playbook',cal:'Calendar'};
-  const RENDER={brief:renderBrief,biz:renderBiz,val:renderVal,debt:renderDebt,cust:renderCust,spec:renderSpec,sat:renderSat,cov:renderCov,play:renderPlay,cal:renderCal};
+  const LBL={brief:'Brief',biz:'The Business',val:'Valuation',debt:'Debt',cust:'Customers',phone:'Phones & Plans',spec:'Spectrum',sat:'Satellite',cov:'Coverage',play:'Revenue Playbook',cal:'Calendar'};
+  const RENDER={brief:renderBrief,biz:renderBiz,val:renderVal,debt:renderDebt,cust:renderCust,phone:renderPhone,spec:renderSpec,sat:renderSat,cov:renderCov,play:renderPlay,cal:renderCal};
   const done={};
   function buildSub(view){
     const n=$('subnav'); n.innerHTML='<span class="lbl">'+LBL[view]+'</span>'+SUB[view].map(([id,t])=>'<a href="#'+id+'">'+t+'</a>').join('');
     n.querySelectorAll('a').forEach(a=>a.onclick=e=>{ e.preventDefault(); const el=$(a.getAttribute('href').slice(1)); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); });
   }
-  function stopAll(){ [liveRAF,tmRAF,dlRAF,cdRAF,skRAF].forEach(r=>r&&cancelAnimationFrame(r)); liveRAF=tmRAF=dlRAF=cdRAF=skRAF=null; tmLastT=0; }
+  function stopAll(){ [liveRAF,tmRAF,dlRAF,cdRAF,skRAF,phRAF].forEach(r=>r&&cancelAnimationFrame(r)); liveRAF=tmRAF=dlRAF=cdRAF=skRAF=phRAF=null; tmLastT=0; }
   function show(view,keepScroll){
     if(!RENDER[view]) view='brief';
     document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+view));
@@ -1814,6 +2695,7 @@
     if(view==='brief'){ liveLast=0; liveRAF=requestAnimationFrame(liveTick); tmRAF=requestAnimationFrame(tmTick); }
     if(view==='debt'){ dlLast=0; dlRAF=requestAnimationFrame(dlTick); }
     if(view==='cal'){ cdLast=0; cdRAF=requestAnimationFrame(cdTick); }
+    if(view==='phone'){ phLast=0; phRAF=requestAnimationFrame(phTick); }
     if(view==='sat') setTimeout(skInit,60);
     if(view==='cov') setTimeout(twInit,60);
     $('tabs').classList.remove('open');
