@@ -450,6 +450,20 @@
   .vsx{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute)}
   .vsx b{color:var(--ink);font-weight:600}
   @media(max-width:420px){.vsr{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr)}.vsd b{font-size:26px}.rg figcaption b{font-size:16px}}
+  /* ratings: right column + finishing statement */
+  .rtcol{display:flex;flex-direction:column;gap:16px;min-width:0}
+  .rtk{flex:1;border-top:4px solid var(--acid)}
+  .rtk .tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 4px}
+  .rtk .tri div{background:var(--panel-2);border:1px solid var(--line);padding:14px 12px;min-width:0}
+  .rtk .tri b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:28px;line-height:1;color:var(--ink);white-space:nowrap}
+  .rtk .tri span{display:block;font-size:11.5px;color:var(--mute);margin-top:7px;line-height:1.35}
+  .rtk ol{list-style:none;counter-reset:k;margin-top:10px}
+  .rtk li{counter-increment:k;display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;padding:12px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute);line-height:1.5}
+  .rtk li::before{content:counter(k,decimal-leading-zero);font:600 12px 'IBM Plex Mono',monospace;color:var(--amber);padding-top:2px}
+  .rtk li b{color:var(--ink);font-weight:600}
+  .rtk .lev{margin-top:12px;padding:14px 16px;background:var(--panel-2);border-left:3px solid var(--acid);font-size:13.5px;color:var(--ink);line-height:1.5}
+  .rtk .lev .k{display:block;margin-bottom:4px;color:var(--acid)}
+  @media(max-width:420px){.rtk .tri{grid-template-columns:1fr}}
   /* ---- subscribers ---- */
   .sbw{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:16px}
   @media(max-width:900px){.sbw{grid-template-columns:1fr}}
@@ -509,18 +523,18 @@
   .pl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
   @media(max-width:1060px){.pl3{grid-template-columns:1fr}}
   .plt{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--c);padding:20px;min-width:0}
-  .plt .pp{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:stretch;gap:8px;margin-top:14px}
-  .tag{position:relative;padding:14px 12px 12px 26px;border:1px solid var(--line);border-radius:4px 16px 16px 4px;background:var(--panel-2);min-width:0}
+  .plt .pp{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;margin-top:14px}
+  .tag{position:relative;padding:14px 12px 12px 24px;border:1px solid var(--line);border-radius:4px 16px 16px 4px;background:var(--panel-2);min-width:0;container-type:inline-size;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:end}
   .tag::before{content:'';position:absolute;left:9px;top:18px;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--mute)}
-  .tag .tn{display:block;font-size:12.5px;color:var(--ink);font-weight:600;line-height:1.25}
-  .tag b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:40px;line-height:1;color:var(--ink);margin-top:8px;font-variant-numeric:tabular-nums}
+  .tag .tn{display:block;font-size:12.5px;color:var(--ink);font-weight:600;line-height:1.25;grid-column:1/-1}
+  .tag b{display:block;font-family:'Space Grotesk';font-weight:700;font-size:34px;font-size:clamp(26px,15cqi,46px);grid-column:1;line-height:1;color:var(--ink);margin-top:8px;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:-.01em}
   .tag b small{font-size:13px;color:var(--mute);font-weight:500;margin-left:2px}
-  .tag .tx{display:block;font-size:11.5px;color:var(--mute);margin-top:8px;line-height:1.3}
+  .tag .tx{display:block;font-size:11.5px;color:var(--mute);line-height:1.35;grid-column:2;padding-bottom:2px}
   .tag.v{border-color:var(--c)}
   .tag.v::before{border-color:var(--c)}
   .tag.v b{color:var(--c)}
-  .plt .ar{align-self:center;text-align:center;font-size:22px;color:var(--mute)}
-  @media(max-width:440px){.tag b{font-size:32px}.tag{padding-left:24px;padding-right:10px}}
+  .plt .ar{text-align:center;font-size:18px;line-height:1;color:var(--mute)}
+  @media(max-width:440px){.tag{padding-left:22px;padding-right:10px}}
   .plt .sv{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
   .plt .sv b{font-family:'Space Grotesk';font-weight:700;font-size:24px;color:var(--ink)}
   .plt .sv span{display:block;font-size:12.5px;color:var(--mute);margin-top:2px}
@@ -913,9 +927,11 @@
     <div class="vs3" id="rtVs"></div>
     <div class="grid2" style="margin-top:16px">
       <div class="card"><h3>All 16 scores, ranked</h3><p style="font-size:12.5px;margin-top:2px">J.D. Power 2026, out of 1,000 · colour = who owns the brand</p><div class="lb" id="rtJdp"></div></div>
-      <div class="card"><h3>A second opinion: ACSI</h3><p style="font-size:12.5px;margin-top:2px">American Customer Satisfaction Index, out of 100 · May 2026</p><div class="lb" id="rtAcsi"></div>
-        <p style="margin-top:14px">Same answer from a different survey: the low-cost "value" brands score <b>79</b>, above all three big networks. Wireless as a whole hit a record <b>77</b>.</p>
-        <p>Why the cheap brands win: simpler plans, no contracts, taxes often included, and fewer billing surprises. "Value for price paid" is one of J.D. Power's eight factors.</p></div>
+      <div class="rtcol">
+        <div class="card"><h3>A second opinion: ACSI</h3><p style="font-size:12.5px;margin-top:2px">American Customer Satisfaction Index, out of 100 · May 2026</p><div class="lb" id="rtAcsi"></div>
+          <p style="margin-top:14px">Same answer from a different survey: the low-cost "value" brands score <b>79</b>, above all three big networks. Wireless as a whole hit a record <b>77</b>.</p></div>
+        <div class="card rtk" id="rtTake"></div>
+      </div>
     </div>
     <div class="wlg row" style="margin-top:14px"><div><i style="background:var(--att)"></i><span>AT&amp;T or AT&amp;T-owned</span></div><div><i style="background:var(--vz)"></i><span>Verizon or Verizon-owned</span></div><div><i style="background:var(--tmo)"></i><span>T-Mobile or T-Mobile-owned</span></div><div><i style="background:#c9d4d8"></i><span>Independent or cable</span></div></div>
     <div class="src"><b>Sources</b><span id="phRtSrc"></span></div>
@@ -2263,7 +2279,15 @@
       ['Verizon Prepaid','prepaid',602,CAR.vz.col],['Xfinity Mobile','Comcast (cable) · postpaid',594,C_GL],['Verizon','main brand · postpaid',593,CAR.vz.col],['AT&T','main brand · postpaid',587,CAR.att.col]];
     leader('rtJdp',560,740,[{g:'Highest to lowest',avgL:'scale 560–740'}].concat(JD));
     leader('rtAcsi',70,85,[{g:'Wireless service',avg:77,avgL:'line = industry average 77 (a record)'},['Value brands','lower-cost brands, as one group',79,C_GL],['T-Mobile','',78,CAR.tmo.col],['AT&T','',76,CAR.att.col],['Verizon','',76,CAR.vz.col]]);
-    setSrc('phRtSrc',['jdpFox','jdp','acsi','plAtt','plCk','plVz','plVis','plTmR','plMint']);
+    const rv=id=>usd(realOf(RP.find(p=>p.id===id),1,1,0,TAX_US).real), avg=Math.round((60+109+84)/3);
+    $('rtTake').innerHTML='<h3>What it adds up to</h3><p style="font-size:12.5px;margin-top:2px">The ratings next to the real price (section 07)</p>'+
+      '<div class="tri"><div><b>+'+avg+'</b><span>points: the average lead of the cheap brand over its own main brand</span></div><div><b>$35</b><span>Cricket, all-in, vs <b style="display:inline;font-size:inherit;font-family:inherit">'+rv('av')+'</b> for AT&amp;T Value 2.0</span></div><div><b>721</b><span>the top score belongs to an independent: Consumer Cellular</span></div></div>'+
+      '<ol><li><span><b>Customers reward value, not the logo.</b> At all three carriers the cheap brand outscores the main brand, by 60 to 109 points.</span></li>'+
+      '<li><span><b>The cheap brand is the safety net.</b> A customer who leaves AT&amp;T for Cricket, or Verizon for Visible, keeps paying the same company. That is the point of a second brand.</span></li>'+
+      '<li><span><b>The main brand has to earn its premium.</b> One line, all-in: Verizon Simplicity '+rv('vs')+' vs Visible $25; T-Mobile Essentials 2.0 '+rv('te')+' vs Mint $30 plus tax. The extra must come from full-speed data, hotspot, travel and service.</span></li>'+
+      '<li><span><b>T-Mobile shows it can be done.</b> Its main brand scores 631, ahead of Verizon (593) and AT&amp;T (587), and ACSI ranks it first of the three (78).</span></li></ol>'+
+      '<div class="lev"><span class="k">Revenue lever</span>Move price-sensitive customers down to the second brand instead of losing them to a rival, and give main-brand customers more for the money: full-speed data, hotspot, travel and better service.</div>';
+    setSrc('phRtSrc',['jdpFox','jdp','acsi','plAtt','plCk','plVz','plVis','plTmR','plMint','taxF']);
   }
 
   // ================= 05 · subscribers: main brands vs second brands =================
@@ -2386,7 +2410,7 @@
     const H=[['av','Cricket Select Unlimited: <b>$35</b>, taxes and fees included'],['vs','Visible: <b>$25</b>, taxes and fees included'],['te','Mint Unlimited: <b>$30</b> a month on a 12-month plan, plus taxes']];
     $('plHero').innerHTML=H.map(([id,sec])=>{ const p=RP.find(x=>x.id===id), r=realOf(p,1,1,0,TAX_US), gap=r.real-p.ad1;
       return '<div class="plt" style="--c:var(--'+p.c+')"><span class="k">'+CN[p.c]+' · cheapest unlimited · one line</span><div class="pp">'+
-        '<div class="tag"><span class="tn">Advertised</span><b>$'+p.ad1+'<small>/mo</small></b><span class="tx">'+p.n+(p.id==='vs'?', for switchers with AutoPay ($45 for everyone else)':', with AutoPay')+'</span></div><div class="ar">→</div>'+
+        '<div class="tag"><span class="tn">Advertised</span><b>$'+p.ad1+'<small>/mo</small></b><span class="tx">'+p.n+(p.id==='vs'?', for switchers with AutoPay ($45 for everyone else)':', with AutoPay')+'</span></div><div class="ar">↓</div>'+
         '<div class="tag v"><span class="tn">Real price</span><b>'+usd(r.real)+'</b><span class="tx">'+(p.id==='vs'?'$45 plan':'plan')+' + '+usd(r.fee)+' fee + '+usd(r.tax)+' taxes (US average)</span></div></div>'+
         '<div class="sv"><b>+'+usd(gap)+' a month</b><span>'+Math.round(gap/p.ad1*100)+'% more than the ad. Its second brand: '+sec+'.</span></div></div>'; }).join('');
     renderBuild();
