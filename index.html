@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>US Telcos — Big Three Monitor</title>
-<meta name="description" content="A neutral, sourced, live view of AT&T, Verizon and T-Mobile: revenue, valuation, debt, customers, spectrum, Starlink, FCC towers by owner, and how each grows revenue.">
+<meta name="description" content="A neutral, sourced, live view of AT&T, Verizon and T-Mobile: revenue, valuation, debt, subscribers, spectrum, Starlink, FCC towers by owner, and how each grows revenue.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0d0f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%232ec4b6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -452,6 +452,8 @@
   @media(max-width:420px){.vsr{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr)}.vsd b{font-size:26px}.rg figcaption b{font-size:16px}}
   /* ratings: right column + finishing statement */
   .rtcol{display:flex;flex-direction:column;gap:16px;min-width:0}
+  #ph-rate .grid2>.card:first-child{display:flex;flex-direction:column}
+  #rtJdp{flex:1;display:flex;flex-direction:column;justify-content:space-between}
   .rtk{flex:1;border-top:4px solid var(--acid)}
   .rtk .tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 4px}
   .rtk .tri div{background:var(--panel-2);border:1px solid var(--line);padding:14px 12px;min-width:0}
@@ -616,7 +618,7 @@
       <button class="tab" data-view="biz" title="How the money flows"><span class="no">2</span>Business</button>
       <button class="tab" data-view="val" title="Market cap, multiples, under-valued?"><span class="no">3</span>Valuation</button>
       <button class="tab" data-view="debt" title="Debt and leverage"><span class="no">4</span>Debt</button>
-      <button class="tab" data-view="cust" title="Churn, ARPU, CAC to LTV"><span class="no">5</span>Customers</button>
+      <button class="tab" data-view="cust" title="Churn, ARPU, CAC to LTV"><span class="no">5</span>Subscribers</button>
       <button class="tab" data-view="phone" title="Phones and plans: buying habits, ratings, subscribers by brand, state map, plan prices, financing"><span class="no">6</span>Phones &amp; Plans</button>
       <button class="tab" data-view="spec" title="Spectrum deals: EchoStar, SpaceX, auctions"><span class="no">7</span>Spectrum</button>
       <button class="tab" data-view="sat" title="Starlink and the satellite market"><span class="no">8</span>Satellite</button>
@@ -635,7 +637,7 @@
     <div class="hero">
       <div class="eyebrow">US wireless · the Big Three · Q2 2026 reported · markets at the Oct 9, 2026 close</div>
       <h1>Three carriers.<br><span class="fade">$352B a year.</span><br>Worth less than a quarter<br>of SpaceX.</h1>
-      <p class="lede">AT&amp;T, Verizon and T-Mobile bill about <b id="hPerSec">$11,000</b> every second between them and guide to roughly $59B of free cash flow this year. The market values all three together at $484B. This is a neutral read of where they stand: the money, the debt, the customers, the spectrum, the satellite threat, and what would actually grow their revenue.</p>
+      <p class="lede">AT&amp;T, Verizon and T-Mobile bill about <b id="hPerSec">$11,000</b> every second between them and guide to roughly $59B of free cash flow this year. The market values all three together at $484B. This is a neutral read of where they stand: the money, the debt, the subscribers, the spectrum, the satellite threat, and what would actually grow their revenue.</p>
       <div class="flag">◈ NYSE: T · NYSE: VZ · NASDAQ: TMUS · figures from company reports for Q2 2026 · prices at the Oct 9, 2026 close</div>
       <div class="strip" id="bStrip"></div>
     </div>
@@ -665,14 +667,14 @@
 
   <section id="b-tread"><div class="wrap">
     <div class="shead"><span class="sno">03</span><h2>The churn treadmill</h2><span class="sub">live · real rates from reported churn</span></div>
-    <p class="intro">Every month about 0.9% of each carrier's postpaid base leaves, so each one has to win those customers back just to stand still. The dots are real-time: one dot leaving is one line or account walking out the door, at the rate each company reports. Speed it up to see a day go by.</p>
+    <p class="intro">Every month about 0.9% of each carrier's postpaid base leaves, so each one has to win those subscribers back just to stand still. The dots are real-time: one dot leaving is one line or account walking out the door, at the rate each company reports. Speed it up to see a day go by.</p>
     <div class="chips" id="tmSpeed" style="margin-bottom:14px"></div>
     <div class="tm" id="tmLanes"></div>
     <div class="src" style="margin-top:12px">Leaving = base × monthly churn. Joining = leaving + reported Q2 net adds (AT&amp;T postpaid phones; T-Mobile postpaid accounts; Verizon postpaid phones at phone churn). A month = 30.44 days. <b>Sources</b><span id="tmSrc"></span></div>
   </div></section>
 
   <section id="b-race"><div class="wrap">
-    <div class="shead"><span class="sno">04</span><h2>Who won customers in Q2</h2><span class="sub">net additions, Apr–Jun 2026</span></div>
+    <div class="shead"><span class="sno">04</span><h2>Who won subscribers in Q2</h2><span class="sub">net additions, Apr–Jun 2026</span></div>
     <p class="intro">T-Mobile no longer reports phone net adds (it switched to accounts in 2026), so its number is an analyst estimate, shown hatched. The cable companies sell mobile on Verizon's network and keep adding hundreds of thousands of lines a quarter.</p>
     <div class="grid2">
       <div class="card"><h3>Postpaid phones (and cable mobile lines)</h3><div class="hb" id="raceP" style="margin-top:14px"></div></div>
@@ -821,20 +823,20 @@
 <!-- ===================== 5 · CUSTOMERS ===================== -->
 <div class="view" id="v-cust">
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
-    <div class="eyebrow">Customers · churn, ARPU, lifetime value</div>
-    <h1>Under 1% a month.<br><span class="fade">Nine-plus years a customer.</span></h1>
-    <p class="lede">US postpaid churn runs 0.85–0.99% a month, which means the average postpaid customer stays around 100–118 months. That lifetime is why carriers can afford to pay hundreds of dollars to win a customer, and why a few basis points of churn are worth hundreds of millions.</p>
+    <div class="eyebrow">Subscribers · churn, ARPU, lifetime value</div>
+    <h1>Under 1% a month.<br><span class="fade">Nine-plus years a subscriber.</span></h1>
+    <p class="lede">US postpaid churn runs 0.85–0.99% a month, which means the average postpaid subscriber stays around 100–118 months. That lifetime is why carriers can afford to pay hundreds of dollars to win a subscriber, and why a few basis points of churn are worth hundreds of millions.</p>
   </div></div>
 
   <section id="c-churn"><div class="wrap">
     <div class="shead"><span class="sno">01</span><h2>The 110-month truth</h2><span class="sub">Q2 2026 monthly churn → average lifetime</span></div>
-    <p class="intro">Average lifetime = 1 ÷ monthly churn. At 0.86% that is 116 months. This is a long-run average for a stable base, not a promise for any one customer. Check what each figure measures: T-Mobile's 0.85% phone churn was said by its CFO on the call; its reported metric is account churn, 0.99%.</p>
+    <p class="intro">Average lifetime = 1 ÷ monthly churn. At 0.86% that is 116 months. This is a long-run average for a stable base, not a promise for any one subscriber. Check what each figure measures: T-Mobile's 0.85% phone churn was said by its CFO on the call; its reported metric is account churn, 0.99%.</p>
     <div class="tbl compact" id="churnTbl"></div>
     <div class="src"><b>Sources</b><span id="churnSrc"></span></div>
   </div></section>
 
   <section id="c-ltv"><div class="wrap">
-    <div class="shead"><span class="sno">02</span><h2>CAC → LTV</h2><span class="sub">what a customer is worth, and what you can pay for one</span></div>
+    <div class="shead"><span class="sno">02</span><h2>CAC → LTV</h2><span class="sub">what a subscriber is worth, and what you can pay for one</span></div>
     <p class="intro">Pick a carrier to load its reported ARPU (or ARPA), churn and margin. Acquisition cost is <b>not disclosed by any of the three</b>: it is an assumption you set. Lifetime value here is undiscounted margin over the average lifetime; the discounted line uses a 9% annual rate.</p>
     <div class="calc">
       <div>
@@ -858,17 +860,17 @@
 
   <section id="c-home"><div class="wrap">
     <div class="shead"><span class="sno">04</span><h2>Home internet: fiber and fixed wireless</h2><span class="sub">the convergence play</span></div>
-    <p class="intro">The growth engine for all three is selling home internet to their phone customers. AT&amp;T leads with fiber, T-Mobile with 5G fixed wireless, Verizon with both after buying Frontier.</p>
+    <p class="intro">The growth engine for all three is selling home internet to their phone subscribers. AT&amp;T leads with fiber, T-Mobile with 5G fixed wireless, Verizon with both after buying Frontier.</p>
     <div class="grid2">
-      <div class="card"><h3>Fiber customers (M)</h3><div class="hb" id="homeF" style="margin-top:14px"></div></div>
-      <div class="card"><h3>Fixed-wireless customers (M)</h3><div class="hb" id="homeW" style="margin-top:14px"></div></div>
+      <div class="card"><h3>Fiber subscribers (M)</h3><div class="hb" id="homeF" style="margin-top:14px"></div></div>
+      <div class="card"><h3>Fixed-wireless subscribers (M)</h3><div class="hb" id="homeW" style="margin-top:14px"></div></div>
     </div>
     <div class="src"><b>Sources</b><span id="homeSrc"></span></div>
   </div></section>
 
   <section id="c-cable"><div class="wrap">
     <div class="shead"><span class="sno">05</span><h2>The cable MVNOs</h2><span class="sub">22.7M lines on someone else's network</span></div>
-    <p class="intro">Charter and Comcast sell mobile to their broadband customers and run it mostly on Verizon's network. In Q2 they added 854K lines between them, more than AT&amp;T and Verizon's postpaid phone adds combined (616K). For Verizon that is wholesale revenue; for the market it is a fourth and fifth competitor that never had to build a tower.</p>
+    <p class="intro">Charter and Comcast sell mobile to their broadband subscribers and run it mostly on Verizon's network. In Q2 they added 854K lines between them, more than AT&amp;T and Verizon's postpaid phone adds combined (616K). For Verizon that is wholesale revenue; for the market it is a fourth and fifth competitor that never had to build a tower.</p>
     <div class="grid2">
       <div class="card"><h3>Mobile lines, Jun 30, 2026 (M)</h3><div class="hb" id="cabL" style="margin-top:14px"></div></div>
       <div class="card"><h3>Context</h3><ul class="clean" style="margin-top:12px">
@@ -886,7 +888,7 @@
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Phones &amp; Plans · the Big Three as America's phone store, lender and plan seller</div>
     <h1>Carriers sell three in four iPhones.<br><span class="fade">And lend the money to buy them.</span></h1>
-    <p class="lede">AT&amp;T, Verizon and T-Mobile booked $13.7B of device revenue in Q2 2026, sold phones below cost to win and keep customers, and carry billions in phone loans. The new iPhone is the hook; the 36-month payment plan is the lock. Below: who buys, how they rate it, who has the subscribers, state by state, and what every plan costs.</p>
+    <p class="lede">AT&amp;T, Verizon and T-Mobile booked $13.7B of device revenue in Q2 2026, sold phones below cost to win and keep subscribers, and carry billions in phone loans. The new iPhone is the hook; the 36-month payment plan is the lock. Below: who buys, how they rate it, who has the subscribers, state by state, and what every plan costs.</p>
     <div class="strip" id="phStrip"></div>
   </div></div>
 
@@ -920,8 +922,8 @@
   </div></section>
 
   <section id="ph-rate"><div class="wrap">
-    <div class="shead"><span class="sno">04</span><h2>How happy their customers are</h2><span class="sub">J.D. Power 2026 · ACSI 2026</span></div>
-    <p class="intro">J.D. Power asked <b>59,097 US customers</b> to rate their carrier on eight things and turned the answers into <b>one score out of 1,000</b>. Higher means happier. The result is the same at all three carriers: <b>customers of the cheaper brand the carrier owns are happier than customers of its main brand.</b></p>
+    <div class="shead"><span class="sno">04</span><h2>How happy their subscribers are</h2><span class="sub">J.D. Power 2026 · ACSI 2026</span></div>
+    <p class="intro">J.D. Power asked <b>59,097 US subscribers</b> to rate their carrier on eight things and turned the answers into <b>one score out of 1,000</b>. Higher means happier. The result is the same at all three carriers: <b>subscribers of the cheaper brand the carrier owns are happier than subscribers of its main brand.</b></p>
     <div class="rx" id="rtHow"></div>
     <h3 class="bigq">The cheap brand beats the main brand, at every one of the Big Three</h3>
     <div class="vs3" id="rtVs"></div>
@@ -945,7 +947,7 @@
       <div class="card"><h3>Every line, by type</h3><p style="font-size:12.5px;margin-top:2px">Millions of lines (connections) · bar length = total</p><div id="sbBars" style="margin-top:16px"></div><div class="wlg row" id="sbLeg" style="margin-top:6px"></div></div>
     </div>
     <div class="grid2" style="margin-top:16px">
-      <div class="card"><h3>Phones only</h3><p style="font-size:12.5px;margin-top:2px">Main-brand plus second-brand phones, millions</p><div class="hb" id="sbPh" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Verizon leads by about 1.2M phones, but its count is six months newer than T-Mobile's, and T-Mobile's prepaid count may include a few non-phone lines. T-Mobile now reports accounts instead of customers (<b>34.7M</b> postpaid accounts at Jun 30, 2026), so Dec 31, 2025 is its last full count.</p></div>
+      <div class="card"><h3>Phones only</h3><p style="font-size:12.5px;margin-top:2px">Main-brand plus second-brand phones, millions</p><div class="hb" id="sbPh" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Verizon leads by about 1.2M phones, but its count is six months newer than T-Mobile's, and T-Mobile's prepaid count may include a few non-phone lines. T-Mobile now reports accounts instead of subscribers (<b>34.7M</b> postpaid accounts at Jun 30, 2026), so Dec 31, 2025 is its last full count.</p></div>
       <div class="card"><h3>Second brands (prepaid) only</h3><p style="font-size:12.5px;margin-top:2px">Prepaid lines, millions · AT&amp;T counts phones only</p><div class="hb" id="sbPre" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px"><b>T-Mobile owns the biggest second-brand business</b>: Metro and Mint. Outside the Big Three, cable resells Verizon's network (Charter 12.54M, Comcast 10.19M lines) and Boost (7.38M) rides AT&amp;T's.</p></div>
     </div>
     <div class="src"><b>Sources</b><span id="phSubSrc"></span></div>
@@ -986,7 +988,7 @@
 
   <section id="ph-sales"><div class="wrap">
     <div class="shead"><span class="sno">09</span><h2>The device money</h2><span class="sub">brands shipped, device revenue, phones sold below cost</span></div>
-    <p class="intro">No carrier reports how many phones it sells. What is reported: device revenue, upgrade rates, and what the phones cost them. Two of the three sell phones below cost to win and keep the customer on a monthly plan.</p>
+    <p class="intro">No carrier reports how many phones it sells. What is reported: device revenue, upgrade rates, and what the phones cost them. Two of the three sell phones below cost to win and keep the subscriber on a monthly plan.</p>
     <div class="grid2">
       <div class="card"><h3>US smartphone shipments, Q2 2026 · Counterpoint</h3><div class="hb" id="phBrand" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Shipments rose 6% while sales to consumers fell 5%: makers filled carrier and retail shelves ahead of rising component costs. Samsung's gain came from the $249.99 Galaxy A17 5G.</p></div>
       <div class="card"><h3>Device revenue and the loss on phones, Q2 2026 ($B)</h3><div class="hb" id="phLoss" style="margin-top:14px"></div><p style="margin-top:12px;font-size:12.5px">Bar = equipment revenue; the line marks what the phones cost the carrier. AT&amp;T's release doesn't give its equipment cost.</p></div>
@@ -1007,7 +1009,7 @@
   </div></section>
 
   <section id="ph-lock"><div class="wrap">
-    <div class="shead"><span class="sno">11</span><h2>The 36-month lock</h2><span class="sub">what it costs a customer to leave</span></div>
+    <div class="shead"><span class="sno">11</span><h2>The 36-month lock</h2><span class="sub">what it costs a subscriber to leave</span></div>
     <p class="intro">This is the churn moat in one calculator. At Verizon, "$1,200 off" is 36 monthly credits of $33.33. Leave early and the credits stop while the remaining phone balance becomes due. That gap is why postpaid churn sits under 1% a month.</p>
     <div class="calc">
       <div>
@@ -1133,7 +1135,7 @@
   <div class="wrap"><div class="hero" style="padding-bottom:30px">
     <div class="eyebrow">Coverage · towers, fiber, fixed wireless</div>
     <h1>The carriers don't own<br><span class="fade">most of their towers.</span></h1>
-    <p class="lede">Between 2012 and 2015 all three sold or leased the bulk of their towers to Crown Castle and American Tower, and rent space back. The steel is now owned mostly by three tower REITs, which the market values at 18–21 times EBITDA. The carriers keep the spectrum, the radios and the customers.</p>
+    <p class="lede">Between 2012 and 2015 all three sold or leased the bulk of their towers to Crown Castle and American Tower, and rent space back. The steel is now owned mostly by three tower REITs, which the market values at 18–21 times EBITDA. The carriers keep the spectrum, the radios and the subscribers.</p>
   </div></div>
 
   <section id="cov-towers"><div class="wrap">
@@ -1182,10 +1184,10 @@
       <div>
         <div class="sl"><label>Churn change <b id="labChV">0.00 pt</b></label><input type="range" id="labCh" min="-0.15" max="0.15" step="0.01" value="-0.05"><div class="h" id="labChH"></div></div>
         <div class="sl"><label>Price change on the postpaid base <b id="labPrV">0%</b></label><input type="range" id="labPr" min="-3" max="5" step="0.1" value="1"><div class="h" id="labPrH"></div></div>
-        <div class="sl"><label>Extra fiber customers <b id="labFbV">0K</b></label><input type="range" id="labFb" min="0" max="1500" step="10" value="300"><div class="h" id="labFbH"></div></div>
-        <div class="sl"><label>Extra fixed-wireless customers <b id="labFwV">0K</b></label><input type="range" id="labFw" min="0" max="1500" step="10" value="300"><div class="h">Fixed-wireless ARPU is not reported: $50 a month is an assumption.</div></div>
+        <div class="sl"><label>Extra fiber subscribers <b id="labFbV">0K</b></label><input type="range" id="labFb" min="0" max="1500" step="10" value="300"><div class="h" id="labFbH"></div></div>
+        <div class="sl"><label>Extra fixed-wireless subscribers <b id="labFwV">0K</b></label><input type="range" id="labFw" min="0" max="1500" step="10" value="300"><div class="h">Fixed-wireless ARPU is not reported: $50 a month is an assumption.</div></div>
         <div class="sl"><label>Satellite add-on attach rate <b id="labStV">0%</b></label><input type="range" id="labSt" min="0" max="10" step="0.1" value="1"><div class="h">At $10 a month, the price of T-Mobile's T-Satellite.</div></div>
-        <div class="sl"><label>Extra churn caused by the price change <b id="labElV">0.00 pt</b></label><input type="range" id="labEl" min="0" max="0.10" step="0.005" value="0.02"><div class="h">Price rises cost customers. An assumption: set to zero to ignore.</div></div>
+        <div class="sl"><label>Extra churn caused by the price change <b id="labElV">0.00 pt</b></label><input type="range" id="labEl" min="0" max="0.10" step="0.005" value="0.02"><div class="h">Price rises cost subscribers. An assumption: set to zero to ignore.</div></div>
       </div>
       <div class="out" id="labOut"></div>
     </div>
@@ -1210,17 +1212,17 @@
       <div class="card" style="border-top:3px solid var(--acid)"><h3>What it still needs</h3><ul class="clean" style="margin-top:12px">
         <li><span class="mk">01</span><span><b>Towers.</b> Indoor and city service needs a ground network. Analyst Tim Farrar calls the 800 MHz "a very limited amount of spectrum"; SpaceX says it will build a terrestrial network but has given no date.</span></li>
         <li><span class="mk">02</span><span><b>Capacity.</b> Satellite traffic is ≈0.0002% of T-Mobile's network. Satellites cover gaps; they don't carry the 159.3 trillion MB a year Americans use.</span></li>
-        <li><span class="mk">03</span><span><b>Customers who leave.</b> Postpaid churn is 0.85–0.99% a month: the average customer stays ≈100–118 months.</span></li>
+        <li><span class="mk">03</span><span><b>Subscribers who leave.</b> Postpaid churn is 0.85–0.99% a month: the average subscriber stays ≈100–118 months.</span></li>
         <li><span class="mk">04</span><span><b>A shortcut.</b> Renting a carrier's network (an MVNO) is how cable added 854K lines in Q2. Verizon and T-Mobile have both said no to SpaceX.</span></li>
       </ul></div>
     </div>
-    <div class="note"><b>The precedent is EchoStar.</b> It held 600 MHz, AWS-4, H-block, AWS-3 and 3.45 GHz licences and ran its own brand. It ended with Boost at 7.38M subscribers (down 118K in Q2), riding AT&amp;T's radio network, and sold its spectrum to AT&amp;T and SpaceX. Spectrum is not a network, and a network is not customers.</div>
+    <div class="note"><b>The precedent is EchoStar.</b> It held 600 MHz, AWS-4, H-block, AWS-3 and 3.45 GHz licences and ran its own brand. It ended with Boost at 7.38M subscribers (down 118K in Q2), riding AT&amp;T's radio network, and sold its spectrum to AT&amp;T and SpaceX. Spectrum is not a network, and a network is not subscribers.</div>
 
     <h3 style="margin:34px 0 12px">Seven moves</h3>
     <div class="grid3" id="spxMoves"></div>
 
     <h3 style="margin:34px 0 6px">Starve the pool</h3>
-    <p class="intro" style="margin-top:6px">A new carrier can only grow from customers who are already leaving someone else. Shrink that pool with churn, and cut the share SpaceX can win with coverage, price and a closed wholesale door.</p>
+    <p class="intro" style="margin-top:6px">A new carrier can only grow from subscribers who are already leaving someone else. Shrink that pool with churn, and cut the share SpaceX can win with coverage, price and a closed wholesale door.</p>
     <div class="calc">
       <div>
         <div class="sl"><label>Monthly churn cut, each carrier <b id="spCutV">0.00 pt</b></label><input type="range" id="spCut" min="0" max="0.25" step="0.01" value="0.05"><div class="h">From 0.86% (AT&amp;T phones), 0.92% (Verizon phones), 0.99% (T-Mobile accounts).</div></div>
@@ -1236,10 +1238,10 @@
   <section id="pb-all"><div class="wrap">
     <div class="shead"><span class="sno">04</span><h2>What works for any of them</h2><span class="sub">the mechanics of telco revenue</span></div>
     <div class="grid3">
-      <div class="card"><span class="pill">Keep</span><h3 style="margin-top:10px">Churn is the cheapest revenue</h3><p>At 110+ month lifetimes, every customer kept is worth years of revenue with no acquisition cost. A 0.05-point cut in monthly churn is worth $300–420M a year of run-rate revenue at any of the three (Lever Lab). Better CRM, proactive outage credits and bundle depth move it.</p></div>
-      <div class="card"><span class="pill">Converge</span><h3 style="margin-top:10px">Sell the home to the phone</h3><p>Fiber and fixed wireless are where all three add customers fastest. A household with both mobile and home internet from one carrier is harder to lose. AT&amp;T has 38.6M fiber locations to fill; Verizon 30M after Frontier; T-Mobile is building through JVs.</p></div>
-      <div class="card"><span class="pill">Price</span><h3 style="margin-top:10px">Pricing power, used carefully</h3><p>1% on the postpaid base is worth $0.5–0.7B a year at each carrier. It only works if churn holds: the Lab's last slider shows how fast a price rise is eaten by customers leaving. Verizon's ARPA fell 1.4% in Q2; T-Mobile's rose 2%.</p></div>
-      <div class="card"><span class="pill">Connect</span><h3 style="margin-top:10px">More things per account</h3><p>Watches, tablets, cars, trackers and business IoT add lines to existing accounts at little cost. It's the reason carriers moved to ARPA: the account is the customer, the line count is the upside.</p></div>
+      <div class="card"><span class="pill">Keep</span><h3 style="margin-top:10px">Churn is the cheapest revenue</h3><p>At 110+ month lifetimes, every subscriber kept is worth years of revenue with no acquisition cost. A 0.05-point cut in monthly churn is worth $300–420M a year of run-rate revenue at any of the three (Lever Lab). Better CRM, proactive outage credits and bundle depth move it.</p></div>
+      <div class="card"><span class="pill">Converge</span><h3 style="margin-top:10px">Sell the home to the phone</h3><p>Fiber and fixed wireless are where all three add subscribers fastest. A household with both mobile and home internet from one carrier is harder to lose. AT&amp;T has 38.6M fiber locations to fill; Verizon 30M after Frontier; T-Mobile is building through JVs.</p></div>
+      <div class="card"><span class="pill">Price</span><h3 style="margin-top:10px">Pricing power, used carefully</h3><p>1% on the postpaid base is worth $0.5–0.7B a year at each carrier. It only works if churn holds: the Lab's last slider shows how fast a price rise is eaten by subscribers leaving. Verizon's ARPA fell 1.4% in Q2; T-Mobile's rose 2%.</p></div>
+      <div class="card"><span class="pill">Connect</span><h3 style="margin-top:10px">More things per account</h3><p>Watches, tablets, cars, trackers and business IoT add lines to existing accounts at little cost. It's the reason carriers moved to ARPA: the account is the subscriber, the line count is the upside.</p></div>
       <div class="card"><span class="pill">Spectrum</span><h3 style="margin-top:10px">Turn licences into products</h3><p>AT&amp;T's new 3.45 GHz and 600 MHz can carry fixed wireless (Internet Air) where fiber isn't built. Spectrum that sits idle earns nothing; T-Mobile sold 800 MHz it didn't need for $2.9B.</p></div>
       <div class="card"><span class="pill">Satellite</span><h3 style="margin-top:10px">A feature, not a revenue line (yet)</h3><p>Even 1% of a carrier's base paying $10 a month is only $40–90M a year. Satellite earns its keep by removing a reason to switch, not by billing for it. The carriers' joint venture is designed to stop SpaceX owning that feature.</p></div>
     </div>
@@ -1506,7 +1508,7 @@
   // ---- spectrum deals, 2025–26 ($B) ----
   const DEALS=[
     {d:'2025-04-01',who:'tmo',t:'T-Mobile and EQT close the Lumos fiber JV',amt:'$950M in',p:'Target: 3.5M homes passed by end-2028.',s:['tmLum']},
-    {d:'2025-07-24',who:'tmo',t:'T-Mobile and KKR complete Metronet',amt:'$4.9B for 50%',p:'Fiber joint venture; 755K fiber customers came with "Metronet and other acquisitions".',s:['tmMet']},
+    {d:'2025-07-24',who:'tmo',t:'T-Mobile and KKR complete Metronet',amt:'$4.9B for 50%',p:'Fiber joint venture; 755K fiber subscribers came with "Metronet and other acquisitions".',s:['tmMet']},
     {d:'2025-08-01',who:'tmo',t:'T-Mobile closes UScellular’s wireless operations',amt:'≈$4.4B',p:'Cash plus assumed debt. Brought 3.29M postpaid phones; synergy target about $1.2B a year.',s:['tmQ']},
     {d:'2025-09-08',who:'spx',t:'SpaceX agrees to buy EchoStar’s AWS-4 and H-block spectrum',amt:'≈$17B',p:'$8.5B cash plus $8.5B of SpaceX stock. Amended in November to add AWS-3 licences for $2.6B in stock.',s:['spxE','sats']},
     {d:'2026-01-13',who:'att',t:'AT&T closes UScellular (Array) spectrum',amt:'$1.018B',p:'3.45 GHz and 700 MHz licences.',s:['arr']},
@@ -1817,13 +1819,13 @@
     setSrc('ivSrc',['att2','attPR','vzG','tm1','tmCMD','saT','saV','saM']);
     // bull / bear
     const BB={
-      att:{bull:['Cheapest of the three: 6.7× EV/EBITDA, 7.3× trailing P/E.','Most postpaid phone adds of the carriers that report them (432K), with phone churn at 0.86%.','Fiber: 12.1M AT&T Fiber customers at $72.29 ARPU, +367K fiber in Q2; 40M+ locations by end-2026.','Free cash flow guided to $18B+ → $19B+ (2027) → $21B+ (2028); ≈$24B of buybacks over 2026–28.'],
+      att:{bull:['Cheapest of the three: 6.7× EV/EBITDA, 7.3× trailing P/E.','Most postpaid phone adds of the carriers that report them (432K), with phone churn at 0.86%.','Fiber: 12.1M AT&T Fiber subscribers at $72.29 ARPU, +367K fiber in Q2; 40M+ locations by end-2026.','Free cash flow guided to $18B+ → $19B+ (2027) → $21B+ (2028); ≈$24B of buybacks over 2026–28.'],
            bear:['Leverage rises to ≈3.2× after paying ≈$23B for EchoStar spectrum.','Capital investment of $23–24B a year, every year.','Legacy wireline revenue fell 25.9% in Q2.','SpaceX now targets the same low-band reach that underpins rural coverage.'],
            ask:'Does Q3 (Oct 21) show leverage near 3.2× with phone adds and fiber adds intact?'},
-      vz:{bull:['Highest free-cash-flow yield (≈12.7%) and a 6.8% dividend yield.','2026 free cash flow guided up 9–10% to $21.94–22.14B; a $5B opex savings programme.','Frontier closed: ≈30M fiber passings, 40–50M targeted; 6.2M fixed-wireless customers.','Consumer postpaid phone churn improved to 0.84% in Q2; best consumer Q2 adds in five years.'],
+      vz:{bull:['Highest free-cash-flow yield (≈12.7%) and a 6.8% dividend yield.','2026 free cash flow guided up 9–10% to $21.94–22.14B; a $5B opex savings programme.','Frontier closed: ≈30M fiber passings, 40–50M targeted; 6.2M fixed-wireless subscribers.','Consumer postpaid phone churn improved to 0.84% in Q2; best consumer Q2 adds in five years.'],
            bear:['Revenue fell 0.7% and ARPA fell 1.4% in Q2.','Largest debt pile: $128.7B net unsecured, before secured debt.','184K postpaid phone adds vs AT&T 432K; cable MVNOs added 854K lines.','Ruled out a satellite MVNO: if SpaceX goes direct, it competes rather than partners.'],
            ask:'Can Schulman grow service revenue without buying it with price? Q3 on Oct 26.'},
-      tmo:{bull:['Highest margin: 50.2% core EBITDA on service revenue; lowest leverage (2.3×).','2027 targets: service revenue $80.5–81.5B, EBITDA $40–41B, FCF $19.5–20.5B.','ARPA up 2% to $152.91; 8.45M 5G broadband customers, 15M targeted by 2030.','Stock down 34% in a year to near its 52-week low; still guiding growth.'],
+      tmo:{bull:['Highest margin: 50.2% core EBITDA on service revenue; lowest leverage (2.3×).','2027 targets: service revenue $80.5–81.5B, EBITDA $40–41B, FCF $19.5–20.5B.','ARPA up 2% to $152.91; 8.45M 5G broadband subscribers, 15M targeted by 2030.','Stock down 34% in a year to near its 52-week low; still guiding growth.'],
            bear:['Stopped reporting phone net adds; account adds cooled to 277K.','Still the highest P/E of the three (15.6× trailing).','Grain bought its 800 MHz airwaves from T-Mobile this year for $2.9B; SpaceX is reported to be paying ≈$8B for Grain\u2019s 800 MHz portfolio.','T-Satellite usage is "a lot less" than expected.'],
            ask:'Is growth slowing or just reported differently? Q3 on Oct 28.'}};
     $('bbCards').innerHTML=CK.map(k=>{ const c=CAR[k], b=BB[k]; return '<div class="bbc" style="--c:'+c.col+'"><div class="hd"><b>'+c.n+'</b><span>'+c.mk.eve.toFixed(1)+'× EV/EBITDA<br>'+fcfY(c).toFixed(1)+'% FCF yield</span></div>'+
@@ -1975,7 +1977,7 @@
       .map(([a,b])=>'<span>'+a+'</span><b>'+b+'</b>').join('');
     setSrc('slSrc',['sl12','slQ2','slS1','d2c','saS','att2','vz2','tm1']);
     table($('d2cTbl'),['Service','Carrier(s)','Status','Price'],[
-      ['Starlink Direct to Cell',{v:'T-Mobile (T-Satellite)',c:'l'},{v:'Live since Jul 23, 2025; app data added Oct 2025. Exclusivity "does not end this year". T-Mobile says usage is far below expectations.',c:'l'},{v:'$10/month; included on Experience Beyond; also sold to AT&T and Verizon customers',c:'l'}],
+      ['Starlink Direct to Cell',{v:'T-Mobile (T-Satellite)',c:'l'},{v:'Live since Jul 23, 2025; app data added Oct 2025. Exclusivity "does not end this year". T-Mobile says usage is far below expectations.',c:'l'},{v:'$10/month; included on Experience Beyond; also sold to AT&T and Verizon subscribers',c:'l'}],
       ['AST SpaceMobile',{v:'AT&T, Verizon',c:'l'},{v:'≈45 BlueBird satellites targeted by early 2027; AT&T’s service delayed with AST’s launch plan to early 2027. Verizon’s deal (850 MHz) said "starting in 2026"; no launch confirmed.',c:'l'},{v:'Not announced',c:'l'}],
       ['Carrier satellite JV',{v:'AT&T + Verizon + T-Mobile',c:'l'},{v:'Agreed in principle May 14, signed by Oct 1, 2026. Direct-to-device access first. Interim CEO Paul Roth.',c:'l'},{v:'—',c:'l'}],
       ['SpaceX’s own spectrum',{v:'None (SpaceX)',c:'l'},{v:'AWS-4/H-block and AWS-3 from EchoStar; 800 MHz from Grain pending FCC approval. Next-generation satellites in 2027.',c:'l'},{v:'—',c:'l'}]]);
@@ -1992,9 +1994,9 @@
     table($('slbTbl'),['Seller','Buyer','Towers','Price','Closed'],[[sw(CAR.tmo.col)+'T-Mobile','Crown Castle','7,200','$2.4B','Sep 2012'],[sw(CAR.att.col)+'AT&T','Crown Castle','9,700','$4.85B','Oct 2013'],[sw(CAR.vz.col)+'Verizon','American Tower','≈11,489','$5.056B','Feb 2015']]);
     setSrc('steelSrc',['twr','sbaQ2','cciATT','amtVZ','cciFib','saA','saC','saB']);
     table($('reachTbl'),['','Fiber today','Fiber target','Fixed wireless today','Fixed wireless target'],[
-      [sw(CAR.att.col)+'AT&T',{v:'38.6M locations (33.7M owned, 4.9M through ventures); 12.1M AT&T Fiber customers',c:'l'},{v:'40M+ locations by end-2026; 60M+ by end-2030',c:'l'},{v:'2.61M (Internet Air 1.95M)',c:'l'},{v:'Not stated',c:'l'}],
+      [sw(CAR.att.col)+'AT&T',{v:'38.6M locations (33.7M owned, 4.9M through ventures); 12.1M AT&T Fiber subscribers',c:'l'},{v:'40M+ locations by end-2026; 60M+ by end-2030',c:'l'},{v:'2.61M (Internet Air 1.95M)',c:'l'},{v:'Not stated',c:'l'}],
       [sw(CAR.vz.col)+'Verizon',{v:'≈30M passings after Frontier; 10.9M fiber connections',c:'l'},{v:'Over 32M by end-2026; 40–50M over the medium term',c:'l'},{v:'6.21M',c:'l'},{v:'8–9M by 2028 (set Oct 2024)',c:'l'}],
-      [sw(CAR.tmo.col)+'T-Mobile',{v:'Lumos and Metronet JVs; total not reported',c:'l'},{v:'12–15M households passed and 3–4M fiber customers by end-2030',c:'l'},{v:'8.45M 5G broadband (Dec 2025)',c:'l'},{v:'15M by 2030',c:'l'}]]);
+      [sw(CAR.tmo.col)+'T-Mobile',{v:'Lumos and Metronet JVs; total not reported',c:'l'},{v:'12–15M households passed and 3–4M fiber subscribers by end-2030',c:'l'},{v:'8.45M 5G broadband (Dec 2025)',c:'l'},{v:'15M by 2030',c:'l'}]]);
     setSrc('reachSrc',['att2','attT','vzG','vzFr','vzFWA','vz2','tm4','tmCMD']);
     setSrc('twSrc',['fccASR','usAtlas']);
   }
@@ -2019,8 +2021,8 @@
     const z={ch:-0.05,el:0,pr:0,fb:0,fw:0,st:0};
     const sz=(k,o)=>usdM(labVals(k,{...z,...o}).tot/1e6)+' a year';
     const P={
-      att:[['Fill the fiber','38.6M locations, 12.1M AT&T Fiber customers. Each extra point of penetration is 386K homes at $72.29.','+1 pt penetration ≈ '+usdM(386e3*72.29*12/1e6)+' a year'],
-           ['Converge to cut churn','Sell wireless into fiber homes and fiber to phone customers; converged households leave less.','−0.05 pt churn ≈ '+sz('att',{})],
+      att:[['Fill the fiber','38.6M locations, 12.1M AT&T Fiber subscribers. Each extra point of penetration is 386K homes at $72.29.','+1 pt penetration ≈ '+usdM(386e3*72.29*12/1e6)+' a year'],
+           ['Converge to cut churn','Sell wireless into fiber homes and fiber to phone subscribers; converged households leave less.','−0.05 pt churn ≈ '+sz('att',{})],
            ['Put EchoStar spectrum to work','3.45 GHz and 600 MHz can carry Internet Air (1.95M) where fiber isn’t built yet.','+300K Internet Air ≈ '+usdM(300e3*FW_ARPU*12/1e6)+' a year (at an assumed $50)'],
            ['Grow business fiber','Business Fiber & Advanced Connectivity grew 10.0% to $1.9B in Q2.','each +1% ≈ '+usdM(1946*4*0.01)+' a year'],
            ['Price with the churn lead','At 0.86% phone churn there is room for selective price moves.','+1% ARPU ≈ '+sz('att',{ch:0,pr:1})]],
@@ -2029,7 +2031,7 @@
           ['Fixed wireless to 8–9M','6.21M today; the 2028 target means ≈2–3M more.','+1M FWA ≈ '+usdM(1e6*FW_ARPU*12/1e6)+' a year (at an assumed $50)'],
           ['Keep the consumer churn gain','Consumer phone churn improved from 0.90% to 0.84% in Q2.','−0.05 pt churn ≈ '+sz('vz',{})],
           ['Wholesale the cable boom','Charter and Comcast added 854K lines in Q2, largely on Verizon’s network. Their growth is Verizon’s wholesale revenue.','not disclosed']],
-      tmo:[['Broadband to 15M','8.45M 5G broadband at end-2025; 15M targeted by 2030, plus 3–4M fiber customers through JVs.','+1M FWA ≈ '+usdM(1e6*FW_ARPU*12/1e6)+' a year (at an assumed $50)'],
+      tmo:[['Broadband to 15M','8.45M 5G broadband at end-2025; 15M targeted by 2030, plus 3–4M fiber subscribers through JVs.','+1M FWA ≈ '+usdM(1e6*FW_ARPU*12/1e6)+' a year (at an assumed $50)'],
            ['Keep ARPA climbing','ARPA rose 2% to $152.91; premium plans carry it.','+1% ARPA ≈ '+sz('tmo',{ch:0,pr:1})],
            ['Win enterprise','A new Chief Enterprise Officer (Chris Sambar) and a business segment where T-Mobile is the challenger.','not sized'],
            ['Bring account churn down','0.99% account churn is the highest churn figure any of the three reports (accounts, not phones).','−0.05 pt churn ≈ '+sz('tmo',{})],
@@ -2047,7 +2049,7 @@
     $('labOut').innerHTML='<div class="k">Annual run-rate revenue change · '+c.n+'</div><div class="big '+(v.tot<0?'down':'')+'" style="'+(v.tot>=0?'color:'+c.col:'')+'">'+(v.tot<0?'−':'+')+usdM(Math.abs(v.tot)/1e6)+'</div>'+
       '<div class="k" style="margin-top:-4px">'+(v.tot/(c.fy25.rev*1e6)*100>=0?'+':'')+(v.tot/(c.fy25.rev*1e6)*100).toFixed(2)+'% of FY2025 revenue ('+usdM(c.fy25.rev)+')</div>'+
       rows.map(([a,b,d])=>'<div class="rw"><span>'+a+'<br><small style="color:var(--dim)">'+d+'</small></span><b class="'+(b<0?'down':'')+'">'+(b<0?'−':'+')+usdM(Math.abs(b)/1e6)+'</b></div>').join('')+
-      '<div class="verdict">'+(o.pr>0&&elx>0?'The price rise brings in '+usdM(v.rPrice/1e6)+' but the extra '+elx.toFixed(3)+'-point churn it causes costs '+usdM(Math.abs(labVals(k,{ch:0,el:elx,pr:0,fb:0,fw:0,st:0}).rChurn)/1e6)+'. Break-even extra churn for this price rise: <b>'+((o.pr/100)/(12*(1+o.pr/100))*100).toFixed(3)+' pt</b> a month.':'Churn and price are the big levers because they apply to the whole base. Fiber and fixed wireless add customers one home at a time.')+'</div>';
+      '<div class="verdict">'+(o.pr>0&&elx>0?'The price rise brings in '+usdM(v.rPrice/1e6)+' but the extra '+elx.toFixed(3)+'-point churn it causes costs '+usdM(Math.abs(labVals(k,{ch:0,el:elx,pr:0,fb:0,fw:0,st:0}).rChurn)/1e6)+'. Break-even extra churn for this price rise: <b>'+((o.pr/100)/(12*(1+o.pr/100))*100).toFixed(3)+' pt</b> a month.':'Churn and price are the big levers because they apply to the whole base. Fiber and fixed wireless add subscribers one home at a time.')+'</div>';
   }
 
 
@@ -2076,7 +2078,7 @@
       return [sw(CAR[k].col)+n,fmt1(a/1e6)+'M',fmt1(z/1e6)+'M',u]; });
     table($('spPool'),['Leavers a year','Today','After cut','Units'],rows);
     const win=p1*sh, yrs=win>0?7.38e6/win:Infinity, win0=p0*sh;
-    $('spOut').innerHTML='<div class="k">SpaceX customers a year at this share</div><div class="big" style="color:var(--spx)">'+(win>=1e6?fmt2(win/1e6)+'M':fmt0(win/1e3)+'K')+'</div>'+
+    $('spOut').innerHTML='<div class="k">SpaceX subscribers a year at this share</div><div class="big" style="color:var(--spx)">'+(win>=1e6?fmt2(win/1e6)+'M':fmt0(win/1e3)+'K')+'</div>'+
       [['Leavers a year, all three',fmt1(p0/1e6)+'M → '+fmt1(p1/1e6)+'M'],['Taken from SpaceX by the churn cut',fmt0((win0-win)/1e3)+'K a year'],['Revenue kept by the churn cut',usdM(rev/1e6)+' a year'],['Years at this rate to Boost’s size (7.38M)',isFinite(yrs)?yrs.toFixed(1):'never']]
       .map(([a,b])=>'<div class="rw"><span>'+a+'</span><b>'+b+'</b></div>').join('')+
       '<div class="verdict">'+(sh===0?'<b>At a zero share SpaceX never becomes a carrier,</b> whatever the churn.':'A '+cut.toFixed(2)+'-point churn cut shrinks the pool by '+((1-p1/p0)*100).toFixed(0)+'%. Halving SpaceX’s share does more: '+fmt0(win/2e3)+'K a year instead of '+fmt0(win/1e3)+'K. <b>The share is decided by coverage, price and wholesale access</b>, which is what moves 2–7 attack.')+'</div>';
@@ -2165,7 +2167,7 @@
     $('lkOut').innerHTML='<div class="k">Cost to leave at month '+M+'</div><div class="big" style="color:var(--red)">$'+fmt0(bal)+'</div>'+
       [['Monthly installment','$'+fmt2(inst)],['Monthly credit','−$'+fmt2(cr)],['Your net monthly cost while you stay','$'+fmt2(inst-cr)],['Paid so far (net of credits)','$'+fmt0(paid-got)],['Credits you walk away from','$'+fmt0(lost)],['Balance due after a $'+fmt0(S)+' switching offer','$'+fmt0(net)],['Stay all 36 months: total cost','$'+fmt0(P-C)]]
       .map(([a,b])=>'<div class="rw"><span>'+a+'</span><b>'+b+'</b></div>').join('')+
-      '<div class="verdict">'+(C>=P?'<b>"Free" phone, with a $'+fmt0(bal)+' exit fee.</b> The phone only becomes free if the customer stays the full 36 months; leaving at month '+M+' forfeits $'+fmt0(lost)+' of credits.':'Leaving at month '+M+' means paying $'+fmt0(bal)+' at once and forfeiting $'+fmt0(lost)+' of credits.')+(S?' A rival’s $'+fmt0(S)+' offer '+(S>=bal?'<b>covers the whole balance</b>: that is how carriers break each other’s lock.':'covers '+Math.round(S/bal*100)+'% of it.'):'')+'</div>';
+      '<div class="verdict">'+(C>=P?'<b>"Free" phone, with a $'+fmt0(bal)+' exit fee.</b> The phone only becomes free if the subscriber stays the full 36 months; leaving at month '+M+' forfeits $'+fmt0(lost)+' of credits.':'Leaving at month '+M+' means paying $'+fmt0(bal)+' at once and forfeiting $'+fmt0(lost)+' of credits.')+(S?' A rival’s $'+fmt0(S)+' offer '+(S>=bal?'<b>covers the whole balance</b>: that is how carriers break each other’s lock.':'covers '+Math.round(S/bal*100)+'% of it.'):'')+'</div>';
   }
   function phTick(now){
     if(now-phLast>100||!phLast){ phLast=now; const t=Math.min(Date.now(),T_Y1), o=Math.min(PH_OPEN,T_Y1);
@@ -2189,7 +2191,7 @@
       ['Trade in','$1.43B','paid to US consumers for trade-ins, Q2 2026','The average iPhone handed in passed four years old for the first time. Most traded-in: iPhone 13.','Assurant Q2 2026'],
       ['Rate','77','ACSI wireless satisfaction, a record high','T-Mobile 78, AT&T 76, Verizon 76. Phones themselves: Samsung 81, Apple 80, Google 77, Motorola 77.','ACSI May 2026']];
     $('phJourney').innerHTML=J.map(([st,v,l,d,s],i)=>'<div class="jst" tabindex="0" data-tip="<b>'+st+'</b><br>'+esc(d)+'"><span class="nd">'+(i+1)+'</span><div class="st">'+st+'</div><div class="bv">'+v+'</div><div class="bl">'+l+'</div><div class="bs">'+s+'</div></div>').join('')+
-      '<div class="jloop"><span class="nd">↺</span><div><b>Then they stay or switch.</b> 0.85–0.99% of postpaid customers leave each month; the 36-month payment plan and its credits are what hold the rest (sections 10 and 11 below, and the churn treadmill on the Brief tab).</div></div>';
+      '<div class="jloop"><span class="nd">↺</span><div><b>Then they stay or switch.</b> 0.85–0.99% of postpaid subscribers leave each month; the 36-month payment plan and its credits are what hold the rest (sections 10 and 11 below, and the churn treadmill on the Brief tab).</div></div>';
     setSrc('phJrSrc',['revOrg','cpQ2','recon','oxio','cirp26','assur','acsi']);
     // ---- 02 waffles ----
     waffle('wafWhere','wafWhereL',[['Carriers (stores and online)',75,C_ACC,1],['Apple (stores and apple.com)',14,C_GL,0],['Other retailers (remainder)',11,C_GD,1]],'iPhone buyers');
@@ -2264,7 +2266,7 @@
   function renderRate(){
     const F=[['price','Value for the price'],['signal','Network quality'],['trust','Trust'],['ease','Ease of doing business'],['people','Staff'],['offers','Products and plans'],['digital','App and website'],['fix','Fixing problems']];
     $('rtHow').innerHTML='<div class="rxk"><span class="k">The score</span><b>1,000</b><span>is a perfect score. Each ring below fills to the brand\'s score. This year\'s range: <b>587</b> (AT&amp;T\'s main brand) to <b>721</b> (Consumer Cellular).</span></div>'+
-      '<div class="rxf"><span class="k">The eight things customers rated</span><div class="rxg">'+F.map(([k,t])=>'<div class="rxi"><svg viewBox="0 0 24 24" aria-hidden="true">'+RX_IC[k]+'</svg><span>'+t+'</span></div>').join('')+'</div></div>';
+      '<div class="rxf"><span class="k">The eight things subscribers rated</span><div class="rxg">'+F.map(([k,t])=>'<div class="rxi"><svg viewBox="0 0 24 24" aria-hidden="true">'+RX_IC[k]+'</svg><span>'+t+'</span></div>').join('')+'</div></div>';
     const VS=[
       {k:'att',n:'AT&amp;T',m:['AT&amp;T','main brand · postpaid',587,'Unlimited from $50/mo + taxes'],v:['Cricket','owned by AT&amp;T · prepaid',647,'Unlimited from $35/mo, taxes in'],x:'Also rated: <b>AT&amp;T Prepaid 604</b>.'},
       {k:'vz',n:'Verizon',m:['Verizon','main brand · postpaid',593,'Unlimited from $55/mo + taxes'],v:['Visible','owned by Verizon · prepaid',702,'Unlimited from $25/mo, taxes in'],x:'Also rated: <b>Straight Talk 647</b> (Verizon-owned) and <b>Verizon Prepaid 602</b>.'},
@@ -2282,11 +2284,11 @@
     const rv=id=>usd(realOf(RP.find(p=>p.id===id),1,1,0,TAX_US).real), avg=Math.round((60+109+84)/3);
     $('rtTake').innerHTML='<h3>What it adds up to</h3><p style="font-size:12.5px;margin-top:2px">The ratings next to the real price (section 07)</p>'+
       '<div class="tri"><div><b>+'+avg+'</b><span>points: the average lead of the cheap brand over its own main brand</span></div><div><b>$35</b><span>Cricket, all-in, vs <b style="display:inline;font-size:inherit;font-family:inherit">'+rv('av')+'</b> for AT&amp;T Value 2.0</span></div><div><b>721</b><span>the top score belongs to an independent: Consumer Cellular</span></div></div>'+
-      '<ol><li><span><b>Customers reward value, not the logo.</b> At all three carriers the cheap brand outscores the main brand, by 60 to 109 points.</span></li>'+
-      '<li><span><b>The cheap brand is the safety net.</b> A customer who leaves AT&amp;T for Cricket, or Verizon for Visible, keeps paying the same company. That is the point of a second brand.</span></li>'+
-      '<li><span><b>The main brand has to earn its premium.</b> One line, all-in: Verizon Simplicity '+rv('vs')+' vs Visible $25; T-Mobile Essentials 2.0 '+rv('te')+' vs Mint $30 plus tax. The extra must come from full-speed data, hotspot, travel and service.</span></li>'+
-      '<li><span><b>T-Mobile shows it can be done.</b> Its main brand scores 631, ahead of Verizon (593) and AT&amp;T (587), and ACSI ranks it first of the three (78).</span></li></ol>'+
-      '<div class="lev"><span class="k">Revenue lever</span>Move price-sensitive customers down to the second brand instead of losing them to a rival, and give main-brand customers more for the money: full-speed data, hotspot, travel and better service.</div>';
+      '<ol><li><span><b>Subscribers reward value, but the ratings flatter the cheap brand.</b> It outscores the main brand by 60 to 109 points, partly because its subscribers expect less for what they pay. That doesn\'t mean a main-brand subscriber would be happier moving down.</span></li>'+
+      '<li><span><b>The second brand is the subscriber\'s choice, not a save tool.</b> People pick Cricket, Visible or Mint up front for the price, prepaid billing and no credit check. A subscriber leaving AT&amp;T is leaving AT&amp;T; a second (flanker) brand from the same company rarely wins them back. An AT&amp;T postpaid phone brings in $'+CAR.att.unit.rev.toFixed(2)+' a month (Q2 2026), a Cricket line $35 to $55 all-in: two different subscribers, not one subscriber at two prices.</span></li>'+
+      '<li><span><b>Keep the brands apart.</b> Separate stores, plans and prices, so each brand serves its own subscriber and the main brand never ends up discounting against itself. Verizon\'s Simplicity blurs that line: a cheap tier inside the main brand ($30 for switchers, '+rv('vs')+' all-in for everyone else).</span></li>'+
+      '<li><span><b>Retention is won on the main brand.</b> T-Mobile\'s main brand scores 631, ahead of Verizon (593) and AT&amp;T (587); ACSI ranks it first of the three (78), and its Experience plans carry a 5-year price guarantee.</span></li></ol>'+
+      '<div class="lev"><span class="k">Revenue lever</span>Grow each brand on its own terms and run the funnel upward: subscribers who start on the second brand, often young or new to credit, move them up to Flagship brands as they qualify. Keep main-brand subscribers happy with value, service, rewards, price locks on the main brand, not by moving them to a second (flanker) brand.</div>';
     setSrc('phRtSrc',['jdpFox','jdp','acsi','plAtt','plCk','plVz','plVis','plTmR','plMint','taxF']);
   }
 
@@ -2295,12 +2297,12 @@
   function renderSubs(){
     const S=[
       {k:'vz',n:'Verizon',d:'Jun 30, 2026',tot:146.953,seg:[94.098,19.351,33.504],br:['Visible','Total Wireless','Straight Talk','Tracfone brands']},
-      {k:'tmo',n:'T-Mobile',d:'Dec 31, 2025 (last customer count)',tot:142.388,seg:[85.594,25.943,30.851],br:['Metro by T-Mobile','Mint Mobile','T-Mobile Prepaid']},
+      {k:'tmo',n:'T-Mobile',d:'Dec 31, 2025 (last subscriber count)',tot:142.388,seg:[85.594,25.943,30.851],br:['Metro by T-Mobile','Mint Mobile','T-Mobile Prepaid']},
       {k:'att',n:'AT&amp;T',d:'Jun 30, 2026',tot:109.8,seg:[74.921,16.518,18.361],br:['Cricket','AT&amp;T Prepaid']}];
     const SEG=['Postpaid phones (main brand)','Prepaid (second brands)','Tablets, watches and other devices'];
     $('sbWin').innerHTML='<span class="bd">#1 · most subscribers</span><div class="wn">Verizon</div><div class="wv">146.95M</div><div class="wl">lines (connections) at Jun 30, 2026</div>'+
       '<div class="wr" style="--c:var(--tmo)"><b>#2 T-Mobile</b><span>142.39M<small>Dec 31, 2025</small></span></div><div class="wr" style="--c:var(--att)"><b>#3 AT&amp;T</b><span>109.80M<small>Jun 30, 2026</small></span></div>'+
-      '<div class="wft">Verizon also leads on <b>phones alone</b>: 112.8M, against about 111.5M at T-Mobile and 91.4M at AT&amp;T.</div><div class="wft">A line is any connection: a phone, tablet, watch or other device. One customer can have several.</div>';
+      '<div class="wft">Verizon also leads on <b>phones alone</b>: 112.8M, against about 111.5M at T-Mobile and 91.4M at AT&amp;T.</div><div class="wft">A line is any connection: a phone, tablet, watch or other device. One subscriber can have several.</div>';
     const mx=S[0].tot;
     $('sbBars').innerHTML=S.map(c=>{ const col=CAR[c.k].col, cs=[col,TINT[c.k],C_GX], tc=['#fefefe','#eef2fb','#eef2fb'];
       return '<div class="sr" style="--c:var(--'+c.k+')"><div class="srh"><b>'+c.n+'</b><span><strong>'+c.tot.toFixed(2)+'M</strong>'+c.d+'</span></div>'+
@@ -2396,7 +2398,7 @@
     {id:'te',c:'tmo',n:'Essentials 2.0',p1:[65,60],p4:[35,30],pr:{v:5,l:4,t:'Essentials 4 Line Offer'},ad1:60,ad4:25,h:'50GB full-speed · 3G-speed hotspot'},
     {id:'tm',c:'tmo',n:'Experience More 2.0',p1:[90,85],p4:[55,50],ad1:85,ad4:50,h:'Unlimited full-speed · 60GB hotspot'},
     {id:'tb',c:'tmo',n:'Experience Beyond 2.0',p1:[105,100],p4:[70,65],ad1:100,ad4:65,h:'Unlimited · unlimited hotspot · T-Satellite'}];
-  const PRX={att:'att.com\'s 4-line price is $5 a line below the regular AutoPay price: a promo credit (new line or a new bring-your-own phone).',vz:'Switch & Save: $15 a line off for customers switching from an eligible carrier, with no end date while the line stays active.',tmo:'Essentials 4 Line Offer (limited time): $120 for 4 lines before AutoPay instead of $140.'};
+  const PRX={att:'att.com\'s 4-line price is $5 a line below the regular AutoPay price: a promo credit (new line or a new bring-your-own phone).',vz:'Switch & Save: $15 a line off for subscribers switching from an eligible carrier, with no end date while the line stays active.',tmo:'Essentials 4 Line Offer (limited time): $120 for 4 lines before AutoPay instead of $140.'};
   const CN={att:'AT&amp;T',vz:'Verizon',tmo:'T-Mobile'};
   const RB={c:'att',id:'av',l:1,ap:1,pr:0,st:'US'};
   const usd=v=>'$'+v.toFixed(2);
@@ -2700,7 +2702,7 @@
     play:[['pb-lab','Lever Lab'],['pb-moves','Carrier Playbooks'],['pb-spx','Keep SpaceX Out'],['pb-all','What Works for All']],
     cal:[['cal-q3','Q3 Countdown'],['cal-next','Dated Events'],['cal-src','Sources & Method']]
   };
-  const LBL={brief:'Brief',biz:'The Business',val:'Valuation',debt:'Debt',cust:'Customers',phone:'Phones & Plans',spec:'Spectrum',sat:'Satellite',cov:'Coverage',play:'Revenue Playbook',cal:'Calendar'};
+  const LBL={brief:'Brief',biz:'The Business',val:'Valuation',debt:'Debt',cust:'Subscribers',phone:'Phones & Plans',spec:'Spectrum',sat:'Satellite',cov:'Coverage',play:'Revenue Playbook',cal:'Calendar'};
   const RENDER={brief:renderBrief,biz:renderBiz,val:renderVal,debt:renderDebt,cust:renderCust,phone:renderPhone,spec:renderSpec,sat:renderSat,cov:renderCov,play:renderPlay,cal:renderCal};
   const done={};
   function buildSub(view){
