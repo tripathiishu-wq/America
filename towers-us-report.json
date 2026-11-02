@@ -1,57 +1,57 @@
 {
- "asof": "2026-10-25",
+ "asof": "2026-11-01",
  "stats": {
-  "ra_rows": 197898,
+  "ra_rows": 197961,
   "out_of_range": 4,
-  "kept": 141906
+  "kept": 141954
  },
  "status_codes": {
-  "C": 141910,
-  "A": 15903,
+  "C": 141958,
+  "A": 15911,
   "T": 8911,
-  "I": 12724,
-  "G": 18437,
+  "I": 12733,
+  "G": 18435,
   "": 13
  },
  "per_owner": {
-  "amt": 19638,
-  "vz": 9622,
-  "cci": 20725,
-  "rest": 58196,
-  "oth": 13950,
-  "sba": 14149,
-  "tmo": 1535,
+  "amt": 19642,
+  "vz": 9625,
+  "cci": 20727,
+  "rest": 58108,
+  "oth": 14079,
+  "sba": 14144,
+  "tmo": 1536,
   "vb": 2211,
-  "att": 1880
+  "att": 1882
  },
  "structure_types": [
   [
    "TOWER",
-   51178
+   51137
   ],
   [
    "LTOWER",
-   29827
+   29865
   ],
   [
    "MTOWER",
-   19253
+   19282
   ],
   [
    "GTOWER",
-   17908
+   17936
   ],
   [
    "POLE",
-   9769
+   9767
   ],
   [
    "",
-   3533
+   3534
   ],
   [
    "MAST",
-   2330
+   2329
   ],
   [
    "BANT",
@@ -71,7 +71,7 @@
   ],
   [
    "UPOLE",
-   593
+   592
   ],
   [
    "TREE",
@@ -99,19 +99,19 @@
   ],
   [
    "4TA1",
-   225
+   224
   ],
   [
    "4TA2",
-   222
+   221
   ],
   [
    "4TA3",
-   217
+   216
   ],
   [
    "4TA4",
-   211
+   210
   ],
   [
    "BMAST",
@@ -130,15 +130,15 @@
   "amt": [
    [
     "AMERICAN TOWERS LLC",
-    12480
+    12506
    ],
    [
     "AMERICAN TOWERS, LLC",
-    3235
+    3227
    ],
    [
     "AMERICAN TOWERS, LLC.",
-    3176
+    3162
    ],
    [
     "SPECTRASITE COMMUNICATIONS, LLC. THROUGH AMERICAN TOWERS, LLC.",
@@ -180,7 +180,7 @@
   "vz": [
    [
     "CELLCO PARTNERSHIP",
-    5118
+    5122
    ],
    [
     "ALLTEL CORPORATION",
@@ -211,11 +211,11 @@
     81
    ],
    [
-    "ALLTEL COMMUNICATIONS, LLC",
-    56
+    "GTE MOBILNET OF INDIANA LIMITED PARTNERSHIP",
+    55
    ],
    [
-    "GTE MOBILNET OF INDIANA LIMITED PARTNERSHIP",
+    "ALLTEL COMMUNICATIONS, LLC",
     55
    ],
    [
@@ -230,11 +230,11 @@
   "cci": [
    [
     "CROWN CASTLE",
-    20423
+    20424
    ],
    [
     "CROWN CASTLE INC",
-    186
+    187
    ],
    [
     "CROWN CASTLE FIBER, LLC",
@@ -264,15 +264,15 @@
   "rest": [
    [
     "WILKINSON BARKER KNAUER, LLP",
-    4163
+    4164
    ],
    [
     "",
-    2918
+    2915
    ],
    [
     "VB-S1 ASSETS, LLC",
-    1755
+    1754
    ],
    [
     "BNSF RAILWAY CO.",
@@ -300,7 +300,7 @@
    ],
    [
     "CITYSWITCH II, LLC",
-    347
+    349
    ],
    [
     "US ARMY CORPS OF ENGINEERS",
@@ -314,19 +314,19 @@
   "oth": [
    [
     "TILLMAN INFRASTRUCTURE, LLC",
-    2434
+    2437
    ],
    [
     "SKYWAY TOWERS, LLC",
-    558
+    559
    ],
    [
     "K2 TOWERS III, LLC",
-    550
+    552
    ],
    [
     "THE TOWERS, LLC",
-    529
+    535
    ],
    [
     "OCTAGON TOWERS, LLC",
@@ -358,29 +358,29 @@
    ],
    [
     "TARPON TOWERS II, LLC",
-    267
+    266
    ]
   ],
   "sba": [
-   [
-    "SBA TOWERS II LLC",
-    1998
-   ],
    [
     "SBA 2012 TC ASSETS, LLC",
     1998
    ],
    [
+    "SBA TOWERS II LLC",
+    1996
+   ],
+   [
     "SBA STRUCTURES, LLC",
-    1503
+    1502
    ],
    [
     "SBA PROPERTIES, LLC",
-    1487
+    1486
    ],
    [
     "SBA TOWERS, LLC",
-    1359
+    1358
    ],
    [
     "SBA MONARCH TOWERS I, LLC",
@@ -388,11 +388,11 @@
    ],
    [
     "SBA MONARCH TOWERS III, LLC",
-    824
+    825
    ],
    [
     "SBA TOWERS III LLC",
-    667
+    666
    ],
    [
     "SBA TOWERS IX, LLC",
@@ -414,7 +414,7 @@
   "tmo": [
    [
     "T-MOBILE WEST LLC",
-    856
+    855
    ],
    [
     "T-MOBILE NORTHEAST LLC",
@@ -430,7 +430,7 @@
    ],
    [
     "T-MOBILE USA, INC.",
-    34
+    36
    ],
    [
     "MIDWEST MOBILE RADIO SERVICE",
@@ -514,7 +514,7 @@
   "att": [
    [
     "AT&T MOBILITY SERVICES LLC",
-    1842
+    1844
    ],
    [
     "AT&T MOBILITY LLC",
@@ -567,8 +567,8 @@
    "rest": 8
   },
   "AK": {
-   "rest": 983,
-   "oth": 67,
+   "rest": 984,
+   "oth": 69,
    "vb": 146,
    "att": 120,
    "amt": 66,
@@ -577,25 +577,25 @@
    "vz": 24
   },
   "AL": {
-   "rest": 1380,
+   "rest": 1379,
    "cci": 907,
    "amt": 722,
    "vb": 32,
    "vz": 261,
    "att": 37,
-   "sba": 631,
+   "sba": 629,
    "tmo": 3,
-   "oth": 582
+   "oth": 584
   },
   "AR": {
    "vz": 365,
    "amt": 339,
-   "oth": 489,
-   "rest": 1066,
+   "oth": 495,
+   "rest": 1060,
    "att": 17,
    "cci": 284,
    "vb": 47,
-   "sba": 465,
+   "sba": 464,
    "tmo": 5
   },
   "AS": {
@@ -607,36 +607,36 @@
    "amt": 139,
    "tmo": 48,
    "vb": 37,
-   "oth": 172,
+   "oth": 173,
    "sba": 161,
    "vz": 191,
    "att": 33
   },
   "CA": {
-   "oth": 251,
+   "oth": 254,
    "cci": 1049,
    "amt": 500,
    "tmo": 447,
-   "rest": 3077,
-   "att": 344,
+   "rest": 3078,
+   "att": 345,
    "vz": 271,
    "vb": 44,
    "sba": 884
   },
   "CO": {
    "vz": 88,
-   "rest": 865,
-   "oth": 213,
+   "rest": 866,
    "cci": 131,
    "amt": 100,
    "vb": 59,
+   "oth": 213,
    "sba": 114,
    "att": 26,
    "tmo": 17
   },
   "CT": {
    "cci": 50,
-   "rest": 177,
+   "rest": 179,
    "att": 7,
    "amt": 64,
    "oth": 33,
@@ -666,11 +666,11 @@
   },
   "FL": {
    "cci": 1608,
-   "vz": 583,
+   "vz": 580,
    "amt": 1040,
    "rest": 2046,
    "sba": 660,
-   "oth": 395,
+   "oth": 394,
    "att": 176,
    "vb": 94,
    "tmo": 59
@@ -682,7 +682,7 @@
    "sba": 773,
    "vz": 514,
    "att": 144,
-   "oth": 527,
+   "oth": 528,
    "vb": 34,
    "tmo": 4
   },
@@ -701,7 +701,7 @@
   },
   "IA": {
    "tmo": 6,
-   "oth": 295,
+   "oth": 296,
    "vz": 199,
    "rest": 2009,
    "cci": 154,
@@ -722,10 +722,10 @@
    "sba": 79
   },
   "IL": {
-   "amt": 784,
+   "amt": 783,
    "oth": 545,
    "cci": 659,
-   "rest": 2247,
+   "rest": 2246,
    "vb": 149,
    "vz": 205,
    "att": 90,
@@ -735,11 +735,11 @@
   "IN": {
    "cci": 822,
    "vz": 213,
-   "amt": 453,
+   "amt": 455,
    "sba": 390,
-   "rest": 1336,
-   "oth": 494,
+   "rest": 1323,
    "att": 35,
+   "oth": 510,
    "vb": 40,
    "tmo": 2
   },
@@ -747,20 +747,20 @@
    "amt": 411,
    "vz": 173,
    "rest": 1551,
-   "sba": 245,
-   "oth": 288,
-   "att": 7,
+   "sba": 246,
+   "oth": 289,
    "cci": 153,
+   "att": 7,
    "tmo": 12,
    "vb": 17
   },
   "KY": {
    "cci": 525,
    "amt": 264,
-   "rest": 1231,
-   "oth": 344,
+   "rest": 1230,
+   "oth": 348,
+   "vz": 259,
    "sba": 207,
-   "vz": 258,
    "tmo": 5,
    "vb": 24,
    "att": 34
@@ -770,7 +770,7 @@
    "rest": 1250,
    "sba": 549,
    "att": 52,
-   "amt": 485,
+   "amt": 487,
    "vz": 333,
    "oth": 422,
    "vb": 31
@@ -789,7 +789,7 @@
   "MD": {
    "cci": 191,
    "rest": 593,
-   "amt": 213,
+   "amt": 214,
    "oth": 81,
    "sba": 146,
    "att": 13,
@@ -802,7 +802,7 @@
    "amt": 154,
    "cci": 32,
    "vz": 9,
-   "oth": 54,
+   "oth": 55,
    "sba": 73,
    "vb": 7,
    "tmo": 1,
@@ -810,14 +810,14 @@
   },
   "MI": {
    "amt": 843,
-   "rest": 1636,
+   "rest": 1635,
    "vz": 592,
    "sba": 533,
    "vb": 93,
    "oth": 442,
    "cci": 359,
    "att": 35,
-   "tmo": 8
+   "tmo": 9
   },
   "MN": {
    "cci": 234,
@@ -825,20 +825,20 @@
    "amt": 372,
    "oth": 197,
    "vb": 33,
-   "sba": 306,
-   "tmo": 13,
+   "sba": 305,
+   "tmo": 14,
    "att": 14,
-   "vz": 284
+   "vz": 285
   },
   "MO": {
    "cci": 476,
-   "oth": 669,
-   "rest": 1879,
-   "amt": 660,
+   "oth": 670,
+   "rest": 1880,
+   "amt": 659,
    "vz": 340,
    "sba": 384,
    "tmo": 51,
-   "att": 21,
+   "att": 20,
    "vb": 53
   },
   "MP": {
@@ -847,16 +847,16 @@
   "MS": {
    "amt": 982,
    "cci": 503,
-   "rest": 1156,
+   "rest": 1154,
    "sba": 486,
    "vz": 243,
-   "oth": 374,
+   "oth": 377,
    "att": 19,
    "vb": 22,
    "tmo": 1
   },
   "MT": {
-   "rest": 663,
+   "rest": 664,
    "amt": 97,
    "vb": 24,
    "sba": 30,
@@ -892,7 +892,7 @@
    "vb": 35,
    "sba": 49,
    "amt": 190,
-   "vz": 191,
+   "vz": 193,
    "oth": 313,
    "cci": 51,
    "att": 3,
@@ -913,7 +913,7 @@
    "cci": 201,
    "rest": 445,
    "att": 27,
-   "amt": 139,
+   "amt": 140,
    "vz": 24,
    "oth": 72,
    "vb": 7,
@@ -921,33 +921,33 @@
    "tmo": 67
   },
   "NM": {
-   "rest": 544,
+   "rest": 542,
    "sba": 55,
    "amt": 294,
    "att": 13,
-   "oth": 85,
+   "oth": 88,
    "cci": 115,
    "vb": 19,
    "vz": 49,
-   "tmo": 6
+   "tmo": 5
   },
   "NV": {
    "vz": 76,
    "cci": 155,
    "rest": 343,
    "amt": 111,
-   "att": 33,
+   "att": 34,
    "oth": 63,
    "sba": 125,
    "vb": 4,
    "tmo": 16
   },
   "NY": {
-   "att": 27,
+   "att": 28,
    "amt": 353,
    "cci": 310,
    "sba": 303,
-   "rest": 1154,
+   "rest": 1156,
    "vz": 110,
    "vb": 39,
    "oth": 370,
@@ -955,19 +955,19 @@
   },
   "OH": {
    "cci": 971,
-   "amt": 1001,
+   "amt": 1000,
    "vz": 946,
-   "oth": 684,
-   "rest": 1887,
+   "oth": 722,
+   "rest": 1852,
    "vb": 116,
    "att": 76,
-   "sba": 476,
+   "sba": 475,
    "tmo": 6
   },
   "OK": {
    "cci": 423,
-   "oth": 505,
-   "rest": 2041,
+   "oth": 511,
+   "rest": 2035,
    "att": 31,
    "amt": 584,
    "sba": 447,
@@ -978,7 +978,7 @@
   "OR": {
    "rest": 666,
    "vz": 108,
-   "cci": 269,
+   "cci": 270,
    "sba": 82,
    "vb": 24,
    "amt": 156,
@@ -987,12 +987,12 @@
    "oth": 72
   },
   "PA": {
-   "rest": 1537,
+   "rest": 1529,
    "sba": 459,
    "amt": 494,
    "cci": 809,
    "vz": 268,
-   "oth": 319,
+   "oth": 330,
    "att": 28,
    "vb": 42,
    "tmo": 76
@@ -1000,8 +1000,8 @@
   "PR": {
    "sba": 93,
    "rest": 264,
-   "cci": 179,
    "tmo": 7,
+   "cci": 179,
    "oth": 102,
    "amt": 123,
    "att": 1
@@ -1022,7 +1022,7 @@
    "cci": 741,
    "amt": 710,
    "att": 49,
-   "vz": 131,
+   "vz": 132,
    "sba": 360,
    "vb": 25,
    "oth": 245,
@@ -1040,22 +1040,22 @@
    "vz": 3
   },
   "TN": {
-   "rest": 1308,
+   "rest": 1305,
    "cci": 1034,
-   "sba": 476,
+   "sba": 475,
    "amt": 385,
-   "vz": 203,
-   "oth": 261,
+   "vz": 202,
+   "oth": 265,
    "att": 20,
    "vb": 52,
    "tmo": 9
   },
   "TX": {
-   "amt": 2195,
+   "amt": 2196,
    "cci": 2457,
-   "vz": 967,
-   "oth": 1809,
-   "rest": 5616,
+   "vz": 969,
+   "oth": 1827,
+   "rest": 5601,
    "att": 137,
    "sba": 1151,
    "vb": 174,
@@ -1079,7 +1079,7 @@
    "amt": 420,
    "rest": 1144,
    "att": 16,
-   "oth": 250,
+   "oth": 251,
    "vb": 18,
    "tmo": 23
   },
@@ -1101,12 +1101,12 @@
    "vb": 2
   },
   "WA": {
-   "cci": 420,
+   "cci": 421,
    "rest": 1164,
    "vz": 114,
    "amt": 223,
-   "sba": 129,
    "oth": 157,
+   "sba": 129,
    "vb": 61,
    "att": 22,
    "tmo": 241
@@ -1114,20 +1114,20 @@
   "WI": {
    "rest": 2359,
    "vb": 248,
-   "sba": 371,
    "amt": 311,
-   "oth": 405,
+   "sba": 371,
+   "oth": 408,
    "vz": 121,
    "cci": 105,
    "att": 16,
    "tmo": 7
   },
   "WV": {
-   "rest": 651,
+   "rest": 648,
    "att": 11,
    "cci": 260,
    "vz": 99,
-   "oth": 85,
+   "oth": 89,
    "amt": 218,
    "sba": 169,
    "vb": 5
@@ -1152,19 +1152,19 @@
    ],
    [
     "CO.dat",
-    16272822
+    16277872
    ],
    [
     "EN.dat",
-    66430487
+    66451592
    ],
    [
     "HS.dat",
-    23959827
+    23957976
    ],
    [
     "RA.dat",
-    55775238
+    55793240
    ],
    [
     "RE.dat",
@@ -1188,5 +1188,5 @@
    "entity_type": null
   }
  },
- "bytes": 896043
+ "bytes": 896366
 }
