@@ -1,57 +1,57 @@
 {
- "asof": "2026-11-08",
+ "asof": "2026-11-15",
  "stats": {
-  "ra_rows": 198010,
+  "ra_rows": 198069,
   "out_of_range": 4,
-  "kept": 141982
+  "kept": 142022
  },
  "status_codes": {
-  "C": 141986,
-  "A": 15913,
+  "C": 142026,
+  "A": 15925,
   "T": 8911,
-  "I": 12740,
-  "G": 18447,
+  "I": 12753,
+  "G": 18441,
   "": 13
  },
  "per_owner": {
-  "amt": 21493,
-  "vz": 9720,
-  "cci": 14623,
-  "rest": 58278,
-  "oth": 16915,
-  "sba": 14151,
-  "tmo": 3117,
-  "vb": 1877,
-  "att": 1808
+  "amt": 19638,
+  "vz": 9627,
+  "cci": 20728,
+  "rest": 58131,
+  "oth": 14129,
+  "sba": 14145,
+  "tmo": 1536,
+  "vb": 2207,
+  "att": 1881
  },
  "structure_types": [
   [
    "TOWER",
-   51088
+   51049
   ],
   [
    "LTOWER",
-   29898
+   29941
   ],
   [
    "MTOWER",
-   19297
+   19330
   ],
   [
    "GTOWER",
-   17967
+   17977
   ],
   [
    "POLE",
-   9767
+   9766
   ],
   [
    "",
-   3532
+   3529
   ],
   [
    "MAST",
-   2329
+   2326
   ],
   [
    "BANT",
@@ -130,57 +130,57 @@
   "amt": [
    [
     "AMERICAN TOWERS LLC",
-    15633
+    12519
    ],
    [
     "AMERICAN TOWERS, LLC",
-    1745
-   ],
-   [
-    "PINNACLE TOWERS LLC",
-    1188
+    3227
    ],
    [
     "AMERICAN TOWERS, LLC.",
-    871
-   ],
-   [
-    "GLOBAL TOWER, LLC. THROUGH AMERICAN TOWERS, LLC",
-    716
-   ],
-   [
-    "PINNACLE TOWERS ACQUISITION LLC",
-    663
+    3147
    ],
    [
     "SPECTRASITE COMMUNICATIONS, LLC. THROUGH AMERICAN TOWERS, LLC.",
-    542
+    539
    ],
    [
     "ATC OUTDOOR DAS, LLC",
     45
    ],
    [
-    "AMERICAN TOWER LLC",
-    32
+    "GLOBAL TOWER, LLC. THROUGH AMERICAN TOWERS, LLC",
+    43
    ],
    [
     "AMERICAN TOWER, LLC",
-    13
+    35
+   ],
+   [
+    "AMERICAN TOWER LLC",
+    34
    ],
    [
     "AMERICAN TOWERS, INC.",
-    12
+    18
    ],
    [
     "AMERICAN TOWERS L.L.C",
     11
+   ],
+   [
+    "AMERICAN TOWERS LLC.",
+    7
+   ],
+   [
+    "AMERICAN TOWERS  LLC",
+    3
    ]
   ],
   "vz": [
    [
     "CELLCO PARTNERSHIP",
-    5226
+    5122
    ],
    [
     "ALLTEL CORPORATION",
@@ -211,11 +211,11 @@
     81
    ],
    [
-    "GTE MOBILNET OF INDIANA LIMITED PARTNERSHIP",
-    55
+    "ALLTEL COMMUNICATIONS, LLC",
+    56
    ],
    [
-    "ALLTEL COMMUNICATIONS, LLC",
+    "GTE MOBILNET OF INDIANA LIMITED PARTNERSHIP",
     55
    ],
    [
@@ -230,77 +230,61 @@
   "cci": [
    [
     "CROWN CASTLE",
-    4868
+    20425
    ],
    [
-    "CCATT LLC",
-    3193
-   ],
-   [
-    "CROWN CASTLE SOUTH LLC",
-    1843
-   ],
-   [
-    "CROWN CASTLE GT COMPANY, LLC",
-    1548
-   ],
-   [
-    "CROWN COMMUNICATION LLC",
-    1242
-   ],
-   [
-    "CROWN CASTLE TOWERS 06-2 LLC",
-    539
-   ],
-   [
-    "CROWN CASTLE TOWER 05 LLC",
-    470
-   ],
-   [
-    "CROWN ATLANTIC COMPANY, LLC",
-    435
-   ],
-   [
-    "GLOBAL SIGNAL ACQUISITIONS LLC",
-    170
-   ],
-   [
-    "CROWN COMMUNICATIONS LLC",
-    75
+    "CROWN CASTLE INC",
+    187
    ],
    [
     "CROWN CASTLE FIBER, LLC",
     62
    ],
    [
-    "CROWN CASTLE PR LLC",
-    55
+    "CROWN CASTLE INC.",
+    36
+   ],
+   [
+    "CROWN CASTLE FIBER LLC",
+    15
+   ],
+   [
+    "CROWN ATLANTIC COMPANY, LLC",
+    1
+   ],
+   [
+    "CROWN COMMUNICATION INC",
+    1
+   ],
+   [
+    "CROWN CASTLE FIBER, LLC ON BEHALF OF PINAL COUNTY PUBLIC WORKS",
+    1
    ]
   ],
   "rest": [
    [
-    "VB-S1 ASSETS, LLC",
-    1757
-   ],
-   [
     "WILKINSON BARKER KNAUER, LLP",
-    1632
+    4165
    ],
    [
     "",
-    1446
+    2915
    ],
    [
-    "STC FIVE LLC",
-    1150
-   ],
-   [
-    "STC TWO LLC",
-    861
+    "VB-S1 ASSETS, LLC",
+    1753
    ],
    [
     "BNSF RAILWAY CO.",
-    709
+    704
+   ],
+   [
+    "KELLER AND HECKMAN LLP",
+    681
+   ],
+   [
+    "UNION PACIFIC RAILROAD COMPANY",
+    643
    ],
    [
     "VB BTS III, LLC",
@@ -311,12 +295,8 @@
     481
    ],
    [
-    "UNION PACIFIC RAILROAD COMPANY",
-    430
-   ],
-   [
     "GCI COMMUNICATION CORP",
-    355
+    387
    ],
    [
     "CITYSWITCH II, LLC",
@@ -325,28 +305,28 @@
    [
     "US ARMY CORPS OF ENGINEERS",
     312
+   ],
+   [
+    "COMMNET CELLULAR INC.",
+    311
    ]
   ],
   "oth": [
    [
     "TILLMAN INFRASTRUCTURE, LLC",
-    2439
-   ],
-   [
-    "ARRAY DIGITAL INFRASTRUCTURE, INC.",
-    2370
+    2441
    ],
    [
     "SKYWAY TOWERS, LLC",
-    560
-   ],
-   [
-    "THE TOWERS, LLC",
-    539
+    568
    ],
    [
     "K2 TOWERS III, LLC",
-    519
+    551
+   ],
+   [
+    "THE TOWERS, LLC",
+    545
    ],
    [
     "OCTAGON TOWERS, LLC",
@@ -358,11 +338,11 @@
    ],
    [
     "CTI TOWERS ASSETS II, LLC",
-    421
+    417
    ],
    [
     "HARMONI TOWERS LLC",
-    339
+    340
    ],
    [
     "TOWERCO 2013 LLC",
@@ -370,25 +350,29 @@
    ],
    [
     "DIAMOND TOWERS V LLC",
-    310
+    311
    ],
    [
     "UNITI TOWERS LLC",
     281
+   ],
+   [
+    "TARPON TOWERS II, LLC",
+    266
    ]
   ],
   "sba": [
    [
-    "SBA 2012 TC ASSETS, LLC",
-    1997
+    "SBA TOWERS II LLC",
+    1996
    ],
    [
-    "SBA TOWERS II LLC",
-    1994
+    "SBA 2012 TC ASSETS, LLC",
+    1996
    ],
    [
     "SBA STRUCTURES, LLC",
-    1503
+    1502
    ],
    [
     "SBA PROPERTIES, LLC",
@@ -396,11 +380,11 @@
    ],
    [
     "SBA TOWERS, LLC",
-    1354
+    1358
    ],
    [
     "SBA MONARCH TOWERS I, LLC",
-    969
+    970
    ],
    [
     "SBA MONARCH TOWERS III, LLC",
@@ -412,75 +396,79 @@
    ],
    [
     "SBA TOWERS IX, LLC",
-    599
+    590
    ],
    [
     "SBA TOWERS IV, LLC",
-    456
+    465
    ],
    [
     "SBA INFRASTRUCTURES, LLC",
-    448
+    449
    ],
    [
     "SBA TOWERS V, LLC",
-    414
+    412
    ]
   ],
   "tmo": [
-   [
-    "T-MOBILE USA TOWER LLC",
-    902
-   ],
    [
     "T-MOBILE WEST LLC",
     865
    ],
    [
-    "T-MOBILE WEST TOWER LLC",
-    627
-   ],
-   [
     "T-MOBILE NORTHEAST LLC",
-    296
-   ],
-   [
-    "T-MOBILE CENTRAL LLC",
-    157
+    279
    ],
    [
     "T-MOBILE SOUTH LLC",
-    144
+    139
+   ],
+   [
+    "T-MOBILE CENTRAL LLC",
+    121
    ],
    [
     "MIDWEST MOBILE RADIO SERVICE",
-    22
+    24
    ],
    [
-    "SPRINT SPECTRUM LLC",
-    19
+    "T-MOBILE USA, INC.",
+    24
    ],
    [
     "SPRINTCOM. INC.",
-    18
+    14
    ],
    [
-    "T-MOBILE PUERTO RICO LLC",
-    9
+    "MIDWEST MOBILE RADIO SERVICE, INC.",
+    10
    ],
    [
     "NEXTEL WEST CORP.",
     9
    ],
    [
+    "T-MOBILE PUERTO RICO LLC",
+    7
+   ],
+   [
     "POWERTEL, INC.",
     6
+   ],
+   [
+    "MIDWEST MOBILE RADIO SERVICE INC.",
+    3
    ]
   ],
   "vb": [
    [
     "VERTICAL BRIDGE S3 ASSETS, LLC",
     328
+   ],
+   [
+    "VERTICAL BRIDGE REIT, LLC",
+    276
    ],
    [
     "VERTICAL BRIDGE CC FM, LLC",
@@ -492,89 +480,85 @@
    ],
    [
     "VERTICAL BRIDGE DEVELOPMENT, LLC",
-    223
+    222
    ],
    [
     "VERTICAL BRIDGE NTCF, LLC",
     197
    ],
    [
+    "VERTICAL BRIDGE",
+    177
+   ],
+   [
     "VERTICAL BRIDGE TOWERS V, LLC",
     172
    ],
    [
-    "VERTICAL BRIDGE",
-    118
-   ],
-   [
-    "VERTICAL BRIDGE REIT, LLC",
-    71
+    "VERTICAL BRIDGE TOWERS, LLC",
+    97
    ],
    [
     "VERTICAL BRIDGE TOWERS III, LLC",
     66
    ],
    [
-    "VERTICAL BRIDGE TOWERS, LLC",
-    52
+    "VERTICAL BRIDGE REIT LLC",
+    45
    ],
    [
     "VERTICAL BRIDGE VBTS, LLC",
     37
-   ],
-   [
-    "VERTICAL BRIDGE REIT LLC",
-    24
    ]
   ],
   "att": [
    [
     "AT&T MOBILITY SERVICES LLC",
-    1127
+    1843
    ],
    [
-    "AT&T MOBILITY SPECTRUM LLC",
-    294
-   ],
-   [
-    "AT&T CORP",
-    128
-   ],
-   [
-    "BELLSOUTH TELECOMUNICATIONS, INC.",
-    74
-   ],
-   [
-    "NEW CINGULAR WIRELESS PCS, LLC",
-    51
-   ],
-   [
-    "NEW CINGULAR WIRELESS, INC.",
-    44
-   ],
-   [
-    "PACIFIC BELL TELEPHONE COMPANY D/B/A AT&T CALIFORNIA",
-    23
-   ],
-   [
-    "OHIO BELL",
-    13
-   ],
-   [
-    "MICHIGAN BELL",
-    8
-   ],
-   [
-    "NEVADA BELL TELEPHONE COMPANY D/B/A AT&T NEVADA",
-    8
-   ],
-   [
-    "SOUTHWESTERN BELL TELEPHONE COMPANY",
-    6
+    "AT&T MOBILITY LLC",
+    9
    ],
    [
     "BELLSOUTH MOBILITY INC",
     5
+   ],
+   [
+    "AT&T GOVERNMENT SOLUTIONS, INC",
+    5
+   ],
+   [
+    "NEW CINGULAR WIRELESS PCS, LLC",
+    3
+   ],
+   [
+    "BELLSOUTH WIRELESS CABLE INC",
+    2
+   ],
+   [
+    "BELLSOUTH PERSONAL COMMUNICATIONS INC  DBA =  BELLSOUTH MOBILITY DCS",
+    2
+   ],
+   [
+    "PACIFIC BELL MOBILE SERVICES",
+    2
+   ],
+   [
+    "AT&T MOBILITY SPECTRUM LLC",
+    2
+   ],
+   [
+    "AT&T GOVERNMENT SOLUTIONS, INC.",
+    2
+   ],
+   [
+    "AT&T MOBILITY, LLC",
+    1
+   ],
+   [
+    "CINGULAR WIRELESS OF TEXAS RSA #11 LIMITED PARTNERSHIP",
+    1
    ]
   ]
  },
@@ -583,583 +567,581 @@
    "rest": 8
   },
   "AK": {
-   "rest": 1055,
+   "rest": 985,
    "oth": 69,
    "vb": 146,
-   "att": 49,
+   "att": 120,
    "amt": 66,
    "sba": 34,
    "cci": 37,
    "vz": 24
   },
   "AL": {
-   "rest": 1417,
-   "cci": 656,
-   "amt": 874,
-   "vb": 29,
+   "rest": 1378,
+   "cci": 907,
+   "amt": 722,
+   "vb": 32,
    "vz": 261,
-   "att": 37,
+   "att": 36,
    "sba": 629,
-   "oth": 592,
-   "tmo": 59
+   "tmo": 3,
+   "oth": 589
   },
   "AR": {
    "vz": 365,
-   "amt": 392,
-   "oth": 506,
-   "rest": 1079,
+   "amt": 339,
+   "oth": 495,
+   "rest": 1060,
    "att": 17,
-   "cci": 202,
-   "vb": 44,
+   "cci": 284,
+   "vb": 47,
    "sba": 464,
-   "tmo": 7
+   "tmo": 5
   },
   "AS": {
    "rest": 6
   },
   "AZ": {
-   "cci": 208,
-   "rest": 766,
-   "amt": 141,
-   "tmo": 80,
-   "vb": 27,
-   "oth": 184,
-   "sba": 161,
-   "vz": 192,
+   "cci": 277,
+   "rest": 733,
+   "amt": 139,
+   "tmo": 48,
+   "vb": 37,
+   "oth": 175,
+   "sba": 160,
+   "vz": 191,
    "att": 33
   },
   "CA": {
-   "oth": 321,
-   "cci": 703,
-   "amt": 531,
-   "tmo": 532,
-   "rest": 3242,
+   "oth": 254,
+   "cci": 1050,
+   "amt": 500,
+   "tmo": 447,
+   "rest": 3078,
    "att": 345,
    "vz": 271,
-   "vb": 43,
-   "sba": 884
+   "vb": 44,
+   "sba": 883
   },
   "CO": {
    "vz": 88,
-   "rest": 894,
-   "oth": 216,
-   "cci": 84,
-   "amt": 108,
-   "vb": 41,
-   "tmo": 43,
+   "rest": 866,
+   "cci": 131,
+   "oth": 212,
+   "amt": 100,
+   "vb": 59,
    "sba": 114,
-   "att": 26
+   "att": 26,
+   "tmo": 17
   },
   "CT": {
-   "cci": 30,
-   "rest": 183,
-   "oth": 36,
+   "cci": 50,
+   "rest": 179,
    "att": 7,
-   "amt": 69,
+   "amt": 64,
+   "oth": 33,
    "sba": 131,
    "vz": 9,
    "vb": 8,
-   "tmo": 11
+   "tmo": 3
   },
   "DC": {
    "rest": 13,
    "amt": 3,
    "sba": 4,
    "att": 2,
-   "tmo": 3,
+   "tmo": 2,
    "oth": 2,
    "vz": 2
   },
   "DE": {
-   "cci": 18,
-   "amt": 32,
-   "tmo": 10,
-   "rest": 87,
+   "cci": 24,
+   "amt": 30,
+   "tmo": 8,
+   "rest": 86,
    "sba": 37,
-   "oth": 26,
+   "oth": 25,
    "vb": 7,
    "vz": 17
   },
   "FL": {
-   "cci": 1121,
-   "vz": 580,
-   "amt": 1213,
-   "rest": 2188,
-   "sba": 659,
-   "oth": 399,
+   "cci": 1605,
+   "vz": 581,
+   "amt": 1040,
+   "rest": 2050,
+   "sba": 660,
+   "oth": 395,
    "att": 176,
-   "vb": 75,
-   "tmo": 245
+   "vb": 94,
+   "tmo": 59
   },
   "GA": {
-   "amt": 1206,
-   "cci": 718,
-   "rest": 1695,
+   "amt": 1008,
+   "cci": 1067,
+   "rest": 1662,
    "sba": 773,
    "vz": 514,
    "att": 144,
-   "oth": 549,
-   "vb": 33,
-   "tmo": 104
+   "oth": 529,
+   "vb": 34,
+   "tmo": 4
   },
   "GU": {
    "rest": 26
   },
   "HI": {
    "vz": 47,
-   "amt": 22,
-   "rest": 116,
-   "oth": 7,
-   "cci": 29,
+   "amt": 19,
+   "cci": 59,
+   "rest": 103,
    "att": 10,
-   "tmo": 47,
+   "oth": 6,
+   "tmo": 34,
    "sba": 16
   },
   "IA": {
    "tmo": 6,
-   "oth": 692,
+   "oth": 297,
    "vz": 199,
-   "rest": 1648,
-   "cci": 128,
+   "rest": 2018,
+   "cci": 154,
    "sba": 169,
-   "amt": 324,
-   "vb": 104,
+   "amt": 308,
+   "vb": 119,
    "att": 8
   },
   "ID": {
    "vz": 95,
-   "rest": 443,
-   "cci": 47,
+   "rest": 437,
+   "cci": 94,
    "att": 16,
-   "tmo": 30,
+   "tmo": 11,
+   "oth": 84,
    "amt": 103,
-   "oth": 112,
-   "sba": 79,
-   "vb": 5
+   "vb": 11,
+   "sba": 79
   },
   "IL": {
-   "amt": 812,
-   "oth": 714,
-   "cci": 385,
-   "rest": 2183,
-   "vb": 147,
+   "amt": 782,
+   "oth": 548,
+   "cci": 659,
+   "rest": 2246,
+   "vb": 148,
    "vz": 205,
    "att": 90,
-   "sba": 458,
-   "tmo": 175
-  },
-  "IN": {
-   "cci": 621,
-   "vz": 213,
-   "amt": 551,
-   "sba": 390,
-   "rest": 1405,
-   "att": 35,
-   "oth": 520,
-   "vb": 23,
+   "sba": 457,
    "tmo": 33
   },
+  "IN": {
+   "cci": 822,
+   "vz": 213,
+   "amt": 455,
+   "sba": 390,
+   "rest": 1323,
+   "att": 35,
+   "oth": 513,
+   "vb": 40,
+   "tmo": 2
+  },
   "KS": {
-   "amt": 450,
+   "amt": 411,
    "vz": 173,
-   "rest": 1501,
-   "oth": 378,
+   "rest": 1555,
    "sba": 246,
-   "cci": 68,
-   "tmo": 27,
-   "vb": 13,
-   "att": 6
+   "oth": 291,
+   "att": 7,
+   "cci": 153,
+   "tmo": 12,
+   "vb": 17
   },
   "KY": {
-   "cci": 462,
-   "amt": 283,
-   "rest": 1258,
-   "oth": 352,
+   "cci": 525,
+   "amt": 264,
+   "rest": 1230,
+   "oth": 350,
    "sba": 207,
-   "vz": 259,
-   "tmo": 18,
-   "vb": 23,
+   "vz": 258,
+   "tmo": 5,
+   "vb": 24,
    "att": 34
   },
   "LA": {
-   "cci": 423,
-   "rest": 1287,
+   "cci": 588,
+   "rest": 1249,
    "sba": 549,
    "att": 52,
-   "amt": 594,
-   "vz": 337,
-   "oth": 429,
-   "vb": 28,
-   "tmo": 12
+   "amt": 487,
+   "vz": 333,
+   "oth": 422,
+   "vb": 31
   },
   "MA": {
-   "amt": 171,
-   "cci": 66,
-   "rest": 347,
+   "amt": 164,
+   "cci": 102,
+   "rest": 337,
    "sba": 170,
    "vz": 27,
-   "oth": 131,
+   "oth": 129,
    "att": 5,
    "vb": 12,
-   "tmo": 38
+   "tmo": 21
   },
   "MD": {
-   "cci": 126,
-   "rest": 613,
-   "amt": 234,
-   "oth": 98,
+   "cci": 191,
+   "rest": 594,
+   "amt": 214,
+   "oth": 80,
    "sba": 146,
    "att": 13,
    "vb": 24,
    "vz": 41,
-   "tmo": 17
+   "tmo": 10
   },
   "ME": {
-   "rest": 380,
+   "rest": 448,
    "amt": 154,
-   "cci": 26,
+   "cci": 32,
    "vz": 9,
-   "oth": 127,
+   "oth": 55,
    "sba": 73,
    "vb": 7,
-   "tmo": 3,
+   "tmo": 1,
    "att": 5
   },
   "MI": {
-   "amt": 869,
-   "rest": 1709,
+   "amt": 843,
+   "rest": 1635,
    "vz": 593,
    "sba": 533,
-   "vb": 92,
-   "oth": 444,
-   "cci": 248,
+   "vb": 94,
+   "oth": 445,
+   "cci": 360,
    "att": 35,
-   "tmo": 22
+   "tmo": 9
   },
   "MN": {
-   "cci": 122,
-   "rest": 1578,
-   "amt": 385,
-   "oth": 202,
-   "vb": 32,
+   "cci": 234,
+   "rest": 1542,
+   "amt": 372,
+   "oth": 199,
+   "vb": 33,
    "sba": 305,
-   "tmo": 73,
+   "tmo": 14,
    "att": 14,
    "vz": 285
   },
   "MO": {
-   "cci": 307,
-   "oth": 846,
-   "rest": 1804,
-   "amt": 703,
-   "vz": 330,
+   "cci": 476,
+   "oth": 670,
+   "rest": 1882,
+   "amt": 659,
+   "vz": 340,
    "sba": 384,
-   "tmo": 99,
+   "tmo": 51,
    "att": 20,
-   "vb": 40
+   "vb": 53
   },
   "MP": {
    "rest": 10
   },
   "MS": {
-   "amt": 1058,
-   "cci": 394,
-   "rest": 1165,
+   "amt": 981,
+   "cci": 503,
+   "rest": 1154,
    "sba": 486,
    "vz": 243,
-   "oth": 392,
+   "oth": 378,
    "att": 19,
-   "vb": 21,
-   "tmo": 10
+   "vb": 22,
+   "tmo": 1
   },
   "MT": {
    "rest": 664,
-   "amt": 102,
-   "vb": 21,
+   "amt": 97,
+   "vb": 24,
    "sba": 30,
-   "cci": 83,
+   "cci": 88,
    "vz": 12,
-   "oth": 131,
+   "oth": 129,
    "att": 8,
    "tmo": 6
   },
   "NC": {
-   "cci": 689,
-   "rest": 1513,
-   "amt": 1054,
-   "vz": 204,
-   "vb": 34,
-   "oth": 585,
+   "cci": 795,
+   "rest": 1681,
+   "amt": 1002,
+   "vz": 205,
+   "vb": 50,
    "sba": 419,
    "att": 23,
-   "tmo": 3
+   "oth": 348,
+   "tmo": 2
   },
   "ND": {
-   "oth": 153,
-   "cci": 99,
-   "rest": 809,
+   "oth": 151,
+   "cci": 103,
+   "rest": 810,
    "att": 10,
    "sba": 57,
-   "amt": 50,
-   "tmo": 2,
+   "amt": 48,
    "vz": 10,
-   "vb": 20
+   "vb": 21
   },
   "NE": {
-   "rest": 1158,
-   "vb": 31,
+   "rest": 1236,
+   "vb": 35,
    "sba": 49,
-   "amt": 198,
-   "oth": 416,
-   "vz": 192,
+   "amt": 190,
+   "vz": 193,
+   "oth": 313,
+   "cci": 51,
    "att": 3,
-   "cci": 23,
    "tmo": 3
   },
   "NH": {
-   "rest": 151,
-   "cci": 15,
-   "amt": 53,
-   "oth": 120,
+   "rest": 172,
+   "cci": 40,
+   "amt": 48,
+   "oth": 84,
    "sba": 56,
    "vb": 16,
-   "tmo": 11,
+   "tmo": 6,
    "vz": 8,
    "att": 1
   },
   "NJ": {
-   "cci": 125,
-   "rest": 467,
+   "cci": 201,
+   "rest": 445,
    "att": 27,
-   "amt": 161,
+   "amt": 140,
    "vz": 24,
-   "oth": 78,
+   "oth": 72,
    "vb": 7,
    "sba": 142,
-   "tmo": 94
+   "tmo": 67
   },
   "NM": {
-   "rest": 550,
+   "rest": 542,
    "sba": 55,
-   "amt": 305,
+   "amt": 294,
    "att": 13,
-   "oth": 88,
-   "cci": 85,
-   "vb": 13,
+   "oth": 89,
+   "cci": 115,
+   "vb": 19,
    "vz": 49,
-   "tmo": 23
+   "tmo": 5
   },
   "NV": {
    "vz": 76,
-   "cci": 100,
-   "rest": 370,
-   "amt": 113,
+   "cci": 155,
+   "rest": 343,
+   "amt": 111,
    "att": 34,
-   "oth": 62,
+   "oth": 63,
    "sba": 125,
-   "tmo": 44,
-   "vb": 3
+   "vb": 4,
+   "tmo": 16
   },
   "NY": {
    "att": 28,
-   "amt": 365,
-   "cci": 232,
+   "amt": 354,
+   "cci": 310,
    "sba": 303,
-   "rest": 1215,
+   "rest": 1157,
    "vz": 110,
    "vb": 39,
-   "oth": 371,
-   "tmo": 76
+   "oth": 372,
+   "tmo": 70
   },
   "OH": {
-   "cci": 562,
-   "amt": 1029,
+   "cci": 971,
+   "amt": 999,
    "vz": 946,
-   "oth": 729,
-   "rest": 2165,
-   "vb": 100,
-   "att": 75,
+   "oth": 725,
+   "rest": 1851,
+   "vb": 116,
+   "att": 76,
    "sba": 475,
-   "tmo": 83
+   "tmo": 6
   },
   "OK": {
-   "cci": 220,
-   "oth": 820,
-   "rest": 1849,
-   "att": 30,
-   "amt": 623,
+   "cci": 423,
+   "oth": 516,
+   "rest": 2031,
+   "att": 31,
+   "amt": 584,
    "sba": 447,
    "vb": 25,
-   "vz": 274,
-   "tmo": 46
+   "vz": 273,
+   "tmo": 4
   },
   "OR": {
-   "rest": 618,
+   "rest": 666,
    "vz": 108,
-   "cci": 138,
-   "oth": 187,
-   "sba": 82,
-   "vb": 14,
-   "amt": 160,
+   "cci": 270,
+   "sba": 83,
+   "vb": 24,
+   "amt": 156,
    "att": 16,
-   "tmo": 113
+   "tmo": 42,
+   "oth": 72
   },
   "PA": {
-   "rest": 1583,
-   "sba": 459,
-   "amt": 512,
-   "cci": 703,
+   "rest": 1529,
+   "sba": 460,
+   "amt": 494,
+   "cci": 809,
    "vz": 268,
-   "oth": 330,
+   "oth": 331,
    "att": 28,
-   "vb": 39,
-   "tmo": 113
+   "vb": 42,
+   "tmo": 76
   },
   "PR": {
-   "sba": 98,
-   "rest": 267,
-   "cci": 169,
-   "tmo": 9,
+   "sba": 93,
+   "rest": 264,
+   "cci": 179,
+   "tmo": 7,
    "oth": 102,
    "amt": 123,
    "att": 1
   },
   "RI": {
-   "rest": 72,
-   "amt": 67,
-   "cci": 19,
+   "rest": 66,
+   "amt": 65,
+   "cci": 33,
    "oth": 18,
    "sba": 34,
    "vb": 3,
    "att": 3,
-   "tmo": 12,
+   "tmo": 6,
    "vz": 4
   },
   "SC": {
-   "rest": 1149,
-   "cci": 588,
-   "amt": 857,
-   "tmo": 4,
+   "rest": 1148,
+   "cci": 741,
+   "amt": 710,
    "att": 49,
    "vz": 132,
    "sba": 361,
-   "vb": 19,
-   "oth": 252
+   "vb": 21,
+   "oth": 247,
+   "tmo": 3
   },
   "SD": {
-   "cci": 122,
+   "cci": 129,
    "att": 17,
-   "amt": 66,
-   "rest": 590,
-   "oth": 112,
+   "amt": 61,
+   "rest": 582,
+   "oth": 111,
    "sba": 26,
-   "vb": 11,
-   "tmo": 3,
+   "vb": 19,
+   "tmo": 2,
    "vz": 3
   },
   "TN": {
-   "rest": 1292,
-   "cci": 791,
-   "amt": 469,
+   "rest": 1305,
+   "cci": 1035,
    "sba": 475,
+   "amt": 385,
    "vz": 202,
-   "oth": 438,
+   "oth": 266,
    "att": 20,
-   "vb": 49,
-   "tmo": 11
+   "vb": 52,
+   "tmo": 9
   },
   "TX": {
-   "amt": 2371,
-   "cci": 1639,
-   "vz": 1068,
-   "oth": 1873,
-   "rest": 5907,
+   "amt": 2195,
+   "cci": 2458,
+   "vz": 970,
+   "oth": 1834,
+   "rest": 5603,
    "att": 137,
-   "sba": 1151,
-   "vb": 161,
-   "tmo": 311
+   "sba": 1152,
+   "vb": 174,
+   "tmo": 106
   },
   "UT": {
-   "cci": 76,
-   "rest": 428,
-   "vb": 7,
+   "cci": 121,
+   "rest": 394,
+   "vb": 15,
    "vz": 87,
    "amt": 105,
-   "tmo": 33,
    "att": 11,
-   "oth": 56,
-   "sba": 69
+   "oth": 55,
+   "sba": 69,
+   "tmo": 15
   },
   "VA": {
    "sba": 411,
    "vz": 185,
-   "cci": 341,
-   "amt": 479,
-   "rest": 1148,
-   "oth": 322,
+   "cci": 485,
+   "amt": 420,
+   "rest": 1147,
    "att": 16,
-   "vb": 15,
-   "tmo": 37
+   "oth": 252,
+   "vb": 18,
+   "tmo": 23
   },
   "VI": {
-   "rest": 18,
-   "sba": 19,
+   "rest": 20,
+   "sba": 17,
    "att": 2,
    "amt": 9,
    "oth": 4
   },
   "VT": {
-   "rest": 51,
+   "rest": 54,
    "sba": 30,
-   "oth": 25,
    "amt": 25,
    "cci": 2,
+   "oth": 22,
    "vz": 12,
    "tmo": 7,
    "vb": 2
   },
   "WA": {
-   "cci": 243,
-   "rest": 1150,
+   "cci": 420,
+   "rest": 1158,
    "vz": 114,
-   "amt": 237,
-   "oth": 260,
+   "amt": 223,
    "sba": 129,
-   "vb": 35,
-   "tmo": 341,
-   "att": 22
+   "oth": 157,
+   "vb": 61,
+   "att": 22,
+   "tmo": 241
   },
   "WI": {
-   "rest": 2030,
-   "vb": 178,
-   "oth": 825,
-   "amt": 333,
+   "rest": 2359,
+   "vb": 248,
    "sba": 371,
-   "vz": 121,
-   "cci": 44,
+   "amt": 311,
+   "oth": 407,
+   "vz": 120,
+   "cci": 105,
    "att": 16,
-   "tmo": 26
+   "tmo": 7
   },
   "WV": {
-   "rest": 578,
+   "rest": 649,
    "att": 11,
-   "oth": 160,
-   "cci": 242,
+   "cci": 260,
    "vz": 99,
-   "amt": 235,
+   "oth": 90,
+   "amt": 218,
    "sba": 169,
    "vb": 5
   },
   "WY": {
-   "rest": 380,
-   "cci": 44,
+   "rest": 362,
+   "cci": 45,
    "amt": 44,
    "oth": 54,
+   "vb": 24,
    "vz": 33,
-   "tmo": 2,
+   "tmo": 1,
    "att": 9,
-   "sba": 8,
-   "vb": 6
+   "sba": 8
   }
  },
  "info": {
@@ -1170,19 +1152,19 @@
    ],
    [
     "CO.dat",
-    16281816
+    16286570
    ],
    [
     "EN.dat",
-    66469974
+    66490471
    ],
    [
     "HS.dat",
-    23954976
+    23953369
    ],
    [
     "RA.dat",
-    55807016
+    55824099
    ],
    [
     "RE.dat",
@@ -1190,7 +1172,7 @@
    ],
    [
     "SC.dat",
-    666259
+    666714
    ]
   ],
   "layout": {
@@ -1206,5 +1188,5 @@
    "entity_type": null
   }
  },
- "bytes": 897014
+ "bytes": 896791
 }
